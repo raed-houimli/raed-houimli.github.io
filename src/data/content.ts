@@ -4,9 +4,9 @@ export const personalInfo = {
   name: 'Raed Houimli',
   title: 'Software Engineer • Cloud & DevOps',
   location: 'Tunis, Tunisia',
-  email: 'raed.houimli@example.com', // Update with actual email
-  github: 'https://github.com/raedhml', // Update with actual GitHub
-  linkedin: 'https://linkedin.com/in/raedhml', // Update with actual LinkedIn
+  email: 'houimliraed@hotmail.com', // Update with actual email
+  github: 'https://github.com/houimliraed', // Update with actual GitHub
+  linkedin: 'https://linkedin.com/in/houimliraed', // Update with actual LinkedIn
   tagline: 'Building resilient systems and automating infrastructure at scale. 5+ years architecting production-grade solutions in high-security environments.',
 };
 
@@ -150,9 +150,26 @@ export const projects: Project[] = [
 export const education: Education[] = [
   {
     id: 'edu-1',
-    degree: 'Bachelor of Science in Computer Science',
-    institution: 'University of Tunis',
-    period: '2015 – 2019',
+    degree: 'BSc Information Technology',
+    institution: 'ESA (École Supérieure d\'Agronomie)',
+    location: 'Tunis, Tunisia',
+  },
+  {
+    id: 'edu-2',
+    degree: 'MSc Software Engineering',
+    institution: 'ISI (Institut Supérieur d\'Informatique)',
+    location: 'Tunis, Tunisia',
+  },
+  {
+    id: 'edu-3',
+    degree: 'MSc Mathematics and Data Science',
+    institution: 'ENSIT (École Nationale Supérieure d\'Ingénieurs de Tunis)',
+    location: 'Tunis, Tunisia',
+  },
+  {
+    id: 'edu-4',
+    degree: 'MSc Cybersecurity Engineering',
+    institution: 'Tek-Up University',
     location: 'Tunis, Tunisia',
   },
 ];

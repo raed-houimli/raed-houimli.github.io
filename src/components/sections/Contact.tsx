@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { education, certifications, personalInfo } from '../../data/content';
+import { certifications, personalInfo } from '../../data/content';
 
 export const Contact: React.FC = () => {
   return (
@@ -14,48 +14,26 @@ export const Contact: React.FC = () => {
         >
           {/* Section Header */}
           <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Education & Contact</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact</h2>
             <div className="w-16 h-1 bg-accent-primary rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Left Column - Education & Certifications */}
-            <div className="space-y-12">
-              {/* Education */}
-              <div>
-                <h3 className="text-2xl font-semibold mb-6">Education</h3>
-                <div className="space-y-6">
-                  {education.map((edu) => (
-                    <div key={edu.id} className="card p-6">
-                      <h4 className="font-semibold text-lg mb-2">{edu.degree}</h4>
-                      <p className="text-text-secondary-light dark:text-text-secondary-dark mb-1">
-                        {edu.institution}
-                      </p>
-                      <div className="flex flex-col md:flex-row md:justify-between text-sm text-text-muted-light dark:text-text-muted-dark">
-                        <p>{edu.period}</p>
-                        <p>{edu.location}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Certifications */}
-              <div>
-                <h3 className="text-2xl font-semibold mb-6">Certifications</h3>
-                <div className="space-y-4">
-                  {certifications.map((cert) => (
-                    <div key={cert.id} className="card p-6">
-                      <h4 className="font-semibold mb-2">{cert.name}</h4>
-                      <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark mb-1">
-                        {cert.issuer}
-                      </p>
-                      <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
-                        {cert.date}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+            {/* Left Column - Certifications */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-6">Certifications</h3>
+              <div className="space-y-4">
+                {certifications.map((cert) => (
+                  <div key={cert.id} className="card p-6">
+                    <h4 className="font-semibold mb-2">{cert.name}</h4>
+                    <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark mb-1">
+                      {cert.issuer}
+                    </p>
+                    <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
+                      {cert.date}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 

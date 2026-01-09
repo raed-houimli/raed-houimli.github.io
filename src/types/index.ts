@@ -36,7 +36,7 @@ export interface Education {
   id: string;
   degree: string;
   institution: string;
-  period: string;
+  period?: string;
   location: string;
 }
 
