@@ -14,8 +14,8 @@ export const Projects: React.FC = () => {
         >
           {/* Section Header */}
           <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Projects</h2>
-            <div className="w-16 h-1 bg-accent-primary rounded-full"></div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" aria-label="Projects by Raed Houimli">Projects</h2>
+            <div className="w-16 h-1 bg-accent-primary rounded-full" role="presentation"></div>
           </div>
 
           {/* Projects Grid */}
@@ -28,6 +28,7 @@ export const Projects: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="card p-8 hover:shadow-lg transition-shadow duration-300"
+                aria-label={`Project: ${project.title} by Raed Houimli`}
               >
                 {/* Project Title */}
                 <h3 className="text-2xl font-semibold mb-4">{project.title}</h3>

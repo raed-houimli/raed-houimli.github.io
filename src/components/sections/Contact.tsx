@@ -14,8 +14,8 @@ export const Contact: React.FC = () => {
         >
           {/* Section Header */}
           <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact</h2>
-            <div className="w-16 h-1 bg-accent-primary rounded-full"></div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" aria-label="Contact Raed Houimli">Contact</h2>
+            <div className="w-16 h-1 bg-accent-primary rounded-full" role="presentation"></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

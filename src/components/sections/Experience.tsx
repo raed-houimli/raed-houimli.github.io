@@ -14,8 +14,8 @@ export const Experience: React.FC = () => {
         >
           {/* Section Header */}
           <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Experience</h2>
-            <div className="w-16 h-1 bg-accent-primary rounded-full"></div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" aria-label="Professional Experience of Raed Houimli">Experience</h2>
+            <div className="w-16 h-1 bg-accent-primary rounded-full" role="presentation"></div>
           </div>
 
           {/* Experience Items */}
@@ -28,6 +28,7 @@ export const Experience: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="card p-8"
+                aria-label={`Position: ${exp.title} at ${exp.company}`}
               >
                 {/* Header */}
                 <div className="mb-6">

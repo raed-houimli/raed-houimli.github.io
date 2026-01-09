@@ -8,6 +8,9 @@ const navigation = [
   { name: 'Experience', href: '/#experience' },
   { name: 'Skills', href: '/#skills' },
   { name: 'Projects', href: '/#projects' },
+  { name: 'Research', href: '/#research' },
+  { name: 'Education', href: '/#education' },
+  { name: 'Articles', href: 'https://medium.com/@houimliraed', external: true },
   { name: 'Contact', href: '/#contact' },
 ];
 
@@ -21,7 +24,7 @@ export const Header: React.FC = () => {
       transition={{ duration: 0.5 }}
       className="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-border-light dark:border-border-dark"
     >
-      <nav className="container-custom">
+      <nav className="container-custom" aria-label="Main navigation for Raed Houimli portfolio">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link 
@@ -38,8 +41,14 @@ export const Header: React.FC = () => {
                 key={item.name}
                 href={item.href}
                 className="text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark link-hover"
+                {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               >
                 {item.name}
+                {item.external && (
+                  <svg className="inline-block w-3 h-3 ml-1 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                )}
               </a>
             ))}
             

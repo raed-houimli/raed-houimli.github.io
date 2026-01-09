@@ -4,9 +4,10 @@ export const personalInfo = {
   name: 'Raed Houimli',
   title: 'Software Engineer • Cloud & DevOps',
   location: 'Tunis, Tunisia',
-  email: 'houimliraed@hotmail.com', // Update with actual email
-  github: 'https://github.com/houimliraed', // Update with actual GitHub
-  linkedin: 'https://linkedin.com/in/houimliraed', // Update with actual LinkedIn
+  email: 'houimliraed@hotmail.com',
+  github: 'https://github.com/houimliraed',
+  linkedin: 'https://linkedin.com/in/houimliraed',
+  medium: 'https://medium.com/@houimliraed',
   tagline: 'Building resilient systems and automating infrastructure at scale. 5+ years architecting production-grade solutions in high-security environments.',
 };
 

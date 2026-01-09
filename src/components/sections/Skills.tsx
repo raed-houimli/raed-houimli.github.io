@@ -14,8 +14,8 @@ export const Skills: React.FC = () => {
         >
           {/* Section Header */}
           <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills</h2>
-            <div className="w-16 h-1 bg-accent-primary rounded-full"></div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" aria-label="Technical Skills of Raed Houimli">Skills</h2>
+            <div className="w-16 h-1 bg-accent-primary rounded-full" role="presentation"></div>
           </div>
 
           {/* Skill Categories */}
@@ -28,6 +28,7 @@ export const Skills: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="card p-6"
+                aria-label={`Skill category: ${category.category}`}
               >
                 <h3 className="text-xl font-semibold mb-4 text-text-primary-light dark:text-text-primary-dark">
                   {category.category}
