@@ -108,11 +108,18 @@ export const Hero: React.FC = () => {
             className="hidden lg:flex justify-center"
           >
             <div className="relative w-80 h-80">
-              {/* Decorative background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20 rounded-full blur-2xl"></div>
+              {/* Decorative golden glow - multiple layers */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-yellow-400/40 via-amber-300/30 to-yellow-500/40 rounded-full blur-3xl"></div>
+              <div className="absolute -inset-2 bg-gradient-to-br from-yellow-300/20 to-amber-400/20 rounded-full blur-xl"></div>
               
-              {/* Profile image container */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-accent-primary/30 bg-gradient-to-br from-surface-light to-background-light dark:from-surface-dark dark:to-background-dark">
+              {/* Outer gold ring */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-yellow-300 via-amber-400 to-yellow-500 p-1"></div>
+              
+              {/* Middle accent ring */}
+              <div className="absolute inset-1 rounded-full bg-gradient-to-br from-yellow-200 to-amber-300 p-1"></div>
+              
+              {/* Profile image container with golden border */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-yellow-100/50 bg-gradient-to-br from-surface-light to-background-light dark:from-surface-dark dark:to-background-dark shadow-2xl">
                 {/* Profile picture - place your image at /public/profile.jpg */}
                 <img 
                   src="/profile.jpg" 

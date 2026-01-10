@@ -152,19 +152,19 @@ export const education: Education[] = [
   {
     id: 'edu-1',
     degree: 'BSc Information Technology',
-    institution: 'ESA (École Supérieure d\'Agronomie)',
+    institution: 'ESA (Aeronautical Speciality School)',
     location: 'Tunis, Tunisia',
   },
   {
     id: 'edu-2',
     degree: 'MSc Software Engineering',
-    institution: 'ISI (Institut Supérieur d\'Informatique)',
+    institution: 'ISI (Highter Institute of Informatics)',
     location: 'Tunis, Tunisia',
   },
   {
     id: 'edu-3',
     degree: 'MSc Mathematics and Data Science',
-    institution: 'ENSIT (École Nationale Supérieure d\'Ingénieurs de Tunis)',
+    institution: 'ENSIT (National Engineering School of Tunis)',
     location: 'Tunis, Tunisia',
   },
   {
