@@ -136,7 +136,7 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: 'project-3',
+    id: 'project-3 test',
     title: 'Container Security Scanner',
     description: 'Automated vulnerability scanning pipeline for container images',
     problem: 'Security vulnerabilities in container images going undetected until production',
