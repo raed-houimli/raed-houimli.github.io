@@ -137,7 +137,7 @@ export const projects: Project[] = [
   },
   {
     id: 'project-3 test',
-    title: 'Container Security Scanner',
+    title: 'Container Security Scanner repo',
     description: 'Automated vulnerability scanning pipeline for container images',
     problem: 'Security vulnerabilities in container images going undetected until production',
     solution: 'Developed CI/CD integrated security scanner using Trivy and custom policies, blocking deployments with critical CVEs',
