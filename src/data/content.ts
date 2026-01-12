@@ -127,7 +127,7 @@ export const projects: Project[] = [
   {
     id: 'project-2',
     title: 'Microservices Monitoring Stack',
-    description: 'Comprehensive observability platform for distributed systems',
+    description: 'Comprehensive guide observability platform for distributed systems',
     problem: 'Lack of visibility into microservices performance and inter-service dependencies',
     solution: 'Implemented Prometheus, Grafana, and Jaeger for metrics, visualization, and distributed tracing with custom exporters and dashboards',
     technologies: ['Prometheus', 'Grafana', 'Jaeger', 'Go', 'Kubernetes'],
