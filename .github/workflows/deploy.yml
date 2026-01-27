@@ -34,7 +34,7 @@ jobs:
         username: ${{ secrets.HOSTINGER_USERNAME }}
         password: ${{ secrets.HOSTINGER_PASSWORD }}
         local-dir: ./dist/
-        server-dir: /domains/kubelab.io/public_html/houimli/
+        server-dir: /houimli/
         protocol: ftp
         dangerous-clean-slate: false
         exclude: |
