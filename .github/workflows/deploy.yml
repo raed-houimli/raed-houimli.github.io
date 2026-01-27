@@ -1,0 +1,54 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build application
+      run: npm run build
+      env:
+        VITE_SITE_URL: https://houimli.kubelab.io
+    
+    - name: Upload via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.HOSTINGER_SERVER }}
+        username: ${{ secrets.HOSTINGER_USERNAME }}
+        password: ${{ secrets.HOSTINGER_PASSWORD }}
+        local-dir: ./dist/
+        server-dir: /domains/kubelab.io/public_html/houimli/
+        protocol: ftp
+        dangerous-clean-slate: false
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/.env*
+    
+    - name: Deployment Status
+      if: always()
+      run: |
+        if [ "${{ job.status }}" == "success" ]; then
+          echo "✅ Deployment to Hostinger completed successfully! et voila 🎉"
+          echo "🌐 Site URL: https://houimli.kubelab.io"
+        else
+          echo "❌ Deployment failed. Check logs above...."
+        fi
