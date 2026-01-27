@@ -119,11 +119,11 @@ export const Hero: React.FC = () => {
             className="order-1 md:order-2 flex justify-center"
           >
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent-primary to-blue-600 rounded-full opacity-20 blur-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-400 via-yellow-500 to-orange-500 rounded-full opacity-30 blur-3xl animate-pulse"></div>
               <img
                 src="/profile.jpg"
                 alt="Raed Houimli - DevOps and Cloud Engineer"
-                className="relative w-full h-full object-cover rounded-full border-4 border-accent-primary shadow-2xl"
+                className="relative w-full h-full object-cover rounded-full border-4 border-amber-400 shadow-2xl shadow-amber-500/50"
                 loading="eager"
               />
             </div>
