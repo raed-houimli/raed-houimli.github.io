@@ -53,6 +53,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+      test
     </footer>
   );
 };
