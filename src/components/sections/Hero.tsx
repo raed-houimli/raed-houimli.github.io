@@ -41,7 +41,14 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 text-text-secondary-light dark:text-text-secondary-dark"
             >
-              {personalInfo.title}
+              <h2 className="title">
+  {personalInfo.title.map((line, index) => (
+    <span key={index}>
+      {line}
+      <br />
+    </span>
+  ))}
+</h2>
             </motion.h2>
 
             {/* Education Badge */}
@@ -95,7 +102,11 @@ export const Hero: React.FC = () => {
                 Get in touch
               </a>
               <a href="#education" className="btn-secondary">
-                View education
+                 Education
+              </a>
+
+                <a href="#experience" className="btn-secondary">
+                 Experience
               </a>
             </motion.div>
           </motion.div>

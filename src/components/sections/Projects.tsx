@@ -81,7 +81,7 @@ export const Projects: React.FC = () => {
                     Architecture
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {project.architecture.map((arch, idx) => (
+                    {project.architecture?.map((arch, idx) => (
                       <span
                         key={idx}
                         className="px-3 py-1 text-xs bg-accent-primary/10 text-accent-primary rounded-md"

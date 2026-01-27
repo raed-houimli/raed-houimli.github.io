@@ -1,3 +1,11 @@
+export interface Role {
+  name: string;
+  title: string;
+  period: string;
+  responsibilities?: string[];
+  highlights?: string[];
+}
+
 export interface Experience {
   id: string;
   title: string;
@@ -7,6 +15,7 @@ export interface Experience {
   description: string;
   highlights: string[];
   technologies: string[];
+  roles?: Role[]; 
 }
 
 export interface Project {
@@ -17,6 +26,7 @@ export interface Project {
   solution?: string;
   technologies: string[];
   github?: string;
+  live?: string;
   featured?: boolean;
   category?: 'DevOps/Cloud' | 'FullStack' | 'ML/AI';
   architecture?: string[];
@@ -46,4 +56,9 @@ export interface Certification {
   issuer: string;
   date: string;
   credentialId?: string;
+}
+
+export interface Role {
+  title: string;
+  period: string;
 }

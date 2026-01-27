@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 
 const navigation = [
-  { name: 'About', href: '/#about' },
   { name: 'Education', href: '/#education' },
   { name: 'Experience', href: '/#experience' },
   { name: 'Skills', href: '/#skills' },

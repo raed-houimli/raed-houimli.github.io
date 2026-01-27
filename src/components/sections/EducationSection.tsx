@@ -24,7 +24,7 @@ export const Education: React.FC = () => {
             </div>
             <div className="w-16 h-1 bg-accent-primary rounded-full mb-6" role="presentation"></div>
             <p className="text-lg text-text-secondary-light dark:text-text-secondary-dark max-w-3xl leading-relaxed">
-              Rigorous multi-disciplinary education spanning <span className="font-semibold">Information Technology, Software Engineering, Mathematics & Data Science, and Cybersecurity Engineering</span>. Advanced degrees from Tunisia's leading institutions, combining theoretical depth with practical system design expertise.
+              Rigorous multi-disciplinary education spanning <span className="font-semibold">Information Technology, Software Engineering, Mathematics & Data Science, and Cybersecurity Engineering</span>. Advanced degrees from Tunisia's leading institutions.
             </p>
           </div>
 

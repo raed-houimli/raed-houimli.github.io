@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
           {/* Left side */}
           <div className="text-center md:text-left">
             <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark">
-              © {currentYear} {personalInfo.name}. Built with React & TypeScript.
+              © {currentYear} {personalInfo.name}. Built with Love and Passion ❤️
             </p>
           </div>
 

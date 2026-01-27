@@ -3,6 +3,17 @@ import { motion } from 'framer-motion';
 import { experiences } from '../../data/content';
 
 export const Experience: React.FC = () => {
+  // Group experiences by company
+  const groupedExperiences = experiences.reduce((acc, exp) => {
+    const existing = acc.find(item => item.company === exp.company);
+    if (existing) {
+      existing.positions.push(exp);
+    } else {
+      acc.push({ company: exp.company, location: exp.location, positions: [exp] });
+    }
+    return acc;
+  }, [] as Array<{ company: string; location: string; positions: typeof experiences }>);
+
   return (
     <section id="experience" className="section-padding">
       <div className="container-custom">
@@ -20,66 +31,94 @@ export const Experience: React.FC = () => {
 
           {/* Experience Items */}
           <div className="space-y-12">
-            {experiences.map((exp, index) => (
+            {groupedExperiences.map((group, index) => (
               <motion.article
-                key={exp.id}
+                key={group.company}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="card p-8"
-                aria-label={`Position: ${exp.title} at ${exp.company}`}
+                aria-label={`Positions at ${group.company}`}
               >
-                {/* Header */}
-                <div className="mb-6">
-                  <h3 className="text-2xl font-semibold mb-2">{exp.title}</h3>
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between text-text-secondary-light dark:text-text-secondary-dark mb-2">
-                    <p className="font-medium">{exp.company}</p>
-                    <p className="text-sm">{exp.period}</p>
-                  </div>
+                {/* Company Header */}
+                <div className="mb-8">
+                  <h3 className="text-2xl font-semibold mb-2">{group.company}</h3>
                   <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
-                    {exp.location}
+                    {group.location}
                   </p>
                 </div>
 
-                {/* Description */}
-                <p className="text-text-secondary-light dark:text-text-secondary-dark mb-6 leading-relaxed">
-                  {exp.description}
-                </p>
+                {/* Positions */}
+                <div className="space-y-8 relative">
+                  {/* Timeline line */}
+                  {group.positions.length > 1 && (
+                    <div className="absolute left-0 top-8 bottom-8 w-0.5 bg-gradient-to-b from-accent-primary via-blue-400 to-accent-primary opacity-30"></div>
+                  )}
+                  
+                  {group.positions.map((exp, posIdx) => (
+                    <div
+                      key={exp.id}
+                      className="relative pl-8"
+                    >
+                      {/* Timeline dot */}
+                      {group.positions.length > 1 && (
+                        <div className="absolute left-0 top-6 w-3 h-3 bg-accent-primary rounded-full border-4 border-background-light dark:border-background-dark shadow-lg"></div>
+                      )}
+                      
+                      <div className={posIdx > 0 ? 'border-t border-border-light dark:border-border-dark pt-8 -ml-8 pl-8' : ''}>
+                        {/* Position Title and Period */}
+                        <div className="mb-4">
+                          <h4 className="text-lg font-semibold text-text-primary-light dark:text-text-primary-dark mb-1">
+                            {exp.title}
+                          </h4>
+                          <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
+                            {exp.period}
+                          </p>
+                        </div>
 
-                {/* Highlights */}
-                <div className="mb-6">
-                  <h4 className="font-semibold mb-3 text-text-primary-light dark:text-text-primary-dark">
-                    Key Achievements
-                  </h4>
-                  <ul className="space-y-3">
-                    {exp.highlights.map((highlight, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start text-text-secondary-light dark:text-text-secondary-dark"
-                      >
-                        <span className="inline-block w-1.5 h-1.5 bg-accent-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                        {/* Description */}
+                        <p className="text-text-secondary-light dark:text-text-secondary-dark mb-4 leading-relaxed text-sm">
+                          {exp.description}
+                        </p>
 
-                {/* Technologies */}
-                <div>
-                  <h4 className="font-semibold mb-3 text-text-primary-light dark:text-text-primary-dark">
-                    Technologies
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 text-sm bg-background-light dark:bg-background-dark rounded-md text-text-secondary-light dark:text-text-secondary-dark border border-border-light dark:border-border-dark"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                        {/* Highlights */}
+                        <div className="mb-4">
+                          <h5 className="font-semibold mb-2 text-text-primary-light dark:text-text-primary-dark text-sm">
+                            Key Achievements
+                          </h5>
+                          <ul className="space-y-2">
+                            {exp.highlights.map((highlight, idx) => (
+                              <li
+                                key={idx}
+                                className="flex items-start text-text-secondary-light dark:text-text-secondary-dark text-sm"
+                              >
+                                <span className="inline-block w-1.5 h-1.5 bg-accent-primary rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
+                                <span>{highlight}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Technologies */}
+                        <div>
+                          <h5 className="font-semibold mb-2 text-text-primary-light dark:text-text-primary-dark text-sm">
+                            Technologies
+                          </h5>
+                          <div className="flex flex-wrap gap-2">
+                            {exp.technologies.map((tech, idx) => (
+                              <span
+                                key={idx}
+                                className="px-2 py-1 text-xs bg-background-light dark:bg-background-dark rounded-md text-text-secondary-light dark:text-text-secondary-dark border border-border-light dark:border-border-dark"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </motion.article>
             ))}
