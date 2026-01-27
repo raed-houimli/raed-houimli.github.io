@@ -1,28 +1,6 @@
-import React, { useState } from 'react';
-import { Hero } from '../components/sections/Hero';
-import { About } from '../components/sections/About';
-import { Experience } from '../components/sections/Experience';
-import { Skills } from '../components/sections/Skills';
-import { Research } from '../components/sections/Research';
-import { Education } from '../components/sections/EducationSection';
-import { Contact } from '../components/sections/Contact';
-import { projects } from '../data/content';
-import { ProjectFilter } from '../components/ProjectFilter';
-
-export const Home: React.FC = () => {
-  return (
-    <>
-      <Hero />
-      <About />
-      <Education />
-      <Experience />
-      <Skills />
-      <ProjectsSection />
-      <Research />
-      <Contact />
-    </>
-  );
-};
+import { useState } from 'react';
+import { projects } from '../../data/content';
+import { ProjectFilter } from '../ProjectFilter';
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState<'All' | 'DevOps/Cloud' | 'FullStack' | 'ML/AI'>('All');

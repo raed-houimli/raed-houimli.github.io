@@ -13,13 +13,13 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  problem: string;
-  solution: string;
+  problem?: string;
+  solution?: string;
   technologies: string[];
-  architecture: string[];
   github?: string;
-  live?: string;
-  featured: boolean;
+  featured?: boolean;
+  category?: 'DevOps/Cloud' | 'FullStack' | 'ML/AI';
+  architecture?: string[];
 }
 
 export interface Skill {
