@@ -4,15 +4,15 @@ import { personalInfo } from '../../data/content';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="section-padding min-h-[90vh] flex items-center">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-12 px-4">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text */}
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Text Content */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-2xl"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="order-2 md:order-1"
           >
             {/* Greeting */}
             <motion.p
@@ -111,55 +111,21 @@ export const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Profile Picture */}
+          {/* Profile Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="hidden lg:flex justify-center"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="order-1 md:order-2 flex justify-center"
           >
-            <div className="relative w-80 h-80">
-              {/* Decorative golden glow - multiple layers */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-yellow-400/40 via-amber-300/30 to-yellow-500/40 rounded-full blur-3xl"></div>
-              <div className="absolute -inset-2 bg-gradient-to-br from-yellow-300/20 to-amber-400/20 rounded-full blur-xl"></div>
-              
-              {/* Outer gold ring */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-yellow-300 via-amber-400 to-yellow-500 p-1"></div>
-              
-              {/* Middle accent ring */}
-              <div className="absolute inset-1 rounded-full bg-gradient-to-br from-yellow-200 to-amber-300 p-1"></div>
-              
-              {/* Profile image container with golden border */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-yellow-100/50 bg-gradient-to-br from-surface-light to-background-light dark:from-surface-dark dark:to-background-dark shadow-2xl">
-                {/* Profile picture - place your image at /public/profile.jpg */}
-                <img 
-                  src="/profile.jpg" 
-                  alt="Raed Houimli - Senior Software Engineer and DevOps Architect specializing in cloud infrastructure"
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                  onError={(e) => {
-                    // Fallback to placeholder if image doesn't exist
-                    e.currentTarget.style.display = 'none';
-                    const placeholder = e.currentTarget.nextElementSibling;
-                    if (placeholder) {
-                      (placeholder as HTMLElement).style.display = 'flex';
-                    }
-                  }}
-                />
-                
-                {/* Placeholder - shows if profile.jpg doesn't exist */}
-                <div className="absolute inset-0 hidden items-center justify-center bg-gradient-to-br from-accent-primary/10 to-accent-secondary/10">
-                  <div className="text-center p-6">
-                    <svg className="w-32 h-32 text-accent-primary/30 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                    <p className="text-text-muted-light dark:text-text-muted-dark text-sm font-medium">
-                      Add your profile picture<br />
-                      <span className="text-xs">Place image at <code className="bg-background-light dark:bg-background-dark px-2 py-1 rounded">/public/profile.jpg</code></span>
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent-primary to-blue-600 rounded-full opacity-20 blur-2xl"></div>
+              <img
+                src="/profile.jpg"
+                alt="Raed Houimli - DevOps and Cloud Engineer"
+                className="relative w-full h-full object-cover rounded-full border-4 border-accent-primary shadow-2xl"
+                loading="eager"
+              />
             </div>
           </motion.div>
         </div>
