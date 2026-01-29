@@ -4,7 +4,7 @@ import { EducationTimeline } from './EducationTimeline';
 
 export const Education: React.FC = () => {
   return (
-    <section id="education" className="section-padding bg-surface-light dark:bg-surface-dark">
+    <section id="education" className="section-shell bg-surface-light dark:bg-surface-dark">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const Research: React.FC = () => {
   return (
-    <section id="research" className="section-padding">
+    <section id="research" className="section-shell">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -38,26 +38,6 @@ export const Projects: React.FC = () => {
                   {project.description}
                 </p>
 
-                {/* Problem */}
-                <div className="mb-4">
-                  <h4 className="font-semibold text-sm uppercase tracking-wide text-text-muted-light dark:text-text-muted-dark mb-2">
-                    Problem
-                  </h4>
-                  <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm">
-                    {project.problem}
-                  </p>
-                </div>
-
-                {/* Solution */}
-                <div className="mb-6">
-                  <h4 className="font-semibold text-sm uppercase tracking-wide text-text-muted-light dark:text-text-muted-dark mb-2">
-                    Solution
-                  </h4>
-                  <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm">
-                    {project.solution}
-                  </p>
-                </div>
-
                 {/* Technologies */}
                 <div className="mb-6">
                   <h4 className="font-semibold text-sm uppercase tracking-wide text-text-muted-light dark:text-text-muted-dark mb-2">

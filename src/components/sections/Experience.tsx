@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { experiences } from '../../data/content';
 
 export const Experience: React.FC = () => {
-  // Group experiences by company
+  // Group experiences by company and reverse chronological order
   const groupedExperiences = experiences.reduce((acc, exp) => {
     const existing = acc.find(item => item.company === exp.company);
     if (existing) {
@@ -14,8 +14,17 @@ export const Experience: React.FC = () => {
     return acc;
   }, [] as Array<{ company: string; location: string; positions: typeof experiences }>);
 
+  // Sort positions in reverse chronological order (newest first)
+  groupedExperiences.forEach(group => {
+    group.positions.sort((a, b) => {
+      const aEnd = new Date(a.period.split(' – ')[1]).getTime();
+      const bEnd = new Date(b.period.split(' – ')[1]).getTime();
+      return bEnd - aEnd; // Newest first
+    });
+  });
+
   return (
-    <section id="experience" className="section-padding">
+    <section id="experience" className="section-shell">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -25,60 +34,65 @@ export const Experience: React.FC = () => {
         >
           {/* Section Header */}
           <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" aria-label="Professional Experience of Raed Houimli">Experience</h2>
-            <div className="w-16 h-1 bg-accent-primary rounded-full" role="presentation"></div>
+            <p className="kicker mb-3">Professional Background</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Experience & Track Record</h2>
+            <div className="section-divider mt-8"></div>
           </div>
 
-          {/* Experience Items */}
+          {/* Experience Items by Company */}
           <div className="space-y-12">
-            {groupedExperiences.map((group, index) => (
+            {groupedExperiences.map((group, groupIndex) => (
               <motion.article
                 key={group.company}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: groupIndex * 0.1 }}
                 className="card p-8"
-                aria-label={`Positions at ${group.company}`}
               >
                 {/* Company Header */}
-                <div className="mb-8">
-                  <h3 className="text-2xl font-semibold mb-2">{group.company}</h3>
-                  <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
+                <div className="mb-8 pb-6 border-b border-border-light dark:border-border-dark">
+                  <h3 className="text-2xl font-bold text-accent-primary mb-2">{group.company}</h3>
+                  <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark flex items-center">
+                    <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    </svg>
                     {group.location}
                   </p>
                 </div>
 
-                {/* Positions */}
+                {/* Positions - Newest First */}
                 <div className="space-y-8 relative">
                   {/* Timeline line */}
                   {group.positions.length > 1 && (
-                    <div className="absolute left-0 top-8 bottom-8 w-0.5 bg-gradient-to-b from-accent-primary via-blue-400 to-accent-primary opacity-30"></div>
+                    <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-primary via-accent-secondary to-accent-primary opacity-30"></div>
                   )}
                   
                   {group.positions.map((exp, posIdx) => (
-                    <div
-                      key={exp.id}
-                      className="relative pl-8"
-                    >
+                    <div key={exp.id} className="relative pl-8">
                       {/* Timeline dot */}
                       {group.positions.length > 1 && (
-                        <div className="absolute left-0 top-6 w-3 h-3 bg-accent-primary rounded-full border-4 border-background-light dark:border-background-dark shadow-lg"></div>
+                        <div className="absolute left-0 top-1.5 w-4 h-4 bg-accent-primary rounded-full border-4 border-surface-light dark:border-surface-dark shadow-lg transform -translate-x-1.5"></div>
                       )}
                       
-                      <div className={posIdx > 0 ? 'border-t border-border-light dark:border-border-dark pt-8 -ml-8 pl-8' : ''}>
+                      <div>
                         {/* Position Title and Period */}
-                        <div className="mb-4">
-                          <h4 className="text-lg font-semibold text-text-primary-light dark:text-text-primary-dark mb-1">
-                            {exp.title}
-                          </h4>
-                          <p className="text-sm text-text-muted-light dark:text-text-muted-dark">
-                            {exp.period}
-                          </p>
+                        <div className="mb-4 flex items-start justify-between">
+                          <div>
+                            <h4 className="text-lg font-bold text-text-primary-light dark:text-text-primary-dark mb-1">
+                              {exp.title}
+                            </h4>
+                            <p className="text-sm text-text-muted-light dark:text-text-muted-dark font-semibold">
+                              {exp.period}
+                            </p>
+                          </div>
+                          {posIdx === 0 && group.positions.length > 1 && (
+                            <span className="badge ml-2">Current Role</span>
+                          )}
                         </div>
 
                         {/* Description */}
-                        <p className="text-text-secondary-light dark:text-text-secondary-dark mb-4 leading-relaxed text-sm">
+                        <p className="text-text-secondary-light dark:text-text-secondary-dark mb-4 leading-relaxed border-l-2 border-accent-primary/30 pl-4">
                           {exp.description}
                         </p>
 
@@ -93,7 +107,7 @@ export const Experience: React.FC = () => {
                                 key={idx}
                                 className="flex items-start text-text-secondary-light dark:text-text-secondary-dark text-sm"
                               >
-                                <span className="inline-block w-1.5 h-1.5 bg-accent-primary rounded-full mt-1.5 mr-3 flex-shrink-0"></span>
+                                <span className="inline-block w-1.5 h-1.5 bg-accent-secondary rounded-full mt-2 mr-3 flex-shrink-0"></span>
                                 <span>{highlight}</span>
                               </li>
                             ))}
@@ -106,16 +120,42 @@ export const Experience: React.FC = () => {
                             Technologies
                           </h5>
                           <div className="flex flex-wrap gap-2">
-                            {exp.technologies.map((tech, idx) => (
+                            {exp.technologies.map((tech) => (
                               <span
-                                key={idx}
-                                className="px-2 py-1 text-xs bg-background-light dark:bg-background-dark rounded-md text-text-secondary-light dark:text-text-secondary-dark border border-border-light dark:border-border-dark"
+                                key={tech}
+                                className="px-3 py-1 text-xs bg-accent-primary/10 text-accent-primary rounded-md border border-accent-primary/20 font-medium"
                               >
                                 {tech}
                               </span>
                             ))}
                           </div>
                         </div>
+
+                        {/* Career Progression Separator */}
+                        {posIdx < group.positions.length - 1 && (
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            className="mt-6 pt-6 border-t border-border-light dark:border-border-dark flex justify-center"
+                          >
+                            <motion.svg
+                              animate={{ y: [0, 4, 0] }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                              className="w-5 h-5 text-accent-primary"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M7 16V4m0 0L3 8m0 0l4 4m10-4v12m0 0l4-4m0 0l-4-4"
+                              />
+                            </motion.svg>
+                          </motion.div>
+                        )}
                       </div>
                     </div>
                   ))}

@@ -5,8 +5,9 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark" role="contentinfo" aria-label="Site footer with contact information for Raed Houimli">
-      <div className="container-custom py-12">
+    <footer className="border-t border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+      <div className="container-custom py-10">
+        <div className="section-divider mb-6"></div>
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* Left side */}
           <div className="text-center md:text-left">

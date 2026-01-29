@@ -3,129 +3,139 @@ import { motion } from 'framer-motion';
 import { personalInfo } from '../../data/content';
 
 export const Hero: React.FC = () => {
-  return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-12 px-4">
-      <div className="container-custom">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="order-2 md:order-1"
-          >
-            {/* Greeting */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-accent-primary font-medium mb-4"
-            >
-              Hi, I'm
-            </motion.p>
+  // Generate QR code URL pointing to LinkedIn profile
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(personalInfo.linkedin)}`;
 
-            {/* Name */}
+  return (
+    <section id="home" className="section-shell relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-accent-primary/10 rounded-full blur-3xl opacity-40 -z-10 animate-pulse"></div>
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent-secondary/10 rounded-full blur-3xl opacity-30 -z-10"></div>
+
+      <div className="container-custom relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+          {/* Left: Main Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-2"
+          >
+            <p className="kicker mb-4">Infrastructure • Cloud Architecture • DevSecOps</p>
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-5xl md:text-6xl lg:text-6xl font-bold mb-4 tracking-tight"
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-6xl md:text-7xl font-bold mb-4 tracking-tight leading-tight"
             >
-              {personalInfo.name}
+              <span className="gradient-text">{personalInfo.name}</span>
             </motion.h1>
 
-            {/* Title */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 text-text-secondary-light dark:text-text-secondary-dark"
-            >
-              <h2 className="title">
-  {personalInfo.title.map((line, index) => (
-    <span key={index}>
-      {line}
-      <br />
-    </span>
-  ))}
-</h2>
-            </motion.h2>
+            <div className="text-2xl md:text-3xl font-semibold mb-8 text-text-secondary-light dark:text-text-secondary-dark">
+              Enterprise Infrastructure & DevOps Consultant
+            </div>
 
-            {/* Education Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.55 }}
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-accent-primary/10 rounded-full mb-6"
-            >
-              <svg className="w-5 h-5 text-accent-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              <span className="text-sm font-semibold text-accent-primary">
-                4 Advanced Degrees • Academic Excellence
-              </span>
-     
-            </motion.div>
-                        <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.55 }}
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-accent-primary/10 rounded-full mb-6"
-            >
-              <svg className="w-5 h-5 text-accent-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-
-                       <span className="text-sm font-semibold text-accent-primary">
-                +5 years of professional Experience • MDN
-              </span>
-              </motion.div>
-
-            {/* Tagline */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-lg text-text-muted-light dark:text-text-muted-dark mb-12 leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+              className="text-lg text-text-muted-light dark:text-text-muted-dark mb-10 leading-relaxed max-w-lg"
             >
-              {personalInfo.tagline}
+              I help organizations build scalable, secure cloud infrastructure and automate deployment pipelines. 5+ years delivering mission-critical systems.
             </motion.p>
 
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <a href="#contact" className="btn-primary">
-                Get in touch
-              </a>
-              <a href="#education" className="btn-secondary">
-                 Education
-              </a>
+            <div className="grid grid-cols-2 gap-4 mb-10">
+              <div className="stat">
+                <span className="text-xs uppercase tracking-wider font-bold">Experience</span>
+                <strong className="text-2xl">5+ Years</strong>
+              </div>
+              <div className="stat">
+                <span className="text-xs uppercase tracking-wider font-bold">Focus</span>
+                <strong className="text-2xl">Cloud & DevOps</strong>
+              </div>
+            </div>
 
-                <a href="#experience" className="btn-secondary">
-                 Experience
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href="#contact" className="btn-primary">
+                Schedule a Consultation
               </a>
-            </motion.div>
+              <a href="#projects" className="btn-secondary">
+                View Case Studies
+              </a>
+            </div>
           </motion.div>
 
-          {/* Profile Image */}
+          {/* Right: Profile Card Sidebar */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="order-1 md:order-2 flex justify-center"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="lg:col-span-1"
           >
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-400 via-yellow-500 to-orange-500 rounded-full opacity-30 blur-3xl animate-pulse"></div>
-              <img
-                src="/profile.jpg"
-                alt="Raed Houimli - DevOps and Cloud Engineer"
-                className="relative w-full h-full object-cover rounded-full border-4 border-amber-400 shadow-2xl shadow-amber-500/50"
-                loading="eager"
-              />
+            <div className="sticky top-24 card-neo p-6 border-2 border-accent-primary/20">
+              {/* Profile Image */}
+              <div className="relative mb-6">
+                <div className="absolute -inset-1 bg-gradient-to-br from-accent-primary to-accent-secondary rounded-2xl blur-lg opacity-20"></div>
+                <div className="relative w-24 h-24 rounded-2xl overflow-hidden border-2 border-accent-primary/40 mx-auto shadow-lg">
+                  <img src="/profile.jpg" alt={personalInfo.name} className="w-full h-full object-cover" />
+                </div>
+              </div>
+
+              {/* Name & Title */}
+              <h3 className="text-xl font-bold text-center mb-1">{personalInfo.name}</h3>
+              <p className="kicker text-center mb-4 text-xs">Infrastructure Engineer</p>
+
+              {/* Bio - Shorter */}
+              <p className="text-center text-text-secondary-light dark:text-text-secondary-dark text-xs mb-4 leading-relaxed">
+                Cloud infrastructure & DevOps specialist.
+              </p>
+
+              {/* Details Grid - Compact */}
+              <div className="grid grid-cols-2 gap-2 mb-5">
+                <div className="bg-accent-primary/5 rounded-lg p-2 text-center">
+                  <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-bold mb-0.5">Exp</p>
+                  <p className="text-sm font-bold text-accent-primary">5+</p>
+                </div>
+                <div className="bg-accent-secondary/5 rounded-lg p-2 text-center">
+                  <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-bold mb-0.5">Focus</p>
+                  <p className="text-sm font-bold text-accent-secondary">DevOps</p>
+                </div>
+              </div>
+
+              {/* QR Code - Functional & Readable */}
+              <div className="bg-white dark:bg-white rounded-lg p-3 mb-4 flex justify-center border border-border-light dark:border-border-dark">
+                <div className="w-24 h-24 flex items-center justify-center">
+                  <img 
+                    src={qrCodeUrl} 
+                    alt="LinkedIn QR Code" 
+                    className="w-full h-full"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              {/* Contact Email - Small */}
+              <p className="text-xs text-text-muted-light dark:text-text-muted-dark text-center mb-3">
+                {personalInfo.email}
+              </p>
+
+              {/* CTA Buttons - Compact */}
+              <a href="#contact" className="btn-primary w-full text-center text-xs py-2 mb-2">
+                Book Now
+              </a>
+              
+              <a 
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary w-full text-center text-xs py-2 flex items-center justify-center"
+              >
+                <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                Connect
+              </a>
             </div>
           </motion.div>
         </div>
