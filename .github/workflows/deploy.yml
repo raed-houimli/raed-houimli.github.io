@@ -27,23 +27,16 @@ jobs:
       env:
         VITE_SITE_URL: https://houimliraed.dev
     
-    - name: Upload via FTPS
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    - name: Deploy via SFTP
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
-        server: houimliraed.dev
+        server: ${{ secrets.HOSTINGER_SERVER }}
         username: ${{ secrets.HOSTINGER_USERNAME }}
-        password: ${{ secrets.HOSTINGER_PASSWORD }}
-        local-dir: ./dist/
-        server-dir: /public_html/
-        protocol: ftps
-        port: 21
-        security: loose
-        dangerous-clean-slate: false
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/.env*
+        ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        local_path: ./dist/*
+        remote_path: /public_html
+        sftp_only: true
+        delete_remote_files: false
     
     - name: Deployment Status
       if: always()
