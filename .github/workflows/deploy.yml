@@ -30,6 +30,15 @@ jobs:
     - name: Install lftp
       run: sudo apt-get update && sudo apt-get install -y lftp
     
+    - name: Debug FTP Connection
+      env:
+        FTP_SERVER: ${{ secrets.HOSTINGER_SERVER }}
+        FTP_USERNAME: ${{ secrets.HOSTINGER_USERNAME }}
+      run: |
+        echo "Attempting to connect to FTP server: $FTP_SERVER"
+        echo "Using username: $FTP_USERNAME"
+        ping -c 3 $FTP_SERVER || echo "Cannot ping server"
+    
     - name: Deploy via FTP using lftp
       env:
         FTP_SERVER: ${{ secrets.HOSTINGER_SERVER }}
@@ -40,8 +49,13 @@ jobs:
         set ssl:verify-certificate no;
         set ftp:ssl-allow yes;
         set ftp:ssl-protect-data yes;
-        open ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER;
-        mirror --reverse --delete --verbose --exclude .git/ --exclude .github/ dist/ /public_html/;
+        set ftp:passive-mode on;
+        set net:timeout 30;
+        set net:max-retries 3;
+        set net:reconnect-interval-base 5;
+        open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER;
+        cd /public_html || exit 1;
+        mirror --reverse --delete --verbose --exclude .git/ --exclude .github/ dist/ .;
         bye
         "
     
