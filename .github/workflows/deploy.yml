@@ -1,4 +1,4 @@
-name: Deploy to Hostinger
+name: Deploy to houimliraed.dev
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
     - name: Build application
       run: npm run build
       env:
-        VITE_SITE_URL: https://houimli.kubelab.io
+        VITE_SITE_URL: https://houimliraed.dev
     
     - name: Upload via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -34,8 +34,9 @@ jobs:
         username: ${{ secrets.HOSTINGER_USERNAME }}
         password: ${{ secrets.HOSTINGER_PASSWORD }}
         local-dir: ./dist/
-        server-dir: /houimli/
+        server-dir: /public_html/
         protocol: ftp
+        port: 21
         dangerous-clean-slate: false
         exclude: |
           **/.git*
@@ -47,8 +48,9 @@ jobs:
       if: always()
       run: |
         if [ "${{ job.status }}" == "success" ]; then
-          echo "✅ Deployment to Hostinger completed successfully! et voila 🎉"
-          echo "🌐 Site URL: https://houimli.kubelab.io"
+          echo "✅ Deployment to houimliraed.dev completed successfully! 🎉"
+          echo "🌐 Primary URL: https://houimliraed.dev"
+          echo "🌐 WWW URL: https://www.houimliraed.dev"
         else
           echo "❌ Deployment failed. Check logs above...."
         fi

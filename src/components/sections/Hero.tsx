@@ -6,7 +6,7 @@ export const Hero: React.FC = () => {
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(personalInfo.linkedin)}`;
 
   return (
-    <section id="home" className="section-shell relative overflow-hidden min-h-screen flex items-center">
+    <section id="home" className="relative overflow-hidden min-h-screen flex items-center -mt-8">
       {/* Enhanced animated background elements */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-primary/10 rounded-full blur-3xl opacity-40 float-animation"></div>
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-accent-secondary/10 rounded-full blur-3xl opacity-30 float-animation" style={{ animationDelay: '2s' }}></div>
