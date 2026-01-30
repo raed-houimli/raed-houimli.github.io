@@ -34,7 +34,7 @@ export const BackToTop = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-gradient-to-r from-accent-primary to-accent-secondary text-white rounded-full shadow-2xl flex items-center justify-center cursor-pointer group"
+          className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-gradient-to-r from-accent-primary to-accent-secondary text-white rounded-full shadow-2xl flex items-center justify-center cursor-pointer"
           aria-label="Scroll to top"
         >
           <motion.svg

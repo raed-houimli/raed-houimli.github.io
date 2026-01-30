@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { useScroll, useSpring, motion } from 'framer-motion';
 
 export const ScrollProgress = () => {
   const { scrollYProgress } = useScroll();
