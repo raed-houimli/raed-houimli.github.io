@@ -7,10 +7,30 @@ type CategoryType = 'All' | 'DevOps/Cloud' | 'FullStack' | 'ML/AI' | 'Cloud Nati
 
 export const ProjectsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 6;
   
   const filteredProjects = selectedCategory === 'All' 
     ? projects 
     : projects.filter(p => p.category === selectedCategory);
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+
+  // Reset to page 1 when filter changes
+  const handleFilterChange = (category: CategoryType) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    // Scroll to top of projects section
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section id="projects" className="section-shell relative overflow-hidden">
@@ -34,10 +54,10 @@ export const ProjectsSection = () => {
             <div className="section-divider mt-8"></div>
           </div>
 
-          <ProjectFilter onFilterChange={setSelectedCategory} />
+          <ProjectFilter onFilterChange={handleFilterChange} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filteredProjects.map((project, idx) => (
+            {currentProjects.map((project, idx) => (
               <motion.article
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -79,6 +99,56 @@ export const ProjectsSection = () => {
                 </div>
               </motion.article>
             ))}
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex items-center justify-center gap-2 mt-12"
+            >
+              {/* Previous Button */}
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="px-4 py-2 rounded-lg font-medium text-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed bg-border-light dark:bg-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:bg-accent-primary/10 hover:text-accent-primary"
+              >
+                ← Prev
+              </button>
+
+              {/* Page Numbers */}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                <button
+                  key={pageNum}
+                  onClick={() => handlePageChange(pageNum)}
+                  className={`w-10 h-10 rounded-lg font-bold text-sm transition-all ${
+                    currentPage === pageNum
+                      ? 'bg-accent-primary text-white shadow-lg'
+                      : 'bg-border-light dark:bg-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:bg-accent-primary/10 hover:text-accent-primary'
+                  }`}
+                >
+                  {pageNum}
+                </button>
+              ))}
+
+              {/* Next Button */}
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="px-4 py-2 rounded-lg font-medium text-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed bg-border-light dark:bg-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:bg-accent-primary/10 hover:text-accent-primary"
+              >
+                Next →
+              </button>
+            </motion.div>
+          )}
+
+          {/* Results Info */}
+          <div className="text-center mt-6">
+            <p className="text-xs text-text-muted-light dark:text-text-muted-dark">
+              Showing {indexOfFirstProject + 1}-{Math.min(indexOfLastProject, filteredProjects.length)} of {filteredProjects.length} projects
+            </p>
           </div>
         </motion.div>
       </div>

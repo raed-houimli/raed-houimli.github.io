@@ -165,6 +165,44 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
+    category: 'Machine Learning',
+    skills: [
+      { name: 'TensorFlow', level: 'advanced' },
+      { name: 'PyTorch', level: 'advanced' },
+      { name: 'scikit-learn', level: 'expert' },
+      { name: 'Keras', level: 'advanced' },
+      { name: 'Deep Learning', level: 'advanced' },
+    ],
+  },
+  {
+    category: 'Data Science',
+    skills: [
+      { name: 'Pandas', level: 'expert' },
+      { name: 'NumPy', level: 'expert' },
+      { name: 'Matplotlib', level: 'advanced' },
+      { name: 'Seaborn', level: 'advanced' },
+      { name: 'Statistical Analysis', level: 'expert' },
+    ],
+  },
+  {
+    category: 'MLOps',
+    skills: [
+      { name: 'Model Deployment', level: 'advanced' },
+      { name: 'Feature Engineering', level: 'expert' },
+      { name: 'Model Monitoring', level: 'intermediate' },
+      { name: 'Data Pipelines', level: 'advanced' },
+    ],
+  },
+  {
+    category: 'Mathematics',
+    skills: [
+      { name: 'Linear Algebra', level: 'expert' },
+      { name: 'Probability & Statistics', level: 'expert' },
+      { name: 'Calculus', level: 'expert' },
+      { name: 'Optimization', level: 'advanced' },
+    ],
+  },
+  {
     category: 'Security',
     skills: [
       { name: 'DevSecOps', level: 'intermediate' },
