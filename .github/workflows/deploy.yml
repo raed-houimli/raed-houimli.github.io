@@ -32,7 +32,7 @@ jobs:
       with:
         server: ${{ secrets.HOSTINGER_SERVER }}
         username: ${{ secrets.HOSTINGER_USERNAME }}
-        ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        password: ${{ secrets.HOSTINGER_PASSWORD }}
         local_path: ./dist/*
         remote_path: /public_html
         sftp_only: true
