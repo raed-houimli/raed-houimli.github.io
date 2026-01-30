@@ -16,7 +16,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '20'
         cache: 'npm'
     
     - name: Install dependencies
@@ -27,16 +27,17 @@ jobs:
       env:
         VITE_SITE_URL: https://houimliraed.dev
     
-    - name: Upload via FTP
+    - name: Upload via FTPS
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ${{ secrets.HOSTINGER_SERVER }}
+        server: houimliraed.dev
         username: ${{ secrets.HOSTINGER_USERNAME }}
         password: ${{ secrets.HOSTINGER_PASSWORD }}
         local-dir: ./dist/
         server-dir: /public_html/
-        protocol: ftp
+        protocol: ftps
         port: 21
+        security: loose
         dangerous-clean-slate: false
         exclude: |
           **/.git*
