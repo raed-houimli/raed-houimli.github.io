@@ -27,17 +27,23 @@ jobs:
       env:
         VITE_SITE_URL: https://houimliraed.dev
     
-    - name: Deploy to Hostinger via SCP
-      uses: appleboy/scp-action@v0.1.7
-      with:
-        host: ${{ secrets.HOSTINGER_SERVER }}
-        username: ${{ secrets.HOSTINGER_USERNAME }}
-        password: ${{ secrets.HOSTINGER_PASSWORD }}
-        port: 22
-        source: "dist/*"
-        target: "/public_html"
-        strip_components: 1
-        rm: false
+    - name: Install lftp
+      run: sudo apt-get update && sudo apt-get install -y lftp
+    
+    - name: Deploy via FTP using lftp
+      env:
+        FTP_SERVER: ${{ secrets.HOSTINGER_SERVER }}
+        FTP_USERNAME: ${{ secrets.HOSTINGER_USERNAME }}
+        FTP_PASSWORD: ${{ secrets.HOSTINGER_PASSWORD }}
+      run: |
+        lftp -c "
+        set ssl:verify-certificate no;
+        set ftp:ssl-allow yes;
+        set ftp:ssl-protect-data yes;
+        open ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER;
+        mirror --reverse --delete --verbose --exclude .git/ --exclude .github/ dist/ /public_html/;
+        bye
+        "
     
     - name: Deployment Status
       if: always()
