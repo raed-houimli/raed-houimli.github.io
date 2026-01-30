@@ -27,16 +27,17 @@ jobs:
       env:
         VITE_SITE_URL: https://houimliraed.dev
     
-    - name: Deploy via SFTP
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+    - name: Deploy to Hostinger via SCP
+      uses: appleboy/scp-action@v0.1.7
       with:
-        server: ${{ secrets.HOSTINGER_SERVER }}
+        host: ${{ secrets.HOSTINGER_SERVER }}
         username: ${{ secrets.HOSTINGER_USERNAME }}
         password: ${{ secrets.HOSTINGER_PASSWORD }}
-        local_path: ./dist/*
-        remote_path: /public_html
-        sftp_only: true
-        delete_remote_files: false
+        port: 22
+        source: "dist/*"
+        target: "/public_html"
+        strip_components: 1
+        rm: false
     
     - name: Deployment Status
       if: always()
