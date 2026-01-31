@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 /* Custom font imports */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
-/* Theme Variables */
+/* Enhanced Theme Variables */
 @layer base {
   :root {
     /* Premium Colors */
@@ -27,13 +28,15 @@
     --color-accent-secondary: #8b5cf6;
 
     --font-family-sans: 'Inter var', 'Inter', system-ui, -apple-system, sans-serif;
-    --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
     --font-family-display: 'Syne', 'Inter', system-ui;
 
     --shadow-xs: 0 2px 8px rgba(15,23,42,0.06);
     --shadow-soft: 0 8px 24px rgba(15,23,42,0.08);
     --shadow-strong: 0 16px 48px rgba(15,23,42,0.12);
     --shadow-glow: 0 0 32px rgba(14,165,233,0.15);
+    --shadow-premium: 0 20px 60px -15px rgba(14, 165, 233, 0.15);
+    --shadow-elevated: 0 24px 48px -12px rgba(14, 165, 233, 0.18);
   }
 }
 
