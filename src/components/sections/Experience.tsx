@@ -246,7 +246,7 @@ export const Experience: React.FC = () => {
               </motion.div>
               <h3 className="text-3xl md:text-4xl font-bold mb-4">Career Timeline</h3>
               <p className="text-text-secondary-light dark:text-text-secondary-dark text-lg">
-                5.5 years at the Ministry of Defense (Jul 2020 – Nov 2025), progressing from Software Engineer to DevOps Engineer
+                5.5 years at Ministry of Defense (Jul 2020 – Nov 2025) progressing from Software Engineer to DevOps Engineer. Now freelancing as DevOps & Infrastructure Consultant (Dec 2025 – Present)
               </p>
             </div>
 
@@ -407,12 +407,9 @@ export const Experience: React.FC = () => {
                           <h5 className="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">
                             DevOps Engineer
                           </h5>
-                          <span className="px-3 py-1 bg-accent-secondary/10 text-accent-secondary text-xs font-bold rounded-full border border-accent-secondary/20">
-                            Promoted
-                          </span>
                         </div>
                         <p className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark mb-3">
-                          Sep 2023 – Nov 2025 • 2 years 3 months
+                          {experiences[1].period} • 2 years 3 months
                         </p>
                         <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed text-sm mb-4">
                           {experiences[1].description}
@@ -426,12 +423,12 @@ export const Experience: React.FC = () => {
                           {experiences[1].highlights.slice(0, 4).map((highlight, i) => (
                             <motion.div
                               key={i}
-                              initial={{ opacity: 0, x: -10 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ delay: 0.3 + i * 0.05 }}
-                              className="flex items-start gap-2 text-sm p-2 rounded-lg bg-accent-primary/5 hover:bg-accent-primary/10 transition-colors"
-                            >
+initial={{ opacity: 0, x: -10 }}
+whileInView={{ opacity: 1, x: 0 }}
+viewport={{ once: true }}
+transition={{ delay: 0.3 + i * 0.05 }}
+className="flex items-start gap-2 text-sm p-2 rounded-lg bg-accent-primary/5 hover:bg-accent-primary/10 transition-colors"
+>
                               <svg className="w-4 h-4 text-accent-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
@@ -466,7 +463,6 @@ export const Experience: React.FC = () => {
                         <svg className="w-6 h-6 text-accent-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11l5-5m0 0l5 5m-5-5v12" />
                         </svg>
-                        <p className="text-xs font-bold text-accent-primary uppercase mt-1">Career Growth</p>
                       </motion.div>
                     </div>
 
@@ -480,9 +476,6 @@ export const Experience: React.FC = () => {
                           <h5 className="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">
                             Software Engineer
                           </h5>
-                          <span className="px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full border border-blue-500/20">
-                            Foundation
-                          </span>
                         </div>
                         <p className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark mb-3">
                           Jul 2020 – Aug 2023 • 3 years 2 months
@@ -538,12 +531,12 @@ export const Experience: React.FC = () => {
                         <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Years</p>
                       </div>
                       <div>
-                        <p className="text-2xl font-black text-accent-secondary mb-1">2</p>
-                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Roles</p>
+                        <p className="text-2xl font-black text-accent-secondary mb-1">50+</p>
+                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Deliverables</p>
                       </div>
                       <div>
                         <p className="text-2xl font-black text-green-500 mb-1">20+</p>
-                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Projects</p>
+                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Applications</p>
                       </div>
                     </div>
                   </div>

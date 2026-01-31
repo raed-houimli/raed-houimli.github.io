@@ -4,7 +4,7 @@ import { useTheme } from '../contexts/ThemeContext';
 
 const navigation = [
   { name: 'Services', href: '#services' },
-  { name: 'Journey', href: '#journey' },
+  { name: 'Journey', href: '#experience' },
   { name: 'Projects', href: '#projects' },
   { name: 'Tech Stack', href: '#tech-stack' },
   { name: 'Education', href: '#education' },
