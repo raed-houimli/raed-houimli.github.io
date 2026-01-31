@@ -19,10 +19,10 @@ export const Contact: React.FC = () => {
         >
           {/* Section Header */}
           <div className="mb-12 text-center">
-            <p className="kicker mb-3">Let's Collaborate</p>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Book a Consultation</h2>
+            <p className="kicker mb-3">Let’s Collaborate</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Book a Strategy Call</h2>
             <p className="text-text-secondary-light dark:text-text-secondary-dark text-lg max-w-2xl mx-auto">
-              Schedule a free 30-minute strategy session to discuss your infrastructure and DevOps needs.
+              Schedule a 30‑minute consultation to discuss your infrastructure, DevOps, and cloud architecture goals. Professional English communication for global teams.
             </p>
             <div className="section-divider-glow mt-8 max-w-md mx-auto"></div>
           </div>
@@ -73,11 +73,11 @@ export const Contact: React.FC = () => {
                     </h4>
                     <ul className="space-y-3">
                       {[
-                        'Free 30-minute consultation',
-                        'Infrastructure assessment',
-                        'DevOps strategy discussion',
-                        'Cost optimization insights',
-                        'Q&A session'
+                        '30‑minute strategy call (remote)',
+                        'Current infrastructure review',
+                        'CI/CD + automation roadmap',
+                        'Cost & reliability optimization',
+                        'Next‑steps action plan'
                       ].map((item, i) => (
                         <motion.li
                           key={i}
@@ -136,7 +136,7 @@ export const Contact: React.FC = () => {
                     <div>
                       <h3 className="text-2xl font-bold mb-2">Select Your Time Slot</h3>
                       <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                        All times are displayed in your local timezone
+                        All times are displayed in your local timezone. Professional English communication available.
                       </p>
                     </div>
                     <div className="hidden md:flex items-center gap-2 px-3 py-2 bg-green-500/10 border border-green-500/30 rounded-lg">
@@ -203,7 +203,7 @@ export const Contact: React.FC = () => {
             <div className="flex flex-wrap justify-center items-center gap-8 max-w-3xl mx-auto">
               {[
                 { icon: '⚡', text: '24h Response' },
-                { icon: '🎯', text: '5+ Years Experience' },
+                { icon: '🎯', text: '5.5+ Years Experience' },
                 { icon: '✓', text: 'Free Consultation' },
                 { icon: '🔒', text: 'NDA Available' }
               ].map((badge, i) => (

@@ -1,23 +1,26 @@
-# Raed Houimli - Portfolio
+# Raed Houimli - DevOps & Infrastructure Portfolio
 
-A production-grade personal portfolio website built with React, TypeScript, and Tailwind CSS.
+Professional portfolio website showcasing expertise in cloud infrastructure, DevOps automation, and full-stack engineering.
 
 ## 🚀 Tech Stack
 
-- **React 19** - UI library
-- **TypeScript** - Type safety
-- **Vite** - Build tool & dev server
-- **Tailwind CSS** - Styling
-- **Framer Motion** - Animations
-- **React Router** - Routing
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **Animations**: Framer Motion
+- **Build Tool**: Vite
+- **Deployment**: Hostinger via GitHub Actions
+- **CI/CD**: Automated deployment pipeline
 
-## 🛠️ Development
+## 📦 Installation
 
 ```bash
+# Clone repository
+git clone https://github.com/houimliraed/portfolio.git
+cd portfolio
+
 # Install dependencies
 npm install
 
-# Start development server
+# Run development server
 npm run dev
 
 # Build for production
@@ -25,12 +28,6 @@ npm run build
 
 # Preview production build
 npm run preview
-
-# Format code
-npm run format
-
-# Lint code
-npm run lint
 ```
 
 ## 📁 Project Structure
@@ -101,26 +98,3 @@ MIT
 ---
 
 Built with ❤️ by Raed Houimli
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```

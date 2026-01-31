@@ -13,7 +13,7 @@ export const personalInfo = {
   seoKeywords: 'Raed Houimli, DevOps Engineer, Infrastructure Consultant, AWS Expert, Kubernetes Specialist, CI/CD Automation, Cloud Architecture, DevSecOps Professional, Full-Stack Engineer, FastAPI Developer, React Developer',
   meetingUrl: 'https://calendly.com/houimliraed/30min',
   meetingUrlEmbed: 'https://calendly.com/houimliraed/30min?hide_event_type_details=1&hide_gdpr_banner=1',
-  bio: 'Full-stack software engineer with 3+ years backend development experience (FastAPI, Node.js, React) who transitioned to DevOps engineering. Now delivering complete infrastructure solutions combining development expertise with cloud architecture, CI/CD automation, and Kubernetes orchestration.',
+  bio: 'Full-stack software engineer with 3+ years backend development experience (FastAPI, Node.js, React) who transitioned to DevOps engineering. Now delivering complete infrastructure solutions combining development expertise with cloud architecture, CI/CD automation, and Kubernetes orchestration. Professional English communication for global teams and clients.',
 };
 
 
@@ -23,7 +23,7 @@ export const experiences: Experience[] = [
     title: 'Freelance DevOps & Infrastructure Consultant',
     company: 'Self-Employed',
     location: 'Remote Worldwide',
-    period: 'Dec 2024 – Present',
+    period: 'Dec 2025 – Present',
     description: 'Providing end-to-end infrastructure consulting and DevOps services to organizations worldwide. Specializing in AWS cloud architecture, Kubernetes orchestration, CI/CD automation, and Infrastructure as Code implementation.',
     highlights: [
       'Architecting custom AWS infrastructure solutions for enterprise clients across multiple industries',
@@ -52,7 +52,7 @@ export const experiences: Experience[] = [
     title: 'DevOps Engineer',
     company: 'Ministry of Defense – Tunisia',
     location: 'Tunis, Tunisia',
-    period: 'Sep 2023 – Nov 2024',
+    period: 'Sep 2023 – Nov 2025',
     description: 'Led infrastructure transformation initiatives, designed cloud architecture, and established production-grade CI/CD pipelines for 20+ mission-critical government applications. Drove DevOps culture adoption and automated deployment processes.',
     highlights: [
       'Managed 50+ AWS resources using Terraform IaC with complete state management and drift detection',
@@ -86,7 +86,7 @@ export const experiences: Experience[] = [
     title: 'Software Engineer',
     company: 'Ministry of Defense – Tunisia',
     location: 'Tunis, Tunisia',
-    period: 'Jul 2020 – Aug 2023',
+    period: 'Jul 2020 – Sep 2023',
     description: 'Designed and developed scalable backend services and full-stack applications for mission-critical government systems. Built high-performance REST APIs, optimized database architectures, and established automated testing frameworks.',
     highlights: [
       'Architected and deployed 5+ production FastAPI microservices handling 100K+ daily requests with 99.9% uptime',

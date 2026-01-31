@@ -244,9 +244,9 @@ export const Experience: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </motion.div>
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">Professional Journey</h3>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">Career Timeline</h3>
               <p className="text-text-secondary-light dark:text-text-secondary-dark text-lg">
-                Building enterprise infrastructure solutions for mission-critical systems
+                5.5 years at the Ministry of Defense (Jul 2020 – Nov 2025), progressing from Software Engineer to DevOps Engineer
               </p>
             </div>
 
@@ -373,7 +373,7 @@ export const Experience: React.FC = () => {
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
-                            Jul 2020 – Nov 2024
+                            Jul 2020 – Nov 2025
                           </span>
                           <span className="flex items-center gap-1">
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -384,7 +384,7 @@ export const Experience: React.FC = () => {
                         </div>
                       </div>
                       <div className="px-4 py-2 bg-gradient-to-r from-accent-primary/10 to-accent-secondary/10 border border-accent-primary/30 rounded-lg">
-                        <p className="text-xs font-bold text-accent-primary uppercase">4+ Years</p>
+                        <p className="text-xs font-bold text-accent-primary uppercase">5.5 Years</p>
                       </div>
                     </div>
                     <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">
@@ -412,7 +412,7 @@ export const Experience: React.FC = () => {
                           </span>
                         </div>
                         <p className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark mb-3">
-                          Sep 2023 – Nov 2024 • 1 year 3 months
+                          Sep 2023 – Nov 2025 • 2 years 3 months
                         </p>
                         <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed text-sm mb-4">
                           {experiences[1].description}
@@ -534,7 +534,7 @@ export const Experience: React.FC = () => {
                   <div className="mt-8 pt-6 border-t border-border-light/50 dark:border-border-dark/50">
                     <div className="grid grid-cols-3 gap-4 text-center">
                       <div>
-                        <p className="text-2xl font-black text-accent-primary mb-1">4+</p>
+                        <p className="text-2xl font-black text-accent-primary mb-1">5.5+</p>
                         <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Years</p>
                       </div>
                       <div>

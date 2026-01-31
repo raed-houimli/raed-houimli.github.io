@@ -3,9 +3,10 @@ import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 
 const navigation = [
-  { name: 'Services', href: '#experience' },
-  { name: 'Work', href: '#projects' },
-  { name: 'Expertise', href: '#skills' },
+  { name: 'Services', href: '#services' },
+  { name: 'Journey', href: '#journey' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Tech Stack', href: '#tech-stack' },
   { name: 'Education', href: '#education' },
   { name: 'Articles', href: 'https://medium.com/@houimliraed', external: true },
 ];
