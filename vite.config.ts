@@ -6,5 +6,17 @@ export default defineConfig({
   server: {
     port: 5173,
     strictPort: false,
+    headers: {
+      'X-Robots-Tag': 'index, follow'
+    }
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['react', 'react-dom', 'framer-motion']
+        }
+      }
+    }
+  }
 })

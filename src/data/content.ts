@@ -10,6 +10,7 @@ export const personalInfo = {
   linkedin: 'https://linkedin.com/in/houimliraed',
   medium: 'https://medium.com/@houimliraed',
   tagline: 'Enterprise infrastructure consultant helping organizations scale securely with AWS, Kubernetes, and DevSecOps best practices.',
+  seoKeywords: 'Raed Houimli, DevOps Engineer, Infrastructure Consultant, AWS Expert, Kubernetes Specialist, CI/CD Automation, Cloud Architecture, DevSecOps Professional',
   meetingUrl: 'https://calendly.com/houimliraed/30min',
   meetingUrlEmbed: 'https://calendly.com/houimliraed/30min?hide_event_type_details=1&hide_gdpr_banner=1',
   bio: 'Specialized in designing scalable cloud infrastructure, CI/CD automation, and secure deployment pipelines for mission-critical systems.',
