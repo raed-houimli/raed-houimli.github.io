@@ -250,113 +250,305 @@ export const Experience: React.FC = () => {
               </p>
             </div>
 
-            <div className="timeline-container max-w-5xl mx-auto">
-              {experiences.map((exp, idx) => (
-                <motion.div
-                  key={exp.id}
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
-                  transition={{ duration: 0.6, delay: idx * 0.2 }}
-                  className="timeline-item"
-                >
-                  <div className="enterprise-card group">
-                    {/* Company & Role Header */}
-                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6 pb-6 border-b border-border-light/50 dark:border-border-dark/50">
+            <div className="max-w-5xl mx-auto space-y-16">
+              {/* Current Freelance Role */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="enterprise-card group">
+                  {/* Company & Role Header */}
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6 pb-6 border-b border-border-light/50 dark:border-border-dark/50">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <h4 className="text-2xl font-bold text-accent-primary">
+                          {experiences[0].company}
+                        </h4>
+                        <motion.span
+                          animate={{ scale: [1, 1.05, 1] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          className="badge"
+                        >
+                          Current
+                        </motion.span>
+                      </div>
+                      <p className="text-xl font-bold mb-2 text-text-primary-light dark:text-text-primary-dark">
+                        {experiences[0].title}
+                      </p>
+                      <div className="flex items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark">
+                        <span className="flex items-center gap-1">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          {experiences[0].period}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          </svg>
+                          {experiences[0].location}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-text-secondary-light dark:text-text-secondary-dark mb-6 leading-relaxed text-base">
+                    {experiences[0].description}
+                  </p>
+
+                  {/* Key Achievements */}
+                  <div className="mb-6">
+                    <h5 className="font-bold text-sm uppercase tracking-wider mb-4 flex items-center text-accent-secondary">
+                      <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                      Key Achievements
+                    </h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {experiences[0].highlights.slice(0, 6).map((highlight, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.5 + i * 0.05 }}
+                          whileHover={{ x: 4 }}
+                          className="flex items-start gap-3 p-3 rounded-lg bg-accent-primary/5 border border-accent-primary/10 hover:border-accent-primary/30 transition-all group/item"
+                        >
+                          <svg className="w-5 h-5 text-accent-primary flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">
+                            {highlight}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Technologies */}
+                  <div>
+                    <h5 className="font-bold text-sm uppercase tracking-wider mb-3 text-text-muted-light dark:text-text-muted-dark">
+                      Tech Stack
+                    </h5>
+                    <div className="flex flex-wrap gap-2">
+                      {experiences[0].technologies.map((tech, techIdx) => (
+                        <motion.span
+                          key={tech}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.6 + techIdx * 0.03 }}
+                          whileHover={{ scale: 1.05, y: -2 }}
+                          className="tech-badge text-xs"
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Ministry of Defense - Combined with Timeline */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <div className="enterprise-card group">
+                  {/* Company Header */}
+                  <div className="mb-8 pb-6 border-b-2 border-accent-primary/20">
+                    <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-3">
-                          <h4 className="text-2xl font-bold text-accent-primary">
-                            {exp.company}
-                          </h4>
-                          {idx === 0 && (
-                            <motion.span
-                              animate={{ scale: [1, 1.05, 1] }}
-                              transition={{ duration: 2, repeat: Infinity }}
-                              className="badge"
-                            >
-                              Current
-                            </motion.span>
-                          )}
-                        </div>
-                        <p className="text-xl font-bold mb-2 text-text-primary-light dark:text-text-primary-dark">
-                          {exp.title}
-                        </p>
+                        <h4 className="text-2xl font-bold text-accent-primary mb-2">
+                          Ministry of Defense – Tunisia
+                        </h4>
                         <div className="flex items-center gap-4 text-sm text-text-muted-light dark:text-text-muted-dark">
                           <span className="flex items-center gap-1">
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
-                            {exp.period}
+                            Jul 2020 – Nov 2024
                           </span>
                           <span className="flex items-center gap-1">
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                             </svg>
-                            {exp.location}
+                            Tunis, Tunisia
                           </span>
+                        </div>
+                      </div>
+                      <div className="px-4 py-2 bg-gradient-to-r from-accent-primary/10 to-accent-secondary/10 border border-accent-primary/30 rounded-lg">
+                        <p className="text-xs font-bold text-accent-primary uppercase">4+ Years</p>
+                      </div>
+                    </div>
+                    <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">
+                      Progressive career growth from Software Engineer to DevOps Engineer, delivering mission-critical infrastructure and applications for government systems.
+                    </p>
+                  </div>
+
+                  {/* Roles Timeline */}
+                  <div className="relative pl-8">
+                    {/* Timeline Line */}
+                    <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-primary via-accent-secondary to-accent-primary"></div>
+
+                    {/* DevOps Engineer Role (Most Recent) */}
+                    <div className="relative mb-12">
+                      {/* Timeline Dot */}
+                      <div className="absolute -left-[2.1rem] top-2 w-5 h-5 bg-accent-primary rounded-full border-4 border-surface-light dark:border-surface-dark shadow-lg"></div>
+
+                      <div className="mb-6">
+                        <div className="flex items-center gap-3 mb-2">
+                          <h5 className="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">
+                            DevOps Engineer
+                          </h5>
+                          <span className="px-3 py-1 bg-accent-secondary/10 text-accent-secondary text-xs font-bold rounded-full border border-accent-secondary/20">
+                            Promoted
+                          </span>
+                        </div>
+                        <p className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark mb-3">
+                          Sep 2023 – Nov 2024 • 1 year 3 months
+                        </p>
+                        <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed text-sm mb-4">
+                          {experiences[1].description}
+                        </p>
+                      </div>
+
+                      {/* Achievements */}
+                      <div className="mb-4">
+                        <h6 className="text-xs font-bold uppercase tracking-wider text-accent-secondary mb-3">Key Achievements</h6>
+                        <div className="grid grid-cols-1 gap-3">
+                          {experiences[1].highlights.slice(0, 4).map((highlight, i) => (
+                            <motion.div
+                              key={i}
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: 0.3 + i * 0.05 }}
+                              className="flex items-start gap-2 text-sm p-2 rounded-lg bg-accent-primary/5 hover:bg-accent-primary/10 transition-colors"
+                            >
+                              <svg className="w-4 h-4 text-accent-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              <span className="text-text-secondary-light dark:text-text-secondary-dark leading-snug">
+                                {highlight}
+                              </span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Technologies */}
+                      <div>
+                        <h6 className="text-xs font-bold uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark mb-2">Technologies</h6>
+                        <div className="flex flex-wrap gap-2">
+                          {experiences[1].technologies.slice(0, 8).map((tech) => (
+                            <span key={tech} className="tech-badge text-xs">
+                              {tech}
+                            </span>
+                          ))}
                         </div>
                       </div>
                     </div>
 
-                    {/* Description */}
-                    <p className="text-text-secondary-light dark:text-text-secondary-dark mb-6 leading-relaxed text-base">
-                      {exp.description}
-                    </p>
-
-                    {/* Key Achievements */}
-                    <div className="mb-6">
-                      <h5 className="font-bold text-sm uppercase tracking-wider mb-4 flex items-center text-accent-secondary">
-                        <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    {/* Career Progression Arrow */}
+                    <div className="flex justify-center my-6">
+                      <motion.div
+                        animate={{ y: [0, 4, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="flex flex-col items-center"
+                      >
+                        <svg className="w-6 h-6 text-accent-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11l5-5m0 0l5 5m-5-5v12" />
                         </svg>
-                        Key Achievements
-                      </h5>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {exp.highlights.slice(0, 6).map((highlight, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.5 + i * 0.05 }}
-                            whileHover={{ x: 4 }}
-                            className="flex items-start gap-3 p-3 rounded-lg bg-accent-primary/5 border border-accent-primary/10 hover:border-accent-primary/30 transition-all group/item"
-                          >
-                            <svg className="w-5 h-5 text-accent-primary flex-shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span className="text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">
-                              {highlight}
-                            </span>
-                          </motion.div>
-                        ))}
-                      </div>
+                        <p className="text-xs font-bold text-accent-primary uppercase mt-1">Career Growth</p>
+                      </motion.div>
                     </div>
 
-                    {/* Technologies */}
-                    <div>
-                      <h5 className="font-bold text-sm uppercase tracking-wider mb-3 text-text-muted-light dark:text-text-muted-dark">
-                        Tech Stack
-                      </h5>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech, techIdx) => (
-                          <motion.span
-                            key={tech}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.6 + techIdx * 0.03 }}
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            className="tech-badge text-xs"
-                          >
-                            {tech}
-                          </motion.span>
-                        ))}
+                    {/* Software Engineer Role (Earlier) */}
+                    <div className="relative">
+                      {/* Timeline Dot */}
+                      <div className="absolute -left-[2.1rem] top-2 w-5 h-5 bg-accent-secondary rounded-full border-4 border-surface-light dark:border-surface-dark shadow-lg"></div>
+
+                      <div className="mb-6">
+                        <div className="flex items-center gap-3 mb-2">
+                          <h5 className="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">
+                            Software Engineer
+                          </h5>
+                          <span className="px-3 py-1 bg-blue-500/10 text-blue-500 text-xs font-bold rounded-full border border-blue-500/20">
+                            Foundation
+                          </span>
+                        </div>
+                        <p className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark mb-3">
+                          Jul 2020 – Aug 2023 • 3 years 2 months
+                        </p>
+                        <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed text-sm mb-4">
+                          {experiences[2].description}
+                        </p>
+                      </div>
+
+                      {/* Achievements */}
+                      <div className="mb-4">
+                        <h6 className="text-xs font-bold uppercase tracking-wider text-accent-secondary mb-3">Key Achievements</h6>
+                        <div className="grid grid-cols-1 gap-3">
+                          {experiences[2].highlights.slice(0, 4).map((highlight, i) => (
+                            <motion.div
+                              key={i}
+                              initial={{ opacity: 0, x: -10 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: 0.5 + i * 0.05 }}
+                              className="flex items-start gap-2 text-sm p-2 rounded-lg bg-accent-secondary/5 hover:bg-accent-secondary/10 transition-colors"
+                            >
+                              <svg className="w-4 h-4 text-accent-secondary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              <span className="text-text-secondary-light dark:text-text-secondary-dark leading-snug">
+                                {highlight}
+                              </span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Technologies */}
+                      <div>
+                        <h6 className="text-xs font-bold uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark mb-2">Technologies</h6>
+                        <div className="flex flex-wrap gap-2">
+                          {experiences[2].technologies.slice(0, 8).map((tech) => (
+                            <span key={tech} className="tech-badge text-xs">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              ))}
+
+                  {/* Career Summary */}
+                  <div className="mt-8 pt-6 border-t border-border-light/50 dark:border-border-dark/50">
+                    <div className="grid grid-cols-3 gap-4 text-center">
+                      <div>
+                        <p className="text-2xl font-black text-accent-primary mb-1">4+</p>
+                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Years</p>
+                      </div>
+                      <div>
+                        <p className="text-2xl font-black text-accent-secondary mb-1">2</p>
+                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Roles</p>
+                      </div>
+                      <div>
+                        <p className="text-2xl font-black text-green-500 mb-1">20+</p>
+                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Projects</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </motion.div>
