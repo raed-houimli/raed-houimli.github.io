@@ -29,25 +29,17 @@ jobs:
 
     - name: Validate FTP host
       env:
-        HOST: ${{ secrets.HOSTINGER_SERVER }}
+        HOST: ${{ secrets.HOSTINGER_SERVER_IP }}
       run: |
         if [ -z "$HOST" ]; then
-          echo "❌ HOSTINGER_SERVER is empty"
+          echo "❌ HOSTINGER_SERVER_IP is empty"
           exit 1
         fi
-        if echo "$HOST" | grep -q "://"; then
-          echo "❌ HOSTINGER_SERVER must be hostname only (no ftp://)"
-          exit 1
-        fi
-        getent hosts "$HOST" >/dev/null || {
-          echo "❌ HOSTINGER_SERVER cannot be resolved"
-          exit 1
-        }
 
     - name: Upload via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ${{ secrets.HOSTINGER_SERVER }}
+        server: ${{ secrets.HOSTINGER_SERVER_IP }}
         username: ${{ secrets.HOSTINGER_USERNAME }}
         password: ${{ secrets.HOSTINGER_PASSWORD }}
         local-dir: ./dist/
