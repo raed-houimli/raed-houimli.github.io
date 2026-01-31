@@ -20,21 +20,12 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: npm ci
+      run: npm install
 
     - name: Build application
       run: npm run build
       env:
         VITE_SITE_URL: https://houimliraed.dev
-
-    - name: Validate FTP host
-      env:
-        HOST: ${{ secrets.HOSTINGER_SERVER_IP }}
-      run: |
-        if [ -z "$HOST" ]; then
-          echo "❌ HOSTINGER_SERVER_IP is empty"
-          exit 1
-        fi
 
     - name: Upload via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -57,5 +48,5 @@ jobs:
         if [ "${{ job.status }}" == "success" ]; then
           echo "✅ Deployment to Hostinger completed successfully! 🎉"
         else
-          echo "❌ Deployment failed. Check logs above...."
+          echo "❌ Deployment failed. Check logs above."
         fi
