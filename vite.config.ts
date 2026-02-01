@@ -8,7 +8,8 @@ export default defineConfig({
     strictPort: false,
     headers: {
       'X-Robots-Tag': 'index, follow'
-    }
+    },
+    historyApiFallback: true,
   },
   build: {
     rollupOptions: {

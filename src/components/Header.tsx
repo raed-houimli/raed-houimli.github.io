@@ -8,7 +8,7 @@ const navigation = [
   { name: 'Projects', href: '#projects' },
   { name: 'Tech Stack', href: '#tech-stack' },
   { name: 'Education', href: '#education' },
-  { name: 'Articles', href: 'https://medium.com/@houimliraed', external: true },
+  { name: 'Articles', href: '#articles' },
 ];
 
 export const Header: React.FC = () => {
