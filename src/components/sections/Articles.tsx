@@ -7,17 +7,37 @@ export const Articles = () => {
   const [articles, setArticles] = useState<MediumArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const articlesPerPage = 3;
 
-  useEffect(() => {
-    const loadArticles = async () => {
-      const username = personalInfo.medium.split('@')[1];
+  const loadArticles = async () => {
+    setIsRefreshing(true);
+    setError(null);
+    
+    try {
+      const username = personalInfo.medium.split('@').pop()?.split('/')[0].split('?')[0] || '';
       const data = await fetchMediumArticles(username);
       setArticles(data);
+      
+      if (data.length === 0) {
+        setError('No articles found');
+      }
+    } catch (err: any) {
+      console.error('Failed to load articles:', err);
+      setError('Unable to load articles');
+    } finally {
       setLoading(false);
-    };
+      setIsRefreshing(false);
+      setLastRefresh(new Date());
+    }
+  };
 
+  useEffect(() => {
     loadArticles();
+    const interval = setInterval(() => loadArticles(), 5 * 60 * 1000);
+    return () => clearInterval(interval);
   }, []);
 
   // Pagination
@@ -40,7 +60,6 @@ export const Articles = () => {
     });
   };
 
-  // Gradient colors for article cards
   const gradients = [
     'from-blue-500/20 via-cyan-500/20 to-blue-500/20',
     'from-purple-500/20 via-pink-500/20 to-purple-500/20',
@@ -78,8 +97,32 @@ export const Articles = () => {
               Technical Articles
             </h2>
             <p className="text-lg md:text-xl text-text-secondary-light dark:text-text-secondary-dark max-w-3xl mx-auto leading-relaxed">
-              Deep dives into <span className="text-accent-primary font-semibold">DevOps, Infrastructure, and Cloud Architecture</span> on Medium
+              Deep dives into <span className="text-accent-primary font-semibold">DevOps, Infrastructure, and Cloud Architecture</span>
             </p>
+
+            {/* Simple Refresh Button */}
+            <div className="flex items-center justify-center gap-3 mt-6">
+              <motion.button
+                onClick={loadArticles}
+                disabled={isRefreshing}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent-primary/10 to-accent-secondary/10 border border-accent-primary/30 text-accent-primary rounded-lg font-medium text-sm hover:bg-accent-primary/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <motion.svg
+                  animate={isRefreshing ? { rotate: 360 } : {}}
+                  transition={{ duration: 1, repeat: isRefreshing ? Infinity : 0, ease: "linear" }}
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </motion.svg>
+                {isRefreshing ? 'Refreshing...' : 'Refresh'}
+              </motion.button>
+            </div>
+
             <div className="section-divider-glow mt-10 max-w-md mx-auto"></div>
           </div>
 
@@ -97,6 +140,23 @@ export const Articles = () => {
                 </div>
               ))}
             </div>
+          )}
+
+          {/* Error State - Simplified */}
+          {!loading && error && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="mb-12 p-6 bg-orange-500/10 border border-orange-500/30 rounded-xl max-w-md mx-auto text-center"
+            >
+              <p className="text-sm text-orange-600 dark:text-orange-400">{error}</p>
+              <button
+                onClick={loadArticles}
+                className="mt-3 text-sm font-bold text-orange-600 dark:text-orange-400 hover:underline"
+              >
+                Try Again
+              </button>
+            </motion.div>
           )}
 
           {/* Articles Grid */}
@@ -127,7 +187,6 @@ export const Articles = () => {
                               alt={article.title}
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                               onError={(e) => {
-                                // Fallback to gradient if image fails to load
                                 e.currentTarget.style.display = 'none';
                                 e.currentTarget.parentElement!.querySelector('.gradient-fallback')!.classList.remove('hidden');
                               }}
@@ -164,7 +223,7 @@ export const Articles = () => {
                         <div className="p-6">
                           {/* Meta Info */}
                           <div className="flex items-center gap-3 mb-4 text-xs text-text-muted-light dark:text-text-muted-dark">
-                            <span className="flex items-center gap-1.5 px-2 py-1 bg-accent-primary/10 text-accent-primary rounded-md font-medium">
+                            <span className="flex items-center gap-1.5">
                               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                               </svg>
@@ -269,34 +328,31 @@ export const Articles = () => {
                 </motion.div>
               )}
 
-              {/* Results Info */}
+              {/* Simple Results Info */}
               <div className="text-center mt-6">
-                <p className="text-xs text-text-muted-light dark:text-text-muted-dark font-medium">
-                  Showing <span className="text-accent-primary font-bold">{indexOfFirstArticle + 1}-{Math.min(indexOfLastArticle, articles.length)}</span> of <span className="text-accent-primary font-bold">{articles.length}</span> articles
+                <p className="text-xs text-text-muted-light dark:text-text-muted-dark">
+                  {articles.length} article{articles.length !== 1 ? 's' : ''} published
                 </p>
               </div>
             </>
           )}
 
-          {/* Empty State */}
-          {!loading && articles.length === 0 && (
+          {/* Empty State - Simplified */}
+          {!loading && !error && articles.length === 0 && (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
               className="text-center py-20"
             >
-              <div className="relative inline-block mb-6">
-                <div className="absolute inset-0 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full blur-2xl opacity-20"></div>
-                <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20 flex items-center justify-center border-2 border-accent-primary/20">
-                  <svg className="w-12 h-12 text-accent-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                </div>
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-12 h-12 text-accent-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
               </div>
               <h3 className="text-2xl font-bold mb-3">No Articles Yet</h3>
               <p className="text-text-secondary-light dark:text-text-secondary-dark mb-6 max-w-md mx-auto">
-                Check back soon for technical insights, tutorials, and deep dives into DevOps and infrastructure topics
+                Articles will appear here once published
               </p>
               <motion.a
                 href={personalInfo.medium}
