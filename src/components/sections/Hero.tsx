@@ -39,11 +39,7 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="inline-flex items-center gap-3 mb-6 px-4 py-2 bg-gradient-to-r from-accent-primary/10 via-accent-secondary/10 to-accent-primary/10 border border-accent-primary/30 rounded-full"
             >
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-              </span>
-              <span className="text-sm font-bold text-accent-primary uppercase tracking-wider">Available for Enterprise Projects</span>
+              <span className="text-sm font-bold text-accent-primary uppercase tracking-wider">Infrastructure Engineering & DevOps</span>
             </motion.div>
 
             {/* Name & Title */}
@@ -83,11 +79,10 @@ export const Hero: React.FC = () => {
               </p>
               
               {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-border-light/50 dark:border-border-dark/50">
+              <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-border-light/50 dark:border-border-dark/50">
                 {[
-                  { value: '5.5+', label: 'Years' },
-                  { value: '50+', label: 'Projects' },
-                  { value: '99.9%', label: 'Uptime' }
+                  { value: '5.5+', label: 'Years Experience' },
+                  { value: '20+', label: 'Projects Delivered' }
                 ].map((stat, i) => (
                   <div key={i} className="text-center">
                     <div className="text-2xl font-black text-accent-primary mb-1">{stat.value}</div>
@@ -193,18 +188,6 @@ export const Hero: React.FC = () => {
                       />
                     </div>
 
-                    {/* Status Badge */}
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="absolute -bottom-1 -right-1 px-2.5 py-1 bg-green-500 text-white rounded-full text-[10px] font-bold shadow-lg flex items-center gap-1"
-                    >
-                      <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
-                      </span>
-                      <span>Available</span>
-                    </motion.div>
                   </div>
                 </motion.div>
 
@@ -217,16 +200,11 @@ export const Hero: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Professional Metrics - Compact Grid */}
-                <div className="grid grid-cols-2 gap-2 mb-4">
-                  <div className="metric-showcase py-2">
-                    <div className="metric-value text-xl">24h</div>
-                    <div className="metric-label text-[0.65rem]">Response</div>
-                  </div>
-                  <div className="metric-showcase py-2">
-                    <div className="metric-value text-xl">5★</div>
-                    <div className="metric-label text-[0.65rem]">Rating</div>
-                  </div>
+                {/* Professional Contact Info */}
+                <div className="mb-4 text-center">
+                  <p className="text-xs text-text-secondary-light dark:text-text-secondary-dark">
+                    {personalInfo.location}
+                  </p>
                 </div>
 
                 {/* Contact Actions - Compact */}

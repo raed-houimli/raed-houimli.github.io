@@ -246,7 +246,7 @@ export const Experience: React.FC = () => {
               </motion.div>
               <h3 className="text-3xl md:text-4xl font-bold mb-4">Career Timeline</h3>
               <p className="text-text-secondary-light dark:text-text-secondary-dark text-lg">
-                5.5 years at Ministry of Defense (Jul 2020 – Nov 2025) progressing from Software Engineer to DevOps Engineer. Now freelancing as DevOps & Infrastructure Consultant (Dec 2025 – Present)
+                5.5 years of professional experience progressing from Software Engineer to DevOps Engineer
               </p>
             </div>
 
@@ -519,24 +519,6 @@ className="flex items-start gap-2 text-sm p-2 rounded-lg bg-accent-primary/5 hov
                             </span>
                           ))}
                         </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Career Summary */}
-                  <div className="mt-8 pt-6 border-t border-border-light/50 dark:border-border-dark/50">
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div>
-                        <p className="text-2xl font-black text-accent-primary mb-1">5.5+</p>
-                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Years</p>
-                      </div>
-                      <div>
-                        <p className="text-2xl font-black text-accent-secondary mb-1">50+</p>
-                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Deliverables</p>
-                      </div>
-                      <div>
-                        <p className="text-2xl font-black text-green-500 mb-1">20+</p>
-                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark uppercase font-semibold">Applications</p>
                       </div>
                     </div>
                   </div>
