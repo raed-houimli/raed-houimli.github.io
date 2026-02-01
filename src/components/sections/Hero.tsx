@@ -223,7 +223,6 @@ export const Hero: React.FC = () => {
                   
                 </div>
               </div>
-
               {/* QR Code Card - Separate, More Elegant */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
