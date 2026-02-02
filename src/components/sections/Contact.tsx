@@ -44,11 +44,22 @@ export const Contact: React.FC = () => {
                       className="relative mb-6"
                     >
                       <div className="absolute -inset-2 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full blur-xl opacity-40"></div>
-                      <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-accent-primary/60 shadow-2xl">
+                      <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-accent-primary/60 shadow-2xl bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20">
                         <img
-                          src="/profile.jpg"
+                          src="https://avatars.githubusercontent.com/houimliraed"
                           alt={personalInfo.name}
                           className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            const parent = e.currentTarget.parentElement;
+                            if (parent) {
+                              parent.innerHTML = `
+                                <div class="w-full h-full flex items-center justify-center text-5xl font-black text-accent-primary">
+                                  ${personalInfo.name.split(' ').map(n => n[0]).join('')}
+                                </div>
+                              `;
+                            }
+                          }}
                         />
                       </div>
                       <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-green-500 rounded-full border-4 border-surface-light dark:border-surface-dark flex items-center justify-center">
@@ -192,7 +203,7 @@ export const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Trust Badges */}
+          {/* Trust Badges - Simplified and Compact */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -200,19 +211,18 @@ export const Contact: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-12 text-center"
           >
-            <div className="flex flex-wrap justify-center items-center gap-8 max-w-3xl mx-auto">
+            <div className="flex flex-wrap justify-center items-center gap-6 max-w-2xl mx-auto">
               {[
                 { icon: '⚡', text: '24h Response' },
-                { icon: '🎯', text: '5.5+ Years Experience' },
                 { icon: '✓', text: 'Free Consultation' },
                 { icon: '🔒', text: 'NDA Available' }
               ].map((badge, i) => (
                 <motion.div
                   key={i}
-                  whileHover={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.05 }}
                   className="flex items-center gap-2 px-4 py-2 bg-surface-light dark:bg-surface-dark rounded-lg border border-border-light dark:border-border-dark"
                 >
-                  <span className="text-2xl">{badge.icon}</span>
+                  <span className="text-xl">{badge.icon}</span>
                   <span className="text-sm font-medium">{badge.text}</span>
                 </motion.div>
               ))}

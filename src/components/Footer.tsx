@@ -12,7 +12,10 @@ export const Footer: React.FC = () => {
           {/* Left side */}
           <div className="text-center md:text-left">
             <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark">
-              © {currentYear} {personalInfo.name}. Built with Love and Passion ❤️
+              © {currentYear} {personalInfo.name} • DevSecOps Engineer & Cloud Infrastructure Specialist
+            </p>
+            <p className="text-xs text-text-muted-light dark:text-text-muted-dark mt-1">
+              Built with React, TypeScript & Tailwind CSS
             </p>
           </div>
 

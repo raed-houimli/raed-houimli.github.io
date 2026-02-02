@@ -11,97 +11,108 @@ export interface MediumArticle {
 }
 
 export const fetchMediumArticles = async (username: string): Promise<MediumArticle[]> => {
+  const cleanUsername = username.replace('@', '').trim();
+  
   try {
-    // Clean username - remove @ if present
-    const cleanUsername = username.replace('@', '').trim();
-    
-    // Try direct Medium RSS feed first (more reliable)
-    const mediumRssUrl = `https://medium.com/feed/@${cleanUsername}`;
-    const rss2JsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(mediumRssUrl)}`;
-    
-    console.log('Fetching from Medium RSS:', mediumRssUrl);
-    console.log('Using RSS2JSON URL:', rss2JsonUrl);
-    
-    const response = await fetch(rss2JsonUrl, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-      },
-    });
-    
-    if (!response.ok) {
-      console.error('RSS2JSON API HTTP error:', response.status, response.statusText);
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    
-    console.log('RSS2JSON Full Response:', data);
-    
-    if (data.status !== 'ok') {
-      console.error('RSS2JSON returned error status:', data);
-      throw new Error(data.message || 'RSS feed error');
-    }
-
-    if (!data.items || data.items.length === 0) {
-      console.warn('No articles found in RSS feed');
-      console.warn('Feed URL:', data.feed?.url);
-      console.warn('Feed title:', data.feed?.title);
+    return await fetchViaRSS2JSON(cleanUsername);
+  } catch (error) {
+    try {
+      return await fetchDirectRSS(cleanUsername);
+    } catch (directError) {
       return [];
     }
-    
-    console.log(`Successfully fetched ${data.items.length} articles`);
-    
-    return data.items.map((item: any) => {
-      const cleanDescription = item.description?.replace(/<[^>]*>/g, '').trim() || item.content?.replace(/<[^>]*>/g, '').trim() || '';
-      
-      return {
-        id: item.guid || item.link,
-        title: item.title || 'Untitled',
-        link: item.link,
-        pubDate: item.pubDate,
-        description: cleanDescription.substring(0, 200) + (cleanDescription.length > 200 ? '...' : ''),
-        thumbnail: item.thumbnail || extractImageFromContent(item.content || item.description || ''),
-        categories: item.categories || [],
-        author: item.author || cleanUsername,
-        readTime: calculateReadTime(item.content || item.description || '')
-      };
-    });
-  } catch (error: any) {
-    console.error('Error fetching Medium articles:', error);
-    console.error('Error details:', {
-      message: error.message,
-      stack: error.stack
-    });
-    
-    return [];
   }
+};
+
+const fetchViaRSS2JSON = async (username: string): Promise<MediumArticle[]> => {
+  const mediumRssUrl = `https://medium.com/feed/@${username}`;
+  const rss2JsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(mediumRssUrl)}`;
+  
+  const response = await fetch(rss2JsonUrl);
+  
+  if (!response.ok) {
+    throw new Error(`RSS2JSON HTTP ${response.status}`);
+  }
+
+  const data = await response.json();
+  
+  if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+    throw new Error('RSS2JSON returned no data');
+  }
+  
+  return data.items
+    .sort((a: any, b: any) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
+    .map((item: any) => ({
+      id: item.guid || item.link,
+      title: item.title || 'Untitled',
+      link: item.link,
+      pubDate: item.pubDate,
+      description: (item.description || '').replace(/<[^>]*>/g, '').trim().substring(0, 200) + '...',
+      thumbnail: item.thumbnail || extractImageFromContent(item.content || item.description),
+      categories: item.categories || [],
+      author: item.author || username,
+      readTime: calculateReadTime(item.content || item.description)
+    }));
+};
+
+const fetchDirectRSS = async (username: string): Promise<MediumArticle[]> => {
+  const mediumRssUrl = `https://medium.com/feed/@${username}`;
+  const corsProxy = 'https://api.allorigins.win/raw?url=';
+  const proxyUrl = `${corsProxy}${encodeURIComponent(mediumRssUrl)}`;
+  
+  const response = await fetch(proxyUrl);
+  
+  if (!response.ok) {
+    throw new Error(`Direct RSS HTTP ${response.status}`);
+  }
+
+  const xmlText = await response.text();
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+  
+  const items = Array.from(xmlDoc.querySelectorAll('item'));
+  
+  if (items.length === 0) {
+    throw new Error('No items found in RSS feed');
+  }
+  
+  const articles = items.map((item, index) => {
+    const title = item.querySelector('title')?.textContent || 'Untitled';
+    const link = item.querySelector('link')?.textContent || '';
+    const pubDate = item.querySelector('pubDate')?.textContent || new Date().toISOString();
+    const description = item.querySelector('description')?.textContent || '';
+    const content = item.querySelector('content\\:encoded, encoded')?.textContent || description;
+    
+    const categories = Array.from(item.querySelectorAll('category'))
+      .map(cat => cat.textContent || '')
+      .filter(Boolean);
+    
+    const cleanDesc = description.replace(/<[^>]*>/g, '').trim();
+    
+    return {
+      id: item.querySelector('guid')?.textContent || link || `article-${index}`,
+      title,
+      link,
+      pubDate,
+      description: cleanDesc.substring(0, 200) + (cleanDesc.length > 200 ? '...' : ''),
+      thumbnail: extractImageFromContent(content),
+      categories,
+      author: username,
+      readTime: calculateReadTime(content)
+    };
+  });
+  
+  return articles.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
 };
 
 const extractImageFromContent = (content: string): string | undefined => {
   if (!content) return undefined;
-  
-  // Try multiple image extraction patterns
-  const patterns = [
-    /<img[^>]+src="([^">]+)"/i,
-    /<img[^>]+src='([^'>]+)'/i,
-    /!\[.*?\]\((https?:\/\/[^\)]+)\)/i, // Markdown images
-  ];
-  
-  for (const pattern of patterns) {
-    const match = content.match(pattern);
-    if (match && match[1]) {
-      return match[1];
-    }
-  }
-  
-  return undefined;
+  const imgMatch = content.match(/<img[^>]+src="([^">]+)"/i);
+  return imgMatch ? imgMatch[1] : undefined;
 };
 
 const calculateReadTime = (content: string): string => {
   if (!content) return '5 min read';
-  const text = content.replace(/<[^>]*>/g, '');
-  const wordCount = text.split(/\s+/).filter(word => word.length > 0).length;
-  const readTime = Math.max(1, Math.ceil(wordCount / 200));
-  return `${readTime} min read`;
+  const words = content.replace(/<[^>]*>/g, '').split(/\s+/).filter(w => w.length > 0).length;
+  return `${Math.max(1, Math.ceil(words / 200))} min read`;
 };

@@ -7,7 +7,6 @@ export const Articles = () => {
   const [articles, setArticles] = useState<MediumArticle[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const articlesPerPage = 3;
@@ -24,13 +23,11 @@ export const Articles = () => {
       if (data.length === 0) {
         setError('No articles found');
       }
-    } catch (err: any) {
-      console.error('Failed to load articles:', err);
+    } catch (err) {
       setError('Unable to load articles');
     } finally {
       setLoading(false);
       setIsRefreshing(false);
-      setLastRefresh(new Date());
     }
   };
 

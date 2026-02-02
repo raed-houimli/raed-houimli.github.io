@@ -2,15 +2,15 @@ import type { Experience, Project, SkillCategory } from '../types';
 
 export const personalInfo = {
   name: 'Raed Houimli',
-  title: ['Infrastructure Engineer', 'DevOps Consultant', 'Cloud Architect'],
+  title: ['DevSecOps Engineer', 'Cloud Infrastructure Specialist', 'Full-Stack Developer'],
   location: 'Tunisia • Remote Consulting',
   email: 'houimliraed@outlook.fr',
   phone: '+216 46 050 431',
   github: 'https://github.com/houimliraed',
   linkedin: 'https://linkedin.com/in/houimliraed',
   medium: 'https://medium.com/@houimliraed',
-  tagline: 'Full-stack engineer turned DevOps specialist – architecting enterprise infrastructure from development through production deployment with AWS, Kubernetes, and CI/CD automation.',
-  seoKeywords: 'Raed Houimli, DevOps Engineer, Infrastructure Consultant, AWS Expert, Kubernetes Specialist, CI/CD Automation, Cloud Architecture, DevSecOps Professional, Full-Stack Engineer, FastAPI Developer, React Developer',
+  tagline: 'DevSecOps Engineer & Cloud Infrastructure Specialist — Building secure, scalable cloud infrastructure with integrated security practices, automating CI/CD pipelines, and deploying production systems with AWS, Kubernetes, and Infrastructure as Code.',
+  seoKeywords: 'Raed Houimli, DevSecOps Engineer, Cloud Infrastructure, AWS Specialist, Kubernetes Expert, CI/CD Automation, Security Automation, Infrastructure as Code, Terraform, Full-Stack Developer, FastAPI, React, GitOps, ArgoCD',
   meetingUrl: 'https://calendly.com/houimliraed/30min',
   meetingUrlEmbed: 'https://calendly.com/houimliraed/30min?hide_event_type_details=1&hide_gdpr_banner=1',
   bio: 'Full-stack software engineer with 5.5+ years professional experience specializing in backend development (FastAPI, Node.js, React) and DevOps engineering. Delivering infrastructure solutions combining development expertise with cloud architecture, CI/CD automation, and Kubernetes orchestration.',
