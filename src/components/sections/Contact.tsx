@@ -46,7 +46,7 @@ export const Contact: React.FC = () => {
                       <div className="absolute -inset-2 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full blur-xl opacity-40"></div>
                       <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-accent-primary/60 shadow-2xl bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20">
                         <img
-                          src="https://avatars.githubusercontent.com/houimliraed"
+                          src="https://avatars.githubusercontent.com/raed-houimli"
                           alt={personalInfo.name}
                           className="w-full h-full object-cover"
                           onError={(e) => {

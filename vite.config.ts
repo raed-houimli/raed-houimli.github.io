@@ -4,20 +4,14 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5173,
-    strictPort: false,
-    headers: {
-      'X-Robots-Tag': 'index, follow'
-    },
-    historyApiFallback: true,
+    port: 3000,
   },
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor': ['react', 'react-dom', 'framer-motion']
-        }
-      }
-    }
+    outDir: 'dist',
+    sourcemap: false,
+  },
+  // SEO optimizations
+  define: {
+    __SITE_URL__: JSON.stringify(process.env.VITE_SITE_URL || 'https://raed-houimli.dev'),
   }
 })

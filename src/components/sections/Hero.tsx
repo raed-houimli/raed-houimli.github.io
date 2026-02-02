@@ -44,7 +44,7 @@ export const Hero: React.FC = () => {
             {/* Profile Image */}
             <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-accent-primary/40 shadow-2xl bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20">
               <img
-                src="https://avatars.githubusercontent.com/houimliraed"
+                src="https://avatars.githubusercontent.com/raed-houimli"
                 alt={personalInfo.name}
                 className="w-full h-full object-cover"
                 onError={(e) => {

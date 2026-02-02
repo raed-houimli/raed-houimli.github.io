@@ -25,7 +25,9 @@ export const fetchMediumArticles = async (username: string): Promise<MediumArtic
 };
 
 const fetchViaRSS2JSON = async (username: string): Promise<MediumArticle[]> => {
-  const mediumRssUrl = `https://medium.com/feed/@${username}`;
+  // Clean username: support both @raed-houimli and raed-houimli formats
+  const cleanUsername = username.replace('@', '').trim();
+  const mediumRssUrl = `https://medium.com/feed/@${cleanUsername}`;
   const rss2JsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(mediumRssUrl)}`;
   
   const response = await fetch(rss2JsonUrl);
@@ -56,7 +58,8 @@ const fetchViaRSS2JSON = async (username: string): Promise<MediumArticle[]> => {
 };
 
 const fetchDirectRSS = async (username: string): Promise<MediumArticle[]> => {
-  const mediumRssUrl = `https://medium.com/feed/@${username}`;
+  const cleanUsername = username.replace('@', '').trim();
+  const mediumRssUrl = `https://medium.com/feed/@${cleanUsername}`;
   const corsProxy = 'https://api.allorigins.win/raw?url=';
   const proxyUrl = `${corsProxy}${encodeURIComponent(mediumRssUrl)}`;
   
