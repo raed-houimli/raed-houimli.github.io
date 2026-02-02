@@ -24,9 +24,9 @@ export const Header: React.FC = () => {
     >
       <nav className="container-custom" aria-label="Main navigation">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo - Updated href */}
           <motion.a 
-            href="#home"
+            href="#raed-houimli"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="text-xl font-bold tracking-tight bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent hover:opacity-80 transition-opacity"
