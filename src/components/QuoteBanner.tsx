@@ -12,6 +12,16 @@ const quotes = [
   { text: "Great infrastructure is invisible until it's needed.", author: "Silent Excellence" },
   { text: "Documentation is love letters to your future self.", author: "Engineering Empathy" },
   { text: "Scale is not just about handling more—it's about handling better.", author: "Scalability Mindset" },
+  { text: "Secure defaults beat perfect documentation—guardrails first.", author: "Security by Design" },
+  { text: "Shift-left security turns risk into routine, not a fire drill.", author: "DevSecOps Practice" },
+  { text: "Trust is earned with audits, not assumptions.", author: "Security Mindset" },
+  { text: "Explainable ML builds confidence where black boxes create doubt.", author: "ML Integrity" },
+  { text: "Model drift is inevitable—monitoring is non‑negotiable.", author: "MLOps Reality" },
+  { text: "Good data beats fancy models; great data wins consistently.", author: "Data-First ML" },
+  { text: "Adversaries adapt—so should your defenses and models.", author: "Adaptive Security" },
+  { text: "Privacy is a feature. Security is a requirement.", author: "Responsible AI" },
+  { text: "Reproducibility is the backbone of reliable ML systems.", author: "ML Engineering" },
+  { text: "Zero trust is not a product; it’s a posture.", author: "Security Architecture" },
 ];
 
 export const QuoteBanner = () => {

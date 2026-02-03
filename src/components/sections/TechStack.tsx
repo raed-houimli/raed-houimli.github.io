@@ -14,7 +14,7 @@ export const TechStack: React.FC = () => {
   ];
 
   return (
-    <section id="tech-stack" className="section-padding bg-surface-light dark:bg-surface-dark">
+    <section id="tech-stack" className="section-shell bg-surface-light dark:bg-surface-dark">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -34,7 +34,7 @@ export const Experience: React.FC = () => {
               Career Timeline
             </h2>
             <p className="text-lg md:text-xl text-text-secondary-light dark:text-text-secondary-dark max-w-3xl mx-auto leading-relaxed">
-              5.5+ years progression from <span className="font-semibold text-accent-primary">Full-Stack Engineer to DevOps Specialist</span>
+              5+ years progression from <span className="font-semibold text-accent-primary">Full-Stack Engineer to DevOps Specialist</span>
             </p>
             <div className="section-divider-glow mt-10 max-w-md mx-auto"></div>
           </div>
@@ -104,7 +104,7 @@ export const Experience: React.FC = () => {
                       </div>
                     </div>
                     <div className="px-4 py-2 bg-gradient-to-r from-accent-primary/10 to-accent-secondary/10 border border-accent-primary/30 rounded-lg">
-                      <p className="text-xs font-bold text-accent-primary uppercase">5.5 Years</p>
+                      <p className="text-xs font-bold text-accent-primary uppercase"></p>
                     </div>
                   </div>
                   <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">

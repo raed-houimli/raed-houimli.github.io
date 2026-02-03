@@ -6,7 +6,7 @@ export const Services: React.FC = () => {
     {
       category: 'Infrastructure & Cloud',
       icon: '☁️',
-      color: 'from-blue-500/10 to-cyan-500/10',
+      color: 'from-accent-primary/10 to-accent-secondary/10',
       services: [
         { name: 'AWS Cloud Architecture', desc: 'Multi-region, highly available infrastructure with security & cost optimization' },
         { name: 'Infrastructure as Code', desc: 'Terraform modules, state management, and automated provisioning' },
@@ -16,7 +16,7 @@ export const Services: React.FC = () => {
     {
       category: 'DevOps & Automation',
       icon: '⚙️',
-      color: 'from-purple-500/10 to-pink-500/10',
+      color: 'from-accent-secondary/10 to-accent-primary/10',
       services: [
         { name: 'CI/CD Pipeline Development', desc: 'GitHub Actions, GitLab CI with automated testing & deployment' },
         { name: 'Container Orchestration', desc: 'Kubernetes/EKS cluster setup, Helm charts, service mesh' },
@@ -26,7 +26,7 @@ export const Services: React.FC = () => {
     {
       category: 'Monitoring & Performance',
       icon: '📊',
-      color: 'from-orange-500/10 to-red-500/10',
+      color: 'from-accent-primary/10 to-accent-secondary/10',
       services: [
         { name: 'Observability Stack', desc: 'Prometheus, Grafana, and CloudWatch integration' },
         { name: 'Performance Optimization', desc: 'Resource tuning, auto-scaling, and cost reduction' },
@@ -44,7 +44,7 @@ export const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="section-shell relative overflow-hidden bg-gradient-to-b from-background-light to-surface-light dark:from-background-dark dark:to-surface-dark">
+    <section id="services" className="section-shell relative overflow-hidden bg-gradient-to-b from-surface-light to-background-light dark:from-surface-dark dark:to-background-dark">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.08),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.06),transparent_50%)]"></div>
 
       <div className="container-custom relative z-10">
@@ -193,7 +193,7 @@ export const Services: React.FC = () => {
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-primary btn-glow inline-flex items-center gap-2 text-lg px-8 py-4"
+                className="btn-primary inline-flex items-center gap-2 text-lg px-8 py-4"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
