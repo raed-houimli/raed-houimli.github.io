@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 
 const navigation = [
-  { name: 'Services', href: '/services' },
-  { name: 'Experience', href: '/experience' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Tech Stack', href: '/tech-stack' },
-  { name: 'Education', href: '/education' },
-  { name: 'Articles', href: '/articles' },
+  { name: 'Services', href: '#/services' },
+  { name: 'Experience', href: '#/experience' },
+  { name: 'Projects', href: '#/projects' },
+  { name: 'Tech Stack', href: '#/tech-stack' },
+  { name: 'Education', href: '#/education' },
+  { name: 'Articles', href: '#/articles' },
 ];
 
 export const Header: React.FC = () => {

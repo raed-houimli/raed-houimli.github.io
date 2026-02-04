@@ -177,7 +177,7 @@ export const Hero: React.FC = () => {
               transition={{ delay: 1.5, duration: 0.8 }}
             >
               <motion.a
-                href="#contact"
+                href="#/contact"
                 whileHover={{ scale: 1.05, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 className="btn-primary relative group px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-lg shadow-lg hover:shadow-2xl hover:shadow-cyan-500/50 transition-all overflow-hidden text-sm md:text-base"
@@ -197,7 +197,7 @@ export const Hero: React.FC = () => {
               </motion.a>
 
               <motion.a
-                href="#projects"
+                href="#/projects"
                 whileHover={{ scale: 1.05, y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 className="relative group px-6 py-3 md:px-8 md:py-4 border-2 border-cyan-500 text-cyan-400 font-bold rounded-lg hover:bg-cyan-500/10 transition-all overflow-hidden text-sm md:text-base"
