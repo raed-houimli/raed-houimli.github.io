@@ -72,7 +72,7 @@ export const Services: React.FC = () => {
               End-to-End DevOps Solutions
             </h2>
             <p className="text-lg md:text-xl text-text-secondary-light dark:text-text-secondary-dark max-w-3xl mx-auto leading-relaxed">
-              From architecture design to production deployment — comprehensive infrastructure services that <span className="text-accent-primary font-semibold">combine full-stack expertise with DevOps automation</span>
+              From architecture design to production deployment — comprehensive infrastructure services that <span className="text-accent-primary font-semibold">combine 5+ years of development expertise with DevOps automation</span>
             </p>
           </div>
 

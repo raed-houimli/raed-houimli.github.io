@@ -12,18 +12,23 @@ import { Articles } from '../components/sections/Articles';
 export const Home = () => {
   useEffect(() => {
     // Update page title
-    document.title = 'Raed Houimli - DevSecOps Engineer & Cloud Infrastructure Specialist | houimliraed.dev';
+    document.title = 'Raed Houimli - DevSecOps Engineer & Cloud Infrastructure Specialist | 5+ Years Experience';
     
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'DevSecOps Engineer with 5.5+ years building secure, scalable cloud infrastructure. AWS, Kubernetes, Terraform, CI/CD automation. Available for consulting.');
+      metaDescription.setAttribute('content', 'DevSecOps Engineer with 5+ years building secure, scalable cloud infrastructure. AWS, Kubernetes, Terraform, CI/CD automation. Available for consulting worldwide.');
     }
     
     // Update OG tags
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute('content', 'Raed Houimli - DevSecOps Engineer & Cloud Infrastructure Specialist');
+      ogTitle.setAttribute('content', 'Raed Houimli - DevSecOps Engineer | 5+ Years Cloud Infrastructure Experience');
+    }
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', '5+ years building production-grade cloud infrastructure. AWS, Kubernetes, CI/CD, and DevSecOps expertise for global teams.');
     }
     
     // Structured data for pages

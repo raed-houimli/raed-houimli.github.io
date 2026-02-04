@@ -104,7 +104,7 @@ export const Experience: React.FC = () => {
                       </div>
                     </div>
                     <div className="px-4 py-2 bg-gradient-to-r from-accent-primary/10 to-accent-secondary/10 border border-accent-primary/30 rounded-lg">
-                      <p className="text-xs font-bold text-accent-primary uppercase">5y 5m</p>
+                      <p className="text-xs font-bold text-accent-primary uppercase">5+ Years</p>
                     </div>
                   </div>
                   <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">

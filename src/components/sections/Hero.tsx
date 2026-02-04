@@ -130,7 +130,7 @@ export const Hero: React.FC = () => {
                 transition={{ delay: 0.9, duration: 0.6 }}
               />
               <p className="text-base md:text-lg text-slate-300 leading-relaxed pl-3 md:pl-4 max-w-xl">
-                DevSecOps engineer with <span className="text-cyan-400 font-semibold whitespace-nowrap">5.5+ years</span> building production infrastructure. Specializing in <span className="text-cyan-400 font-semibold">AWS, Kubernetes, and CI/CD automation</span> for global teams.
+                DevSecOps engineer with <span className="text-cyan-400 font-semibold whitespace-nowrap">5+ years</span> building production infrastructure. Specializing in <span className="text-cyan-400 font-semibold">AWS, Kubernetes, and CI/CD automation</span> for global teams.
               </p>
             </motion.div>
 

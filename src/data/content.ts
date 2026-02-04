@@ -13,7 +13,7 @@ export const personalInfo = {
   seoKeywords: 'Raed Houimli, DevSecOps Engineer, Cloud Infrastructure, AWS Specialist, Kubernetes Expert, CI/CD Automation, Security Automation, Infrastructure as Code, Terraform, Full-Stack Developer, FastAPI, React, GitOps, ArgoCD',
   meetingUrl: 'https://calendly.com/raed-houimli/30min',
   meetingUrlEmbed: 'https://calendly.com/raed-houimli/30min?hide_event_type_details=1&hide_gdpr_banner=1',
-  bio: 'Full-stack software engineer with 5.5+ years professional experience specializing in backend development (FastAPI, Node.js, React) and DevOps engineering. Delivering infrastructure solutions combining development expertise with cloud architecture, CI/CD automation, and Kubernetes orchestration.',
+  bio: 'Full-stack software engineer with 5+ years professional experience specializing in backend development (FastAPI, Node.js, React) and DevOps engineering. Delivering infrastructure solutions combining development expertise with cloud architecture, CI/CD automation, and Kubernetes orchestration.',
 };
 
 
