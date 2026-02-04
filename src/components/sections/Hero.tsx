@@ -5,12 +5,6 @@ import { personalInfo } from '../../data/content';
 export const Hero: React.FC = () => {
   const [activeSkill, setActiveSkill] = useState(0);
 
-  const stats = [
-    { label: 'Years Experience', value: '5+', icon: '📅' },
-    { label: 'Projects Delivered', value: '12+', icon: '🚀' },
-    { label: 'Happy Clients', value: '5+', icon: '🌍' },
-  ];
-
   const expertise = [
     { icon: '☁️', text: 'AWS Cloud', color: 'from-cyan-500/10 to-blue-500/10' },
     { icon: '⚙️', text: 'DevOps & IAC', color: 'from-purple-500/10 to-pink-500/10' },
@@ -136,7 +130,7 @@ export const Hero: React.FC = () => {
                 transition={{ delay: 0.9, duration: 0.6 }}
               />
               <p className="text-base md:text-lg text-slate-300 leading-relaxed pl-3 md:pl-4 max-w-xl">
-                DevSecOps engineer with <span className="text-cyan-400 font-semibold whitespace-nowrap">5+ years</span> building production infrastructure. Specializing in <span className="text-cyan-400 font-semibold">AWS, Kubernetes, and CI/CD automation</span> for global teams.
+                DevSecOps engineer with <span className="text-cyan-400 font-semibold whitespace-nowrap">5.5+ years</span> building production infrastructure. Specializing in <span className="text-cyan-400 font-semibold">AWS, Kubernetes, and CI/CD automation</span> for global teams.
               </p>
             </motion.div>
 
@@ -464,67 +458,7 @@ export const Hero: React.FC = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* Enhanced Stats section with better animations */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2 }}
-          className="grid grid-cols-3 gap-4 md:gap-6 mt-12 md:mt-20 pt-8 md:pt-12 border-t border-slate-700/30"
-        >
-          {stats.map((stat, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 2.2 + i * 0.1, type: "spring" }}
-              whileHover={{ y: -8, scale: 1.05 }}
-              className="text-center group cursor-pointer relative"
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity blur-xl"
-              />
-              <motion.div 
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: i * 0.2 }}
-                className="text-3xl md:text-4xl mb-2 md:mb-3 group-hover:scale-125 transition-transform relative z-10"
-              >
-                {stat.icon}
-              </motion.div>
-              <motion.h3 className="text-2xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-1 md:mb-2 group-hover:from-cyan-300 group-hover:to-blue-300 transition-all relative z-10">
-                {stat.value}
-              </motion.h3>
-              <p className="text-xs md:text-sm text-slate-400 group-hover:text-slate-200 transition-colors relative z-10">{stat.label}</p>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
-
-      {/* Enhanced Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5 }}
-        className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 12, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2 text-cyan-400/60 hover:text-cyan-400 transition-colors cursor-pointer group"
-        >
-          <span className="text-xs font-semibold uppercase tracking-wider group-hover:text-cyan-300 transition-colors">Scroll to explore</span>
-          <motion.svg 
-            className="w-5 h-5 md:w-6 md:h-6" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-            animate={{ opacity: [0.4, 1, 0.4] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </motion.svg>
-        </motion.div>
-      </motion.div>
     </section>
   );
 };

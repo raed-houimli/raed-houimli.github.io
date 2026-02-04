@@ -52,7 +52,7 @@ export const experiences: Experience[] = [
     title: 'DevOps Engineer',
     company: 'Ministry of Defense – Tunisia',
     location: 'Tunis, Tunisia',
-    period: 'Sep 2023 – Nov 2025',
+    period: 'Sep 2022 – Nov 2025',
     description: 'Led infrastructure transformation initiatives, designed cloud architecture, and established production-grade CI/CD pipelines for mission-critical government applications.',
     highlights: [
       'Managed 50+ AWS resources using Terraform IaC with state management and drift detection',
@@ -86,7 +86,7 @@ export const experiences: Experience[] = [
     title: 'Software Engineer',
     company: 'Ministry of Defense – Tunisia',
     location: 'Tunis, Tunisia',
-    period: 'Jul 2020 – Sep 2023',
+    period: 'Jul 2020 – Aug 2022',
     description: 'Designed and developed scalable backend services and full-stack applications for mission-critical government systems.',
     highlights: [
       'Architected and deployed 5+ production FastAPI microservices handling high-volume requests',

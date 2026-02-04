@@ -104,7 +104,7 @@ export const Experience: React.FC = () => {
                       </div>
                     </div>
                     <div className="px-4 py-2 bg-gradient-to-r from-accent-primary/10 to-accent-secondary/10 border border-accent-primary/30 rounded-lg">
-                      <p className="text-xs font-bold text-accent-primary uppercase"></p>
+                      <p className="text-xs font-bold text-accent-primary uppercase">5y 5m</p>
                     </div>
                   </div>
                   <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">
@@ -129,7 +129,7 @@ export const Experience: React.FC = () => {
                         </h5>
                       </div>
                       <p className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark mb-3">
-                        {experiences[1].period} • 2 years 3 months
+                        {experiences[1].period} • 3 years 2 months
                       </p>
                       <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed text-sm mb-4">
                         {experiences[1].description}
@@ -198,7 +198,7 @@ export const Experience: React.FC = () => {
                         </h5>
                       </div>
                       <p className="text-sm font-semibold text-text-muted-light dark:text-text-muted-dark mb-3">
-                        Jul 2020 – Aug 2023 • 3 years 2 months
+                        Jul 2020 – Aug 2022 • 2 years 2 months
                       </p>
                       <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed text-sm mb-4">
                         {experiences[2].description}
