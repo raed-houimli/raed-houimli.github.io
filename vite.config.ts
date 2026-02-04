@@ -14,5 +14,6 @@ export default defineConfig({
   // SEO optimizations
   define: {
     __SITE_URL__: JSON.stringify(process.env.VITE_SITE_URL || 'https://raed-houimli.dev'),
-  }
+  },
+  publicDir: 'public',
 })

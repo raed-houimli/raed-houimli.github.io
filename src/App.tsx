@@ -1,5 +1,5 @@
 import { ThemeProvider } from './contexts/ThemeContext';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
