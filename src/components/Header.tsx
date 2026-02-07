@@ -3,12 +3,13 @@ import { motion } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 
 const navigation = [
-  { name: 'Services', href: '/services' },
-  { name: 'Experience', href: '/experience' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Tech Stack', href: '/tech-stack' },
-  { name: 'Education', href: '/education' },
-  { name: 'Articles', href: '/articles' },
+  { name: 'Services', id: 'services' },
+  { name: 'Experience', id: 'experience' },
+  { name: 'Projects', id: 'projects' },
+  { name: 'Tech Stack', id: 'tech-stack' },
+  { name: 'Education', id: 'education' },
+  { name: 'Articles', id: 'articles' },
+  { name: 'Contact', id: 'contact' },
 ];
 
 export const Header: React.FC = () => {
@@ -16,141 +17,154 @@ export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false);
+    }
+  };
+
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 bg-gradient-to-r from-accent-primary/10 via-accent-secondary/10 to-accent-primary/10 backdrop-blur-2xl border-b border-accent-primary/20 dark:border-accent-primary/10 shadow-sm"
+      className="sticky top-0 z-50 bg-gradient-to-r from-black via-slate-950 to-black backdrop-blur-xl border-b border-green-500/20 shadow-[0_0_20px_rgba(0,255,0,0.1)]"
     >
-      <nav className="container-custom" aria-label="Main navigation">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo - Premium */}
-          <motion.a 
-            href="/"
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative group"
-          >
-            <div className="absolute -inset-3 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-lg blur-xl opacity-0 group-hover:opacity-40 transition-all duration-300"></div>
-            <div className="relative px-4 py-2 text-lg md:text-xl font-black tracking-tighter bg-gradient-to-r from-accent-primary to-accent-secondary bg-clip-text text-transparent hover:opacity-80 transition-all duration-300 group-hover:drop-shadow-lg">
-              Raed Houimli
-            </div>
-          </motion.a>
+      {/* Scanlines effect */}
+      <div className="absolute inset-0 pointer-events-none opacity-5 bg-repeat" style={{
+        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,0,0.03) 2px, rgba(0,255,0,0.03) 4px)'
+      }}></div>
 
-          {/* Desktop Navigation - Premium Enhanced */}
-          <div className="hidden md:flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-accent-primary/5 via-accent-secondary/5 to-accent-primary/5 rounded-full border border-accent-primary/10 backdrop-blur-sm">
+      <nav className="container-custom relative z-10" aria-label="Main navigation">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo - Terminal Style */}
+          <motion.button 
+            onClick={() => scrollToSection('hero')}
+            whileHover={{ scale: 1.05, textShadow: '0 0 10px rgba(0,255,0,0.8)' }}
+            whileTap={{ scale: 0.95 }}
+            className="relative group cursor-pointer font-mono"
+          >
+            <div className="absolute -inset-2 bg-green-500/0 group-hover:bg-green-500/10 rounded-lg blur-lg transition-all duration-300"></div>
+            <div className="relative px-3 py-1 text-base md:text-lg font-black tracking-widest text-green-400 hover:text-green-300 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_rgba(0,255,0,0.6)]">
+              {'<'}RAH{'>'}
+            </div>
+          </motion.button>
+
+          {/* Desktop Navigation - Terminal Menu */}
+          <div className="hidden md:flex items-center gap-0 px-2 py-1 bg-black/30 border border-green-500/20 rounded-lg backdrop-blur-sm">
             {navigation.map((item, index) => (
-              <motion.a
+              <motion.button
                 key={item.name}
-                href={item.href}
+                onClick={() => scrollToSection(item.id)}
                 onMouseEnter={() => setHoveredItem(index)}
                 onMouseLeave={() => setHoveredItem(null)}
-                whileHover={{ y: -1 }}
+                whileHover={{ y: 0 }}
                 whileTap={{ y: 0 }}
-                className="relative group px-4 py-2 rounded-lg transition-all duration-200 overflow-hidden"
+                className="relative group px-3 py-2 rounded-sm transition-all duration-200 overflow-hidden font-mono text-xs uppercase tracking-wider cursor-pointer"
               >
-                {/* Premium background effect */}
+                {/* Glow background on hover */}
                 <motion.div
                   animate={{
                     opacity: hoveredItem === index ? 1 : 0,
-                    scale: hoveredItem === index ? 1 : 0.95,
+                    backgroundColor: hoveredItem === index ? 'rgba(0,255,0,0.08)' : 'rgba(0,255,0,0)',
                   }}
                   transition={{ duration: 0.2 }}
-                  className="absolute inset-0 bg-gradient-to-br from-accent-primary/30 to-accent-secondary/20 rounded-lg -z-10"
+                  className="absolute inset-0 rounded-sm"
                 />
 
-                {/* Animated border on hover */}
+                {/* Top border glow on hover */}
                 <motion.div
                   animate={{
                     opacity: hoveredItem === index ? 1 : 0,
                     scaleX: hoveredItem === index ? 1 : 0,
                   }}
                   transition={{ duration: 0.3 }}
-                  className="absolute bottom-1 left-2 right-2 h-0.5 bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-primary rounded-full origin-center"
+                  className="absolute top-0 left-2 right-2 h-0.5 bg-green-400 rounded-full origin-center shadow-[0_0_8px_rgba(0,255,0,0.6)]"
                 />
 
-                {/* Text */}
-                <span className={`relative z-10 text-sm font-semibold transition-all duration-200 ${
+                {/* Bottom border glow on hover */}
+                <motion.div
+                  animate={{
+                    opacity: hoveredItem === index ? 1 : 0,
+                    scaleX: hoveredItem === index ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute bottom-0 left-2 right-2 h-0.5 bg-green-400 rounded-full origin-center shadow-[0_0_8px_rgba(0,255,0,0.6)]"
+                />
+
+                <span className={`relative z-10 text-xs font-bold transition-all duration-200 ${
                   hoveredItem === index 
-                    ? 'text-accent-primary drop-shadow-lg' 
-                    : 'text-text-secondary-light dark:text-text-secondary-dark'
+                    ? 'text-green-400 drop-shadow-[0_0_6px_rgba(0,255,0,0.6)]' 
+                    : 'text-green-600 hover:text-green-500'
                 }`}>
-                  {item.name}
+                  $ {item.name}
                 </span>
-              </motion.a>
+              </motion.button>
             ))}
           </div>
 
-          {/* Right side actions - Premium */}
+          {/* Right Actions */}
           <div className="flex items-center gap-2">
-            {/* Theme Toggle - Enhanced */}
+            {/* Theme Toggle - Matrix Style */}
             <motion.button
               onClick={toggleTheme}
-              whileHover={{ scale: 1.08, rotate: 10 }}
+              whileHover={{ scale: 1.1, rotate: 10, textShadow: '0 0 10px rgba(0,255,0,0.8)' }}
               whileTap={{ scale: 0.95 }}
-              className="relative p-2.5 rounded-full border border-border-light/60 dark:border-border-dark/60 bg-transparent hover:bg-surface-light/60 dark:hover:bg-surface-dark/60 transition-all duration-300 backdrop-blur-sm"
+              className="relative p-2 rounded-sm border border-green-500/20 bg-black/40 hover:bg-green-500/5 transition-all duration-300 backdrop-blur-sm group cursor-pointer"
               aria-label="Toggle theme"
             >
-              <span className="relative z-10 flex items-center justify-center w-5 h-5 text-text-secondary-light dark:text-text-secondary-dark">
+              <span className="relative z-10 flex items-center justify-center w-5 h-5 text-green-400 group-hover:text-green-300 font-mono text-xs font-bold">
                 {theme === 'light' ? (
-                  <motion.svg
+                  <motion.span
                     key="moon"
                     initial={{ rotate: -180, opacity: 0 }}
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: 180, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
                   >
-                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-                  </motion.svg>
+                    ◗
+                  </motion.span>
                 ) : (
-                  <motion.svg
+                  <motion.span
                     key="sun"
                     initial={{ rotate: 180, opacity: 0 }}
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: -180, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
                   >
-                    <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.536l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm5.414 5.414a1 1 0 01.414.586l5.464-5.464a1 1 0 11-1.414-1.414L9.172 10.05a1 1 0 01.586.414zM5 8a1 1 0 100-2H4a1 1 0 000 2h1z" clipRule="evenodd" />
-                  </motion.svg>
+                    ◕
+                  </motion.span>
                 )}
               </span>
             </motion.button>
 
-            {/* CTA Button - Premium */}
-            <motion.a 
-              href="/contact"
-              whileHover={{ scale: 1.05, y: -2 }}
+            {/* CTA Button - Terminal Command Style */}
+            <motion.button
+              onClick={() => scrollToSection('contact')}
+              whileHover={{ scale: 1.05, boxShadow: '0 0 15px rgba(0,255,0,0.4)' }}
               whileTap={{ scale: 0.98 }}
-              className="hidden md:flex btn-primary text-sm py-2.5 px-6 relative group overflow-hidden font-semibold tracking-wide"
+              className="hidden md:flex btn-primary text-xs py-2 px-4 relative group overflow-hidden font-mono uppercase tracking-wider cursor-pointer border border-green-500/60 shadow-[0_0_10px_rgba(0,255,0,0.2)]"
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent"
                 initial={{ x: '-100%' }}
                 whileHover={{ x: '200%' }}
                 transition={{ duration: 0.5 }}
               />
-              <span className="relative z-10">Start Consulting</span>
-            </motion.a>
+              <span className="relative z-10">$ ./contact</span>
+            </motion.button>
 
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
               whileTap={{ scale: 0.95 }}
-              className="md:hidden p-2.5 rounded-xl hover:bg-surface-light dark:hover:bg-surface-dark transition-all duration-200 relative group backdrop-blur-sm"
+              className="md:hidden p-2 rounded-sm hover:bg-green-500/5 transition-all duration-200 border border-green-500/20 relative group backdrop-blur-sm cursor-pointer"
               aria-label="Toggle menu"
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-              />
               <motion.svg
-                className="w-5 h-5 relative z-10"
+                className="w-5 h-5 relative z-10 text-green-400 group-hover:text-green-300"
                 animate={{ rotate: isOpen ? 90 : 0 }}
                 transition={{ duration: 0.2 }}
                 fill="none"
@@ -163,51 +177,50 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation - Premium */}
+        {/* Mobile Navigation - Terminal Dropdown */}
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: isOpen ? 1 : 0, height: isOpen ? 'auto' : 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden bg-gradient-to-b from-accent-primary/5 via-accent-secondary/5 to-accent-primary/5"
+          className="md:hidden overflow-hidden bg-black/60 border-t border-green-500/20 backdrop-blur-sm"
         >
-          <motion.div className="pb-4 space-y-1 border-t border-accent-primary/20 dark:border-accent-primary/10 mt-4">
+          <motion.div className="pb-3 space-y-1 mt-3">
             {navigation.map((item, index) => (
-              <motion.a
+              <motion.button
                 key={item.name}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
+                onClick={() => scrollToSection(item.id)}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                whileHover={{ x: 4 }}
-                className="block px-4 py-3 rounded-lg text-text-secondary-light dark:text-text-secondary-dark hover:bg-accent-primary/10 hover:text-accent-primary transition-all group relative"
+                whileHover={{ x: 4, textShadow: '0 0 6px rgba(0,255,0,0.6)' }}
+                className="block w-full text-left px-4 py-2.5 rounded-sm text-green-600 hover:text-green-400 hover:bg-green-500/5 transition-all group relative cursor-pointer font-mono text-xs uppercase tracking-wider"
               >
-                <span className="font-semibold text-sm">{item.name}</span>
+                <span className="font-bold">$ </span>
+                <span>{item.name}</span>
                 <motion.div
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-accent-primary rounded-full opacity-0 group-hover:opacity-100 transition-all"
-                  animate={{ scale: [1, 1.2, 1] }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-green-500 rounded-full opacity-0 group-hover:opacity-100 transition-all shadow-[0_0_4px_rgba(0,255,0,0.6)]"
+                  animate={{ scale: [1, 1.3, 1] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 />
-              </motion.a>
+              </motion.button>
             ))}
 
             {/* Mobile CTA */}
-            <motion.a
-              href="/contact"
-              onClick={() => setIsOpen(false)}
+            <motion.button
+              onClick={() => scrollToSection('contact')}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: navigation.length * 0.05 + 0.1 }}
-              className="block mt-4 mx-2 btn-primary text-center py-3 relative group overflow-hidden font-semibold"
+              className="block mt-3 mx-2 btn-primary text-center py-2.5 relative group overflow-hidden font-mono uppercase tracking-wider w-[calc(100%-1rem)] cursor-pointer border border-green-500/60 text-xs shadow-[0_0_10px_rgba(0,255,0,0.2)]"
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-green-400/20 to-transparent"
                 initial={{ x: '-100%' }}
                 whileHover={{ x: '200%' }}
                 transition={{ duration: 0.5 }}
               />
-              <span className="relative z-10">Start Consulting</span>
-            </motion.a>
+              <span className="relative z-10">$ ./contact</span>
+            </motion.button>
           </motion.div>
         </motion.div>
       </nav>
