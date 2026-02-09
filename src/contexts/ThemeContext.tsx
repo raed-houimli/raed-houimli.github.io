@@ -10,23 +10,33 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(() => {
-    // Check localStorage first, then default to light mode
-    const stored = localStorage.getItem('theme') as Theme | null;
-    if (stored) return stored;
-    
-    return 'light';
-  });
+  const [theme, setTheme] = useState<Theme>('light'); // Default to light mode
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    // Check localStorage first, fallback to light mode
+    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    const initialTheme = savedTheme || 'light';
+    
+    setTheme(initialTheme);
+    
+    if (initialTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    
+    localStorage.setItem('theme', newTheme);
   };
 
   return (

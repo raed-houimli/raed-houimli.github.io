@@ -1,233 +1,165 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../../data/content';
 
 export const Contact: React.FC = () => {
-  const [isCalendarLoaded, setIsCalendarLoaded] = useState(false);
-
   return (
-    <section id="contact" className="section-shell bg-gradient-to-b from-surface-light to-background-light dark:from-surface-dark dark:to-background-dark relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-accent-primary/5 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-secondary/5 rounded-full blur-3xl -z-10"></div>
-
+    <section id="contact" className="section-shell">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {/* Section Header */}
-          <div className="mb-12 text-center">
-            <p className="kicker mb-3">Let’s Collaborate</p>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Book a Strategy Call</h2>
-            <p className="text-text-secondary-light dark:text-text-secondary-dark text-lg max-w-2xl mx-auto">
-              Schedule a 30‑minute consultation to discuss your infrastructure, DevOps, and cloud architecture goals. Professional English communication for global teams.
+          {/* Header */}
+          <div className="section-header mb-8">
+            <p className="kicker mb-2">Let's Connect</p>
+            <h2 className="section-title">Get In Touch</h2>
+            <p className="section-subtitle text-sm">
+              Open for consulting opportunities and collaborative projects
             </p>
-            <div className="section-divider-glow mt-8 max-w-md mx-auto"></div>
           </div>
 
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-              {/* Left Side - Info Card */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+          <div className="max-w-4xl mx-auto">
+            {/* Contact Info Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              {/* Email */}
+              <motion.a
+                href={`mailto:${personalInfo.email}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="lg:col-span-2"
+                transition={{ delay: 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                className="card p-6 text-center group hover:border-accent"
               >
-                <div className="card-neo p-8 h-full sticky top-24">
-                  <div className="flex flex-col items-center text-center mb-6">
-                    <motion.div
-                      whileHover={{ scale: 1.05, rotate: 3 }}
-                      className="relative mb-6"
-                    >
-                      <div className="absolute -inset-2 bg-gradient-to-r from-accent-primary to-accent-secondary rounded-full blur-xl opacity-40"></div>
-                      <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-accent-primary/60 shadow-2xl bg-gradient-to-br from-accent-primary/20 to-accent-secondary/20">
-                        <img
-                          src="https://avatars.githubusercontent.com/raed-houimli"
-                          alt={personalInfo.name}
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            e.currentTarget.style.display = 'none';
-                            const parent = e.currentTarget.parentElement;
-                            if (parent) {
-                              parent.innerHTML = `
-                                <div class="w-full h-full flex items-center justify-center text-5xl font-black text-accent-primary">
-                                  ${personalInfo.name.split(' ').map(n => n[0]).join('')}
-                                </div>
-                              `;
-                            }
-                          }}
-                        />
-                      </div>
-                      <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-green-500 rounded-full border-4 border-surface-light dark:border-surface-dark flex items-center justify-center">
-                        <span className="text-white text-xs">✓</span>
-                      </div>
-                    </motion.div>
-                    
-                    <h3 className="text-2xl font-bold mb-2">{personalInfo.name}</h3>
-                    <p className="kicker mb-4">Infrastructure & DevOps Consultant</p>
-                    <p className="text-text-secondary-light dark:text-text-secondary-dark leading-relaxed mb-6">
-                      {personalInfo.bio}
-                    </p>
-                  </div>
-
-                  {/* What to Expect */}
-                  <div className="mb-6">
-                    <h4 className="font-bold text-lg mb-4 flex items-center">
-                      <svg className="w-5 h-5 mr-2 text-accent-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      What to Expect
-                    </h4>
-                    <ul className="space-y-3">
-                      {[
-                        '30‑minute strategy call (remote)',
-                        'Current infrastructure review',
-                        'CI/CD + automation roadmap',
-                        'Cost & reliability optimization',
-                        'Next‑steps action plan'
-                      ].map((item, i) => (
-                        <motion.li
-                          key={i}
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: 0.3 + i * 0.1 }}
-                          className="flex items-start text-sm text-text-secondary-light dark:text-text-secondary-dark"
-                        >
-                          <span className="inline-block w-1.5 h-1.5 bg-accent-primary rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
-                          {item}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Contact Options */}
-                  <div className="pt-6 border-t border-border-light dark:border-border-dark space-y-3">
-                    <h4 className="font-bold text-sm uppercase tracking-wide mb-3">Or Contact Directly</h4>
-                    <motion.a
-                      href={`mailto:${personalInfo.email}`}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="btn-primary w-full flex items-center justify-center"
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      Send Email
-                    </motion.a>
-                    <motion.a
-                      href={`tel:${personalInfo.phone}`}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="btn-secondary w-full flex items-center justify-center"
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      Call Now
-                    </motion.a>
-                  </div>
+                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-accent/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
                 </div>
-              </motion.div>
+                <h3 className="font-bold text-sm mb-1">Email</h3>
+                <p className="text-xs text-text-secondary dark:text-text-dark-secondary group-hover:text-accent transition-colors break-all">
+                  {personalInfo.email}
+                </p>
+              </motion.a>
 
-              {/* Right Side - Calendar */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+              {/* Phone */}
+              <motion.a
+                href={`tel:${personalInfo.phone}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="lg:col-span-3"
+                transition={{ delay: 0.2 }}
+                whileHover={{ scale: 1.02 }}
+                className="card p-6 text-center group hover:border-accent"
               >
-                <div className="card-neo p-8 relative">
-                  <div className="flex items-center justify-between mb-6">
-                    <div>
-                      <h3 className="text-2xl font-bold mb-2">Select Your Time Slot</h3>
-                      <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark">
-                        All times are displayed in your local timezone. Professional English communication available.
-                      </p>
-                    </div>
-                    <div className="hidden md:flex items-center gap-2 px-3 py-2 bg-green-500/10 border border-green-500/30 rounded-lg">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-green-600 dark:text-green-400">Available Now</span>
-                    </div>
-                  </div>
-
-                  {/* Loading Skeleton */}
-                  {!isCalendarLoaded && (
-                    <div className="absolute inset-8 flex items-center justify-center bg-surface-light dark:bg-surface-dark rounded-xl">
-                      <div className="text-center">
-                        <div className="inline-block w-12 h-12 border-4 border-accent-primary/30 border-t-accent-primary rounded-full animate-spin mb-4"></div>
-                        <p className="text-sm text-text-muted-light dark:text-text-muted-dark">Loading calendar...</p>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Calendly Embed */}
-                  <div className="relative rounded-xl overflow-hidden border border-border-light dark:border-border-dark shadow-inner" style={{ height: '700px' }}>
-                    <iframe
-                      title="Schedule a consultation with Raed Houimli"
-                      src={`${personalInfo.meetingUrl}?embed_domain=${window.location.hostname}&embed_type=Inline&hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=0f172a&primary_color=0ea5e9`}
-                      width="100%"
-                      height="100%"
-                      frameBorder="0"
-                      onLoad={() => setIsCalendarLoaded(true)}
-                      className="rounded-xl"
-                    />
-                  </div>
-
-                  {/* Fallback Link */}
-                  <div className="mt-6 text-center">
-                    <p className="text-xs text-text-muted-light dark:text-text-muted-dark mb-2">
-                      Calendar not displaying properly?
-                    </p>
-                    <motion.a
-                      href={personalInfo.meetingUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="inline-flex items-center text-sm font-medium text-accent-primary hover:underline"
-                    >
-                      Open in new window
-                      <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </motion.a>
-                  </div>
+                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-accent/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
                 </div>
+                <h3 className="font-bold text-sm mb-1">Phone</h3>
+                <p className="text-xs text-text-secondary dark:text-text-dark-secondary group-hover:text-accent transition-colors">
+                  {personalInfo.phone}
+                </p>
+              </motion.a>
+
+              {/* Location */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="card p-6 text-center"
+              >
+                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-accent/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  </svg>
+                </div>
+                <h3 className="font-bold text-sm mb-1">Location</h3>
+                <p className="text-xs text-text-secondary dark:text-text-dark-secondary">
+                  {personalInfo.location}
+                </p>
               </motion.div>
             </div>
-          </div>
 
-          {/* Trust Badges - Simplified and Compact */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-12 text-center"
-          >
-            <div className="flex flex-wrap justify-center items-center gap-6 max-w-2xl mx-auto">
-              {[
-                { icon: '⚡', text: '24h Response' },
-                { icon: '✓', text: 'Free Consultation' },
-                { icon: '🔒', text: 'NDA Available' }
-              ].map((badge, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center gap-2 px-4 py-2 bg-surface-light dark:bg-surface-dark rounded-lg border border-border-light dark:border-border-dark"
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="card p-6"
+            >
+              <h3 className="font-bold text-sm mb-4 text-center">Connect on Social Media</h3>
+              <div className="flex justify-center gap-4">
+                <motion.a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="w-12 h-12 rounded-full bg-bg-tertiary dark:bg-bg-dark-tertiary hover:bg-accent/20 flex items-center justify-center transition-colors"
                 >
-                  <span className="text-xl">{badge.icon}</span>
-                  <span className="text-sm font-medium">{badge.text}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                  <svg className="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                  </svg>
+                </motion.a>
+
+                <motion.a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="w-12 h-12 rounded-full bg-bg-tertiary dark:bg-bg-dark-tertiary hover:bg-accent/20 flex items-center justify-center transition-colors"
+                >
+                  <svg className="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </motion.a>
+
+                <motion.a
+                  href={personalInfo.medium}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  className="w-12 h-12 rounded-full bg-bg-tertiary dark:bg-bg-dark-tertiary hover:bg-accent/20 flex items-center justify-center transition-colors"
+                >
+                  <svg className="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                  </svg>
+                </motion.a>
+              </div>
+            </motion.div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="text-center mt-8"
+            >
+              <motion.a
+                href={personalInfo.meetingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn-primary inline-flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Schedule a Meeting
+              </motion.a>
+              <p className="text-xs text-text-muted dark:text-text-dark-muted mt-3">
+                Available for consulting • Remote worldwide
+              </p>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

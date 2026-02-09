@@ -3,7 +3,7 @@ import { personalInfo } from '../data/content';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="mt-auto border-t border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+    <footer className="mt-auto border-t border-border-dark/50 bg-surface-dark/60 backdrop-blur">
       <div className="container-custom py-3">
         <div className="flex flex-col md:flex-row justify-between items-center gap-3">
           {/* Left side */}

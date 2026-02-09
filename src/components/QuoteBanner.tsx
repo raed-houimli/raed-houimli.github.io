@@ -42,7 +42,7 @@ export const QuoteBanner = () => {
     <motion.div
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
-      className="bg-gradient-to-r from-accent-primary/10 via-accent-secondary/10 to-accent-primary/10 border-b border-accent-primary/20 dark:border-accent-primary/10 overflow-hidden relative cursor-pointer"
+      className="signal-bar overflow-hidden relative cursor-pointer"
     >
       {/* Animated background shimmer */}
       <motion.div
@@ -51,7 +51,7 @@ export const QuoteBanner = () => {
         transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
       />
       
-      <div className="container-custom py-1 relative z-10">
+      <div className="container-custom py-2 relative z-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentQuote}

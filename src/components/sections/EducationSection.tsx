@@ -18,12 +18,12 @@ export const Education: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           {/* Section Header */}
-          <div className="text-center mb-14">
+          <div className="section-header">
             <p className="kicker mb-2">Academic Foundation</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-accent-secondary via-accent-primary to-accent-secondary bg-clip-text text-transparent">
+            <h2 className="section-title bg-gradient-to-r from-accent-secondary via-accent-primary to-accent-secondary bg-clip-text text-transparent">
               Education
             </h2>
-            <p className="text-sm md:text-base text-text-secondary-light dark:text-text-secondary-dark max-w-2xl mx-auto">
+            <p className="section-subtitle">
               <span className="font-semibold text-accent-primary">Software Engineering, Data Science, and Cybersecurity</span>
             </p>
           </div>
@@ -37,7 +37,7 @@ export const Education: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="mb-8"
             >
-              <div className="enterprise-card p-5 border-2 border-blue-500/20">
+              <div className="card-luxe p-5 border-2 border-blue-500/20">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
@@ -83,7 +83,7 @@ export const Education: React.FC = () => {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="group relative"
                   >
-                    <div className={`enterprise-card p-4 border-2 ${colors[index]} h-full`}>
+                    <div className={`card-luxe p-4 border-2 ${colors[index]} h-full`}>
                       {/* Step Badge */}
                       <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-gradient-to-br from-accent-primary to-accent-secondary text-white flex items-center justify-center font-bold text-xs shadow-lg">
                         {index + 2}

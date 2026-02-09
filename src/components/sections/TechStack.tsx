@@ -3,14 +3,14 @@ import { motion } from 'framer-motion';
 
 export const TechStack: React.FC = () => {
   const stack = [
+    { category: 'Backend Development', items: ['FastAPI', 'Node.js', 'Express.js', 'REST APIs', 'GraphQL'], icon: '🔧' },
+    { category: 'Frontend Development', items: ['React.js', 'TypeScript', 'Tailwind CSS', 'Vite'], icon: '⚛️' },
+    { category: 'Databases', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis'], icon: '🗄️' },
     { category: 'Cloud & Infrastructure', items: ['AWS', 'Terraform', 'Ansible', 'CloudFormation'], icon: '☁️' },
     { category: 'Containers & Orchestration', items: ['Docker', 'Kubernetes', 'EKS', 'Helm', 'ArgoCD'], icon: '⎈' },
-    { category: 'CI/CD & Automation', items: ['GitHub Actions', 'GitLab CI', 'Jenkins', 'GitOps'], icon: '🔄' },
+    { category: 'CI/CD & Automation', items: ['GitHub Actions', 'GitLab CI', 'Jenkins'], icon: '🔄' },
     { category: 'Monitoring & Observability', items: ['Prometheus', 'Grafana', 'CloudWatch', 'ELK Stack'], icon: '📊' },
-    { category: 'Languages & Scripting', items: ['Python', 'Bash/Shell', 'JavaScript/TypeScript', 'SQL'], icon: '💻' },
-    { category: 'Backend & Databases', items: ['FastAPI', 'Node.js', 'PostgreSQL', 'Redis', 'MongoDB'], icon: '🗄️' },
-    { category: 'Machine Learning & AI', items: ['TensorFlow', 'PyTorch', 'scikit-learn', 'Pandas', 'LangChain'], icon: '🤖' },
-    { category: 'Data Science & Analytics', items: ['NumPy', 'Matplotlib', 'Seaborn', 'Statistical Analysis'], icon: '📈' },
+    { category: 'Languages', items: ['Python', 'JavaScript/TypeScript', 'Bash', 'SQL'], icon: '💬' },
   ];
 
   return (
@@ -22,11 +22,11 @@ export const TechStack: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="text-center mb-12">
+          <div className="section-header">
             <p className="kicker mb-3">Technology Arsenal</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Tech Stack</h2>
-            <p className="text-text-secondary-light dark:text-text-secondary-dark max-w-2xl mx-auto">
-              Production-tested tools and technologies across <span className="font-semibold text-accent-primary">DevOps, Cloud, Backend, and ML/AI</span>
+            <h2 className="section-title">Tech Stack</h2>
+            <p className="section-subtitle">
+              Full-stack development + cloud infrastructure expertise
             </p>
           </div>
 
@@ -38,7 +38,7 @@ export const TechStack: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="card-neo p-6 group hover:shadow-xl transition-shadow"
+                className="card-luxe p-6 group"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-3xl">{group.icon}</span>

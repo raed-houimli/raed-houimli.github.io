@@ -9,7 +9,7 @@ export const NotFound: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-surface-light to-background-light dark:from-surface-dark dark:to-background-dark"
+      className="min-h-screen flex items-center justify-center page-shell"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}

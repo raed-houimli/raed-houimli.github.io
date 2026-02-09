@@ -40,7 +40,7 @@ export const EducationTimeline: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-accent-primary/5 to-accent-secondary/5 rounded-xl blur-lg"></div>
           
           {/* Card */}
-          <div className="relative card p-6 border-2 border-accent-primary/20">
+          <div className="relative card-luxe p-6">
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0">
                 {getDegreeIcon(bachelor.degree)}
@@ -105,7 +105,7 @@ export const EducationTimeline: React.FC = () => {
               <div className="absolute -inset-0.5 bg-gradient-to-r from-accent-primary/20 to-accent-secondary/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
               
               {/* Card */}
-              <div className="relative card p-4 h-full hover:border-accent-primary/30 transition-all duration-300">
+              <div className="relative card-luxe p-4 h-full transition-all duration-300">
                 {/* Step indicator */}
                 <div className="absolute -top-3 -right-3">
                   <div className="w-8 h-8 rounded-full bg-accent-secondary text-white flex items-center justify-center font-bold text-xs shadow-lg">

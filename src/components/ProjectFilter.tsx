@@ -22,7 +22,7 @@ export const ProjectFilter = ({ onFilterChange }: ProjectFilterProps) => {
         <button
           key={category}
           onClick={() => handleClick(category)}
-          className={`px-4 py-2 rounded-lg font-medium text-sm transition-all ${
+          className={`filter-chip transition-all ${
             active === category
               ? 'bg-accent-primary text-white'
               : 'bg-border-light dark:bg-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:border-accent-primary/50'

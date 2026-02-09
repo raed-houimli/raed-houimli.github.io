@@ -12,7 +12,7 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark">
+    <div className="min-h-screen flex flex-col site-shell text-text-primary-light dark:text-text-primary-dark">
       <ScrollProgress />
       <Header />
       <QuoteBanner />

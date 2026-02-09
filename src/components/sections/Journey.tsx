@@ -15,7 +15,7 @@ export const Journey: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div className="section-header">
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
@@ -28,8 +28,8 @@ export const Journey: React.FC = () => {
               </svg>
             </motion.div>
             <p className="kicker mb-4">Career Timeline</p>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Professional Journey</h2>
-            <p className="text-text-secondary-light dark:text-text-secondary-dark text-lg max-w-2xl mx-auto">
+            <h2 className="section-title">Professional Journey</h2>
+            <p className="section-subtitle">
               From full-stack development to DevOps engineering – <span className="font-semibold text-accent-primary">4+ years building enterprise infrastructure</span>
             </p>
           </div>

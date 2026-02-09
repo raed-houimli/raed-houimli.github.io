@@ -12,8 +12,8 @@ export const Research: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           {/* Section Header */}
-          <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" aria-label="Research Work by Raed Houimli">Research</h2>
+          <div className="section-header">
+            <h2 className="section-title" aria-label="Research Work by Raed Houimli">Research</h2>
             <div className="w-16 h-1 bg-accent-primary rounded-full" role="presentation"></div>
           </div>
 
@@ -24,7 +24,7 @@ export const Research: React.FC = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="card p-12 text-center"
+              className="card-luxe p-12 text-center"
             >
               <div className="flex justify-center mb-4">
                 <div className="w-16 h-16 rounded-full bg-accent-primary/10 flex items-center justify-center">

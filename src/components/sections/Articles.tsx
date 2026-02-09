@@ -49,14 +49,8 @@ export const Articles = () => {
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
   };
 
-  const gradients = [
-    'from-blue-500/20 to-cyan-500/20',
-    'from-purple-500/20 to-pink-500/20',
-    'from-green-500/20 to-emerald-500/20',
-  ];
-
   return (
-    <section id="articles" className="section-shell relative overflow-hidden bg-gradient-to-b from-surface-light to-background-light dark:from-surface-dark dark:to-background-dark">
+    <section id="articles" className="section-shell relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.08),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.06),transparent_50%)]"></div>
 
       <div className="container-custom relative z-10">
@@ -67,12 +61,12 @@ export const Articles = () => {
           transition={{ duration: 0.6 }}
         >
           {/* Header */}
-          <div className="text-center mb-14">
+          <div className="section-header">
             <p className="kicker mb-2">Latest Insights</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-primary bg-clip-text text-transparent">
+            <h2 className="section-title bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-primary bg-clip-text text-transparent">
               Articles
             </h2>
-            <p className="text-sm md:text-base text-text-secondary-light dark:text-text-secondary-dark max-w-2xl mx-auto">
+            <p className="section-subtitle">
               DevOps, Infrastructure, and Cloud Architecture insights
             </p>
 
@@ -133,9 +127,9 @@ export const Articles = () => {
                       whileHover={{ y: -4 }}
                       className="group relative"
                     >
-                      <div className={`absolute -inset-0.5 bg-gradient-to-br ${gradients[idx % 3]} rounded-lg blur opacity-0 group-hover:opacity-75 transition-opacity`}></div>
+                      <div className="absolute -inset-0.5 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-lg blur opacity-0 group-hover:opacity-75 transition-opacity" ></div>
                       
-                      <div className="relative enterprise-card p-4 h-full flex flex-col border-2 border-border-light/50 dark:border-border-dark/50 group-hover:border-accent-primary/30">
+                      <div className="relative card-luxe p-4 h-full flex flex-col border-2 border-border-light/50 dark:border-border-dark/50 group-hover:border-accent-primary/30">
                         {/* Thumbnail */}
                         <div className="relative w-full h-32 -mx-4 -mt-4 mb-3 overflow-hidden rounded-t-lg bg-gradient-to-br from-accent-primary/10 to-accent-secondary/10">
                           {article.thumbnail ? (

@@ -9,7 +9,7 @@ export const Services: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      className="min-h-screen"
+      className="min-h-screen page-shell"
     >
       <ServicesSection />
     </motion.div>
