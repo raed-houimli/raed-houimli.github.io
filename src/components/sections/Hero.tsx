@@ -100,7 +100,7 @@ export const Hero: React.FC = () => {
             </h1>
             
             <p className="text-base md:text-lg lg:text-xl text-text-secondary dark:text-text-dark-secondary mb-6 md:mb-8 max-w-2xl mx-auto">
-              Full-Stack Engineer & DevOps Specialist building scalable applications and infrastructure. <span className="text-accent font-semibold block md:inline">FastAPI • Node.js • React.js • AWS • Kubernetes</span>
+              Full-Stack Engineer & DevOps Security Specialist building scalable applications and infrastructure. <span className="text-accent font-semibold block md:inline">Full-Stack • AWS • Terraform • Kubernetes</span>
             </p>
 
             <p className="text-sm md:text-base text-text-secondary dark:text-text-dark-secondary mb-6 md:mb-8 max-w-2xl mx-auto">

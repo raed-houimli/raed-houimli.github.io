@@ -45,7 +45,7 @@ export const About: React.FC = () => {
             <p className="kicker mb-2">Who I Am</p>
             <h2 className="section-title">About Me</h2>
             <p className="section-subtitle text-sm">
-              Senior Software Engineer + DevSecOps Specialist with 5+ years building enterprise systems
+              Senior Software Engineer and DevSecOps Specialist with 5+ years building enterprise systems
             </p>
           </div>
 
