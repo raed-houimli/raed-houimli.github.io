@@ -71,20 +71,6 @@ export const Hero: React.FC = () => {
                   className="absolute inset-0 bg-gradient-to-br from-amber-400/40 via-transparent to-yellow-400/30 rounded-full"
                 />
               </div>
-
-              {/* Active status with golden pulse */}
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.6, type: "spring" }}
-                className="absolute -bottom-2 md:-bottom-3 -right-2 md:-right-3 w-8 h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 rounded-full shadow-lg flex items-center justify-center border-3 md:border-4 border-bg dark:border-bg-dark z-20 bg-gradient-to-br from-amber-400 to-yellow-500"
-              >
-                <motion.span
-                  animate={{ scale: [1, 1.3, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="w-2 h-2 md:w-3 md:h-3 bg-white rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)]"
-                />
-              </motion.div>
             </div>
           </motion.div>
 
