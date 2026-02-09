@@ -24,51 +24,50 @@ export const Header: React.FC = () => {
 
   return (
     <>
+      {/* Desktop Navigation Sidebar */}
       <motion.aside
         initial={{ x: -20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="nav-rail"
+        className="hidden lg:flex fixed left-0 top-0 h-screen flex-col gap-3 p-4 z-50 pointer-events-none"
         role="navigation"
         aria-label="Main navigation"
       >
-        {/* Profile Picture - Centered */}
-        <motion.button
-          onClick={() => scrollToSection('hero')}
-          whileHover={{ scale: 1.05 }}
-          className="w-12 h-12 rounded-full overflow-hidden border-2 border-accent mx-auto mb-4 flex items-center justify-center flex-shrink-0"
-          aria-label="Raed Houimli - Go to home"
-          title="Go to home"
-        >
-          <img
-            src="https://avatars.githubusercontent.com/raed-houimli"
-            alt="Raed Houimli"
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </motion.button>
+        {/* Nav Container with pointer-events enabled */}
+        <div className="pointer-events-auto flex flex-col gap-3 w-fit">
+          {/* Logo/Brand */}
+          <motion.button
+            onClick={() => scrollToSection('hero')}
+            whileHover={{ scale: 1.05 }}
+            className="w-12 h-12 rounded-lg bg-bg dark:bg-bg-dark border border-border dark:border-border-dark flex items-center justify-center font-bold text-accent hover:border-accent transition-all"
+            aria-label="Raed Houimli - Go to home"
+            title="Go to home"
+          >
+            RH
+          </motion.button>
 
-        <div className="nav-rail-group">
-          {navigation.map((item) => (
-            <motion.button
-              key={item.name}
-              onClick={() => scrollToSection(item.id)}
-              whileHover={{ scale: 1.05 }}
-              className="nav-item text-center"
-              aria-label={`Go to ${item.name}`}
-              title={`Navigate to ${item.name} section`}
-            >
-              <span className="nav-item-label font-semibold">{item.name}</span>
-            </motion.button>
-          ))}
-        </div>
+          {/* Navigation Links */}
+          <div className="flex flex-col gap-2">
+            {navigation.map((item) => (
+              <motion.button
+                key={item.name}
+                onClick={() => scrollToSection(item.id)}
+                whileHover={{ scale: 1.05, x: 4 }}
+                className="px-3 py-2 text-xs font-semibold rounded-lg bg-bg-secondary dark:bg-bg-dark-secondary border border-border dark:border-border-dark hover:bg-accent hover:text-white hover:border-accent transition-all whitespace-nowrap"
+                aria-label={`Go to ${item.name}`}
+                title={`Navigate to ${item.name} section`}
+              >
+                {item.name}
+              </motion.button>
+            ))}
+          </div>
 
-        <div className="nav-rail-actions space-y-2">
+          {/* Theme Toggle */}
           <motion.button
             onClick={toggleTheme}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="nav-item w-full relative overflow-hidden"
+            className="px-3 py-2 text-xs font-semibold rounded-lg bg-bg-secondary dark:bg-bg-dark-secondary border border-border dark:border-border-dark hover:border-accent transition-all relative overflow-hidden"
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
           >
@@ -101,80 +100,94 @@ export const Header: React.FC = () => {
                 className="absolute inset-0 bg-gradient-to-r from-blue-400/30 via-indigo-500/30 to-blue-400/30 blur-md"
               />
             )}
-            
-            <span className="nav-item-label font-semibold relative z-10">
-              {theme === 'light' ? 'Dark' : 'Light'}
+            <span className="relative z-10">
+              {theme === 'light' ? '🌙' : '☀️'}
             </span>
           </motion.button>
 
+          {/* Contact Button */}
           <motion.button
             onClick={() => scrollToSection('contact')}
-            whileHover={{ scale: 1.05 }}
-            className="nav-item nav-item-accent w-full"
+            whileHover={{ scale: 1.05, x: 4 }}
+            className="px-3 py-2 text-xs font-semibold rounded-lg bg-accent text-white hover:bg-accent-light transition-all"
             aria-label="Go to Contact section"
             title="Navigate to Contact section"
           >
-            <span className="nav-item-label font-semibold">Contact</span>
+            Contact
           </motion.button>
         </div>
       </motion.aside>
 
+      {/* Mobile Bottom Navigation */}
       <motion.nav
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="nav-rail-mobile"
+        className="lg:hidden fixed bottom-0 left-0 right-0 bg-bg dark:bg-bg-dark border-t border-border dark:border-border-dark z-50"
         aria-label="Mobile navigation"
         role="navigation"
       >
-        {navigation.slice(0, 4).map((item) => (
-          <button
-            key={item.name}
-            onClick={() => scrollToSection(item.id)}
-            className="nav-pill-mobile text-xs font-semibold"
-            aria-label={`Go to ${item.name}`}
-            title={`Navigate to ${item.name} section`}
-          >
-            <span className="nav-item-label">{item.name}</span>
-          </button>
-        ))}
-        
-        <button 
-          onClick={toggleTheme} 
-          className="nav-pill-mobile relative overflow-hidden text-xs font-semibold" 
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {/* Mobile glow effect */}
-          {theme === 'dark' && (
-            <motion.div
-              animate={{
-                opacity: [0.4, 0.8, 0.4]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity
-              }}
-              className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-amber-500/20 to-yellow-400/20 blur-sm"
-            />
-          )}
-          {theme === 'light' && (
-            <motion.div
-              animate={{
-                opacity: [0.4, 0.8, 0.4]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity
-              }}
-              className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-indigo-500/20 to-blue-400/20 blur-sm"
-            />
-          )}
-          
-          <span className="nav-item-label relative z-10">
-            {theme === 'light' ? 'Dark' : 'Light'}
-          </span>
-        </button>
+        <div className="max-w-full overflow-x-auto">
+          <div className="flex gap-1 p-2 min-w-min">
+            {navigation.slice(0, 4).map((item) => (
+              <button
+                key={item.name}
+                onClick={() => scrollToSection(item.id)}
+                className="px-3 py-2 text-xs font-semibold rounded-lg bg-bg-secondary dark:bg-bg-dark-secondary border border-border dark:border-border-dark hover:bg-accent hover:text-white hover:border-accent transition-all whitespace-nowrap"
+                aria-label={`Go to ${item.name}`}
+                title={`Navigate to ${item.name} section`}
+              >
+                {item.name}
+              </button>
+            ))}
+            
+            <button 
+              onClick={toggleTheme} 
+              className="px-3 py-2 text-xs font-semibold rounded-lg bg-bg-secondary dark:bg-bg-dark-secondary border border-border dark:border-border-dark hover:border-accent transition-all relative overflow-hidden whitespace-nowrap"
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            >
+              {/* Mobile glow effect */}
+              {theme === 'dark' && (
+                <motion.div
+                  animate={{
+                    opacity: [0.4, 0.8, 0.4]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity
+                  }}
+                  className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-amber-500/20 to-yellow-400/20 blur-sm"
+                />
+              )}
+              {theme === 'light' && (
+                <motion.div
+                  animate={{
+                    opacity: [0.4, 0.8, 0.4]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity
+                  }}
+                  className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-indigo-500/20 to-blue-400/20 blur-sm"
+                />
+              )}
+              
+              <span className="relative z-10">
+                {theme === 'light' ? '🌙' : '☀️'}
+              </span>
+            </button>
+
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="px-3 py-2 text-xs font-semibold rounded-lg bg-accent text-white hover:bg-accent-light transition-all whitespace-nowrap"
+              aria-label="Go to Contact section"
+              title="Navigate to Contact section"
+            >
+              Contact
+            </button>
+          </div>
+        </div>
       </motion.nav>
     </>
   );

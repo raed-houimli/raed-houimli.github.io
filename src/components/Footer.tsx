@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-3">
           {/* Left side */}
           <p className="text-xs text-text-secondary-light dark:text-text-secondary-dark">
-            © 2026 Raed Houimli • DevSecOps Engineer
+            © 2026 Raed Houimli • Senior Software Engineer -- DevSecOps 
           </p>
 
           {/* Right side - Social links only */}

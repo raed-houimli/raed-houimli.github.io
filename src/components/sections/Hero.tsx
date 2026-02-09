@@ -4,7 +4,7 @@ import { personalInfo } from '../../data/content';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 pb-16 section-shell overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-12 pb-20 md:pt-16 md:pb-24 lg:pt-20 lg:pb-32 section-shell overflow-hidden">
       <div className="container-custom relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Profile Image */}
@@ -12,9 +12,9 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="flex justify-center mb-8"
+            className="flex justify-center mb-6 md:mb-8"
           >
-            <div className="relative w-52 h-52">
+            <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-52 lg:h-52">
               {/* Golden breathing glow rings */}
               <motion.div
                 animate={{
@@ -26,7 +26,7 @@ export const Hero: React.FC = () => {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="absolute -inset-6 rounded-full bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 blur-3xl"
+                className="absolute -inset-4 md:-inset-5 lg:-inset-6 rounded-full bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 blur-2xl md:blur-3xl"
               />
               
               <motion.div
@@ -40,11 +40,11 @@ export const Hero: React.FC = () => {
                   ease: "easeInOut",
                   delay: 0.5
                 }}
-                className="absolute -inset-3 rounded-full bg-gradient-to-l from-amber-300 via-yellow-500 to-amber-300 blur-2xl"
+                className="absolute -inset-2 md:-inset-3 lg:-inset-3 rounded-full bg-gradient-to-l from-amber-300 via-yellow-500 to-amber-300 blur-xl md:blur-2xl"
               />
 
               {/* Profile image with golden border */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-amber-500 shadow-2xl bg-bg-secondary dark:bg-bg-dark-secondary">
+              <div className="relative w-full h-full rounded-full overflow-hidden border-3 md:border-4 border-amber-500 shadow-xl md:shadow-2xl bg-bg-secondary dark:bg-bg-dark-secondary">
                 <motion.div
                   animate={{
                     opacity: [0.5, 0.8, 0.5],
@@ -77,12 +77,12 @@ export const Hero: React.FC = () => {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.6, type: "spring" }}
-                className="absolute -bottom-3 -right-3 w-10 h-10 rounded-full shadow-lg flex items-center justify-center border-4 border-bg dark:border-bg-dark z-20 bg-gradient-to-br from-amber-400 to-yellow-500"
+                className="absolute -bottom-2 md:-bottom-3 -right-2 md:-right-3 w-8 h-8 md:w-10 md:h-10 lg:w-10 lg:h-10 rounded-full shadow-lg flex items-center justify-center border-3 md:border-4 border-bg dark:border-bg-dark z-20 bg-gradient-to-br from-amber-400 to-yellow-500"
               >
                 <motion.span
                   animate={{ scale: [1, 1.3, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="w-3 h-3 bg-white rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)]"
+                  className="w-2 h-2 md:w-3 md:h-3 bg-white rounded-full shadow-[0_0_12px_rgba(255,255,255,0.8)]"
                 />
               </motion.div>
             </div>
@@ -93,17 +93,17 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-center"
+            className="text-center px-2 md:px-0"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4">
               {personalInfo.name}
             </h1>
             
-            <p className="text-xl text-text-secondary dark:text-text-dark-secondary mb-8 max-w-2xl mx-auto">
-              Full-Stack Engineer & DevOps Specialist building scalable applications and infrastructure. <span className="text-accent font-semibold">FastAPI • Node.js • React.js • AWS • Kubernetes</span>
+            <p className="text-base md:text-lg lg:text-xl text-text-secondary dark:text-text-dark-secondary mb-6 md:mb-8 max-w-2xl mx-auto">
+              Full-Stack Engineer & DevOps Specialist building scalable applications and infrastructure. <span className="text-accent font-semibold block md:inline">FastAPI • Node.js • React.js • AWS • Kubernetes</span>
             </p>
 
-            <p className="text-text-secondary dark:text-text-dark-secondary mb-8 max-w-2xl mx-auto">
+            <p className="text-sm md:text-base text-text-secondary dark:text-text-dark-secondary mb-6 md:mb-8 max-w-2xl mx-auto">
               {personalInfo.bio}
             </p>
 
@@ -112,13 +112,13 @@ export const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex flex-wrap gap-4 justify-center"
+              className="flex flex-col md:flex-row flex-wrap gap-3 md:gap-4 justify-center px-2"
             >
               <motion.button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-primary"
+                className="btn-primary w-full md:w-auto"
               >
                 Schedule a Call
               </motion.button>
@@ -127,7 +127,7 @@ export const Hero: React.FC = () => {
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-secondary"
+                className="btn-secondary w-full md:w-auto"
               >
                 View Projects
               </motion.button>
@@ -140,9 +140,9 @@ export const Hero: React.FC = () => {
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2"
       >
-        <svg className="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-5 h-5 md:w-6 md:h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </motion.div>
