@@ -19,7 +19,7 @@ function App() {
     // ============================================
     
     // 1. Page Title - Keyword-rich, descriptive
-    document.title = 'Raed Houimli | Senior Software Engineer & DevSecOps Specialist | AWS Kubernetes Terraform FastAPI React Node.js CI/CD Infrastructure';
+    document.title = 'Raed Houimli | DevSecOps & MLOps Engineer | Cybersecurity and AI Research-Oriented Profile';
     
     // 2. Meta Description - 155-160 characters
     const setMetaTag = (name: string, content: string, property?: boolean) => {
@@ -33,10 +33,10 @@ function App() {
       meta.setAttribute('content', content);
     };
 
-    setMetaTag('description', 'Raed Houimli - Senior Full-Stack Software Engineer & DevSecOps Specialist. 5+ years expertise in AWS cloud infrastructure, Kubernetes, Terraform, CI/CD automation, FastAPI, Node.js, React.js. Enterprise-grade solutions for global teams.');
+    setMetaTag('description', 'Raed Houimli - DevSecOps and cloud security engineer with 5+ years in secure software delivery, cloud automation, and infrastructure engineering. Research-oriented profile pursuing PhD opportunities in cybersecurity, AI, and MLOps for cloud systems.');
     
     // 3. Keywords Meta Tag
-    setMetaTag('keywords', 'Raed Houimli, Senior Software Engineer, DevSecOps Engineer, Full Stack Developer, AWS Cloud Architect, Kubernetes Expert, Terraform, CI/CD Pipeline, FastAPI, Node.js, React.js, Infrastructure as Code, Cloud Architecture, DevOps Consulting, Infrastructure Engineer, Backend Developer, Cloud Engineer, Python, TypeScript, Docker, GitOps, Linux, Monitoring, Prometheus, Grafana');
+    setMetaTag('keywords', 'Raed Houimli, DevSecOps Engineer, MLOps Engineer, Cloud Security Engineer, Cybersecurity Research, AI Security, Machine Learning, Secure Cloud Infrastructure, Distributed Systems, Kubernetes, Terraform, AWS, CI/CD, GitOps, Python');
     
     // 4. Additional SEO Meta Tags
     setMetaTag('author', 'Raed Houimli');
@@ -50,8 +50,8 @@ function App() {
     setMetaTag('apple-mobile-web-app-status-bar-style', 'black-translucent');
     
     // 5. Open Graph Tags (Social Media)
-    setMetaTag('og:title', 'Raed Houimli - Senior Software Engineer & DevSecOps Specialist', true);
-    setMetaTag('og:description', '5+ years building enterprise cloud infrastructure & full-stack applications. AWS, Kubernetes, Terraform, CI/CD, FastAPI, React.js expertise.', true);
+    setMetaTag('og:title', 'Raed Houimli - DevSecOps & MLOps Engineer | Cybersecurity and AI Research Focus', true);
+    setMetaTag('og:description', 'DevSecOps and cloud security engineer with 5+ years of secure platform delivery and growing research focus in cybersecurity, AI, and MLOps for cloud systems.', true);
     setMetaTag('og:type', 'profile', true);
     setMetaTag('og:url', 'https://houimliraed.dev', true);
     setMetaTag('og:image', 'https://avatars.githubusercontent.com/raed-houimli?s=1200', true);
@@ -60,8 +60,8 @@ function App() {
     
     // 6. Twitter Card Tags
     setMetaTag('twitter:card', 'summary_large_image');
-    setMetaTag('twitter:title', 'Raed Houimli - Senior Software Engineer & DevSecOps Specialist');
-    setMetaTag('twitter:description', 'Full-stack engineer building scalable cloud infrastructure. AWS, Kubernetes, Terraform, FastAPI, React.js');
+    setMetaTag('twitter:title', 'Raed Houimli - DevSecOps & MLOps Engineer');
+    setMetaTag('twitter:description', 'Research-oriented DevSecOps engineer focused on cybersecurity, AI/ML, and secure cloud infrastructure');
     setMetaTag('twitter:image', 'https://avatars.githubusercontent.com/raed-houimli?s=1200');
     setMetaTag('twitter:creator', '@raed-houimli');
     
@@ -90,8 +90,8 @@ function App() {
         "name": "Raed Houimli",
         "url": "https://houimliraed.dev",
         "image": "https://avatars.githubusercontent.com/raed-houimli",
-        "jobTitle": "Senior Software Engineer & DevSecOps Specialist",
-        "description": "Full-stack software engineer and DevSecOps specialist with 5+ years experience building enterprise cloud infrastructure and scalable web applications",
+        "jobTitle": "DevSecOps and Cloud Security Engineer",
+        "description": "Research-oriented engineer with 5+ years in secure software delivery, cloud automation, and DevSecOps platform engineering",
         "sameAs": [
           "https://github.com/raed-houimli",
           "https://linkedin.com/in/raed-houimli",
@@ -107,6 +107,12 @@ function App() {
         },
         "knowsAbout": [
           "Software Engineering",
+          "MLOps",
+          "Cybersecurity Research",
+          "Artificial Intelligence",
+          "Machine Learning",
+          "AI for Cybersecurity",
+          "Distributed Cloud Systems",
           "Cloud Infrastructure",
           "DevSecOps",
           "AWS",
@@ -129,8 +135,8 @@ function App() {
         "@type": "WebSite",
         "@id": "https://houimliraed.dev/#website",
         "url": "https://houimliraed.dev",
-        "name": "Raed Houimli - Software Engineer & DevOps Specialist",
-        "description": "Portfolio showcasing 5+ years of full-stack development and DevSecOps engineering expertise",
+        "name": "Raed Houimli - DevSecOps, MLOps, and Cybersecurity Research-Oriented Portfolio",
+        "description": "Portfolio presenting DevSecOps engineering experience with research interests in cybersecurity, AI/ML, and secure cloud systems",
         "creator": {
           "@type": "Person",
           "@id": "https://houimliraed.dev/#person"
@@ -140,7 +146,7 @@ function App() {
       {
         "@context": "https://schema.org",
         "@type": "Service",
-        "name": "Full-Stack Web Development & DevOps Consulting",
+        "name": "DevSecOps, Cloud Security, and Platform Engineering",
         "provider": {
           "@type": "Person",
           "@id": "https://houimliraed.dev/#person"
@@ -148,6 +154,8 @@ function App() {
         "areaServed": "Worldwide",
         "serviceType": [
           "Full-Stack Development",
+          "MLOps Enablement",
+          "Cloud Security Engineering",
           "Cloud Infrastructure Design",
           "DevOps Automation",
           "CI/CD Pipeline Development",

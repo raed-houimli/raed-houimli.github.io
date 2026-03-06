@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
           <motion.button
             onClick={() => scrollToSection('hero')}
             whileHover={{ scale: 1.05 }}
-            className="w-12 h-12 rounded-lg bg-bg dark:bg-bg-dark border border-border dark:border-border-dark flex items-center justify-center font-bold text-accent hover:border-accent transition-all"
+            className="w-12 h-12 rounded-lg bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark flex items-center justify-center font-bold text-text-primary-light dark:text-text-primary-dark hover:border-accent-primary transition-all"
             aria-label="Raed Houimli - Go to home"
             title="Go to home"
           >
@@ -53,7 +53,7 @@ export const Header: React.FC = () => {
                 key={item.name}
                 onClick={() => scrollToSection(item.id)}
                 whileHover={{ scale: 1.05, x: 4 }}
-                className="px-3 py-2 text-xs font-semibold rounded-lg bg-bg-secondary dark:bg-bg-dark-secondary border border-border dark:border-border-dark hover:bg-accent hover:text-white hover:border-accent transition-all whitespace-nowrap"
+                className="px-3 py-2 text-xs font-semibold rounded-lg bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:text-text-primary-light dark:hover:text-text-primary-dark hover:border-accent-primary transition-all whitespace-nowrap"
                 aria-label={`Go to ${item.name}`}
                 title={`Navigate to ${item.name} section`}
               >
@@ -67,40 +67,11 @@ export const Header: React.FC = () => {
             onClick={toggleTheme}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-3 py-2 text-xs font-semibold rounded-lg bg-bg-secondary dark:bg-bg-dark-secondary border border-border dark:border-border-dark hover:border-accent transition-all relative overflow-hidden"
+            className="px-3 py-2 text-xs font-semibold rounded-lg bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:text-text-primary-light dark:hover:text-text-primary-dark hover:border-accent-primary transition-all"
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
           >
-            {/* Glow effect */}
-            {theme === 'dark' && (
-              <motion.div
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                  scale: [1, 1.2, 1]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute inset-0 bg-gradient-to-r from-yellow-400/30 via-amber-500/30 to-yellow-400/30 blur-md"
-              />
-            )}
-            {theme === 'light' && (
-              <motion.div
-                animate={{
-                  opacity: [0.5, 1, 0.5],
-                  scale: [1, 1.2, 1]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute inset-0 bg-gradient-to-r from-blue-400/30 via-indigo-500/30 to-blue-400/30 blur-md"
-              />
-            )}
-            <span className="relative z-10">
+            <span>
               {theme === 'light' ? '🌙' : '☀️'}
             </span>
           </motion.button>
@@ -109,7 +80,7 @@ export const Header: React.FC = () => {
           <motion.button
             onClick={() => scrollToSection('contact')}
             whileHover={{ scale: 1.05, x: 4 }}
-            className="px-3 py-2 text-xs font-semibold rounded-lg bg-accent text-white hover:bg-accent-light transition-all"
+            className="px-3 py-2 text-xs font-semibold rounded-lg bg-accent-primary text-white hover:bg-sky-600 transition-all"
             aria-label="Go to Contact section"
             title="Navigate to Contact section"
           >
@@ -123,7 +94,7 @@ export const Header: React.FC = () => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4 }}
-        className="lg:hidden fixed bottom-0 left-0 right-0 bg-bg dark:bg-bg-dark border-t border-border dark:border-border-dark z-50"
+        className="lg:hidden fixed bottom-0 left-0 right-0 bg-surface-light/95 dark:bg-surface-dark/95 backdrop-blur border-t border-border-light dark:border-border-dark z-50"
         aria-label="Mobile navigation"
         role="navigation"
       >
@@ -133,7 +104,7 @@ export const Header: React.FC = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.id)}
-                className="px-3 py-2 text-xs font-semibold rounded-lg bg-bg-secondary dark:bg-bg-dark-secondary border border-border dark:border-border-dark hover:bg-accent hover:text-white hover:border-accent transition-all whitespace-nowrap"
+                className="px-3 py-2 text-xs font-semibold rounded-lg bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:text-text-primary-light dark:hover:text-text-primary-dark hover:border-accent-primary transition-all whitespace-nowrap"
                 aria-label={`Go to ${item.name}`}
                 title={`Navigate to ${item.name} section`}
               >
@@ -143,44 +114,18 @@ export const Header: React.FC = () => {
             
             <button 
               onClick={toggleTheme} 
-              className="px-3 py-2 text-xs font-semibold rounded-lg bg-bg-secondary dark:bg-bg-dark-secondary border border-border dark:border-border-dark hover:border-accent transition-all relative overflow-hidden whitespace-nowrap"
+              className="px-3 py-2 text-xs font-semibold rounded-lg bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark hover:border-accent-primary text-text-secondary-light dark:text-text-secondary-dark transition-all whitespace-nowrap"
               aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
               title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
-              {/* Mobile glow effect */}
-              {theme === 'dark' && (
-                <motion.div
-                  animate={{
-                    opacity: [0.4, 0.8, 0.4]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity
-                  }}
-                  className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-amber-500/20 to-yellow-400/20 blur-sm"
-                />
-              )}
-              {theme === 'light' && (
-                <motion.div
-                  animate={{
-                    opacity: [0.4, 0.8, 0.4]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity
-                  }}
-                  className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-indigo-500/20 to-blue-400/20 blur-sm"
-                />
-              )}
-              
-              <span className="relative z-10">
+              <span>
                 {theme === 'light' ? '🌙' : '☀️'}
               </span>
             </button>
 
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-3 py-2 text-xs font-semibold rounded-lg bg-accent text-white hover:bg-accent-light transition-all whitespace-nowrap"
+              className="px-3 py-2 text-xs font-semibold rounded-lg bg-accent-primary text-white hover:bg-sky-600 transition-all whitespace-nowrap"
               aria-label="Go to Contact section"
               title="Navigate to Contact section"
             >

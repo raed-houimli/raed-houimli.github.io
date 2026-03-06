@@ -15,24 +15,24 @@ export const Hero: React.FC = () => {
             className="flex justify-center mb-6 md:mb-8"
           >
             <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-52 lg:h-52">
-              {/* Golden breathing glow rings */}
+              {/* Subtle ambient ring */}
               <motion.div
                 animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.6, 0.3]
+                  scale: [1, 1.08, 1],
+                  opacity: [0.2, 0.35, 0.2]
                 }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="absolute -inset-4 md:-inset-5 lg:-inset-6 rounded-full bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 blur-2xl md:blur-3xl"
+                className="absolute -inset-4 md:-inset-5 lg:-inset-6 rounded-full bg-gradient-to-r from-slate-300 via-slate-400 to-slate-300 dark:from-slate-700 dark:via-slate-600 dark:to-slate-700 blur-2xl"
               />
               
               <motion.div
                 animate={{
-                  scale: [1.1, 1, 1.1],
-                  opacity: [0.4, 0.7, 0.4]
+                  scale: [1.06, 1, 1.06],
+                  opacity: [0.24, 0.38, 0.24]
                 }}
                 transition={{
                   duration: 3,
@@ -40,18 +40,18 @@ export const Hero: React.FC = () => {
                   ease: "easeInOut",
                   delay: 0.5
                 }}
-                className="absolute -inset-2 md:-inset-3 lg:-inset-3 rounded-full bg-gradient-to-l from-amber-300 via-yellow-500 to-amber-300 blur-xl md:blur-2xl"
+                className="absolute -inset-2 md:-inset-3 lg:-inset-3 rounded-full bg-gradient-to-l from-slate-200 via-slate-300 to-slate-200 dark:from-slate-700 dark:via-slate-600 dark:to-slate-700 blur-xl"
               />
 
-              {/* Profile image with golden border */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-3 md:border-4 border-amber-500 shadow-xl md:shadow-2xl bg-bg-secondary dark:bg-bg-dark-secondary">
+              {/* Profile image with subtle border */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 md:border-4 border-slate-300 dark:border-slate-600 shadow-xl md:shadow-2xl bg-surface-light dark:bg-surface-dark">
                 <motion.div
                   animate={{
-                    opacity: [0.5, 0.8, 0.5],
+                    opacity: [0.25, 0.45, 0.25],
                     scale: [0.98, 1.02, 0.98]
                   }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute inset-0 rounded-full ring-2 ring-amber-400/60 ring-inset"
+                  className="absolute inset-0 rounded-full ring-2 ring-slate-300/80 dark:ring-slate-500/70 ring-inset"
                 />
 
                 <img
@@ -65,10 +65,10 @@ export const Hero: React.FC = () => {
 
                 <motion.div
                   animate={{
-                    opacity: [0, 0.3, 0]
+                    opacity: [0, 0.16, 0]
                   }}
                   transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
-                  className="absolute inset-0 bg-gradient-to-br from-amber-400/40 via-transparent to-yellow-400/30 rounded-full"
+                  className="absolute inset-0 bg-gradient-to-br from-slate-200/40 via-transparent to-slate-300/40 dark:from-slate-700/30 dark:to-slate-600/30 rounded-full"
                 />
               </div>
             </div>
@@ -86,7 +86,7 @@ export const Hero: React.FC = () => {
             </h1>
             
             <p className="text-base md:text-lg lg:text-xl text-text-secondary dark:text-text-dark-secondary mb-6 md:mb-8 max-w-2xl mx-auto">
-              Full-Stack Engineer & DevOps Security Specialist building scalable applications and infrastructure. <span className="text-accent font-semibold block md:inline">Full-Stack • AWS • Terraform • Kubernetes</span>
+              DevSecOps Engineer • Cloud & Security Engineer • MLOps Enthusiast building secure, scalable platforms. <span className="text-accent-primary font-semibold block md:inline">DevSecOps • AI/ML Systems • AWS • Kubernetes</span>
             </p>
 
             <p className="text-sm md:text-base text-text-secondary dark:text-text-dark-secondary mb-6 md:mb-8 max-w-2xl mx-auto">

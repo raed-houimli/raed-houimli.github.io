@@ -17,7 +17,7 @@ export const Contact: React.FC = () => {
             <p className="kicker mb-2">Let's Connect</p>
             <h2 className="section-title">Get In Touch</h2>
             <p className="section-subtitle text-sm">
-              Open for consulting opportunities and collaborative projects
+              Open to consulting, research collaborations, and PhD-related opportunities in cybersecurity and AI/ML systems
             </p>
           </div>
 
@@ -156,7 +156,7 @@ export const Contact: React.FC = () => {
                 Schedule a Meeting
               </motion.a>
               <p className="text-xs text-text-muted dark:text-text-dark-muted mt-3">
-                Available for consulting • Remote worldwide
+                Available for consulting, research collaboration, and academic opportunities • Remote worldwide
               </p>
             </motion.div>
           </div>

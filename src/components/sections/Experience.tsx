@@ -3,6 +3,18 @@ import { motion } from 'framer-motion';
 import { experiences } from '../../data/content';
 
 export const Experience: React.FC = () => {
+  const ministryEmployer = 'The Ministry of National Defense of Tunisia';
+  const ministryRoles = experiences.filter((role) => role.company === ministryEmployer);
+  const nonMinistryRoles = experiences.filter((role) => role.company !== ministryEmployer);
+  const ministryProgressionOrder = [
+    'mod-tunisia-devops',
+    'mod-tunisia-software',
+    'mod-tunisia-technical-support',
+  ];
+  const ministryProgressionRoles = ministryProgressionOrder
+    .map((roleId) => ministryRoles.find((role) => role.id === roleId))
+    .filter((role): role is NonNullable<typeof role> => Boolean(role));
+
   return (
     <section id="experience" className="section-shell">
       <div className="container-custom">
@@ -17,106 +29,136 @@ export const Experience: React.FC = () => {
             <p className="kicker mb-2">Experience</p>
             <h2 className="section-title">Career Timeline</h2>
             <p className="section-subtitle text-sm">
-              5+ years: Full-Stack Development → DevOps Engineering
+              5+ years of progression from software engineering to DevSecOps, with growing focus on secure automation and intelligent cloud systems
             </p>
           </div>
 
-          {/* Timeline */}
-          <div className="max-w-3xl mx-auto space-y-4">
-            {/* Freelance - Current */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="enterprise-card p-4"
-            >
-              <div className="flex items-start justify-between gap-4 mb-3">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-bold text-sm text-accent-primary">
-                      {experiences[0].company}
-                    </h3>
-                    <motion.span 
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="badge"
-                    >
-                      Current
-                    </motion.span>
+          <div className="max-w-4xl mx-auto relative">
+            <div className="hidden md:block absolute left-3 top-0 bottom-0 w-px bg-border-light dark:bg-border-dark" />
+
+            <div className="space-y-5">
+              {nonMinistryRoles.map((role, index) => {
+                const [employmentMeta, skillsMeta] = role.highlights;
+
+                return (
+                  <motion.article
+                    key={role.id}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: index * 0.05 }}
+                    className="relative md:pl-10"
+                  >
+                    <span className="hidden md:block absolute left-0 top-5 w-2.5 h-2.5 rounded-full bg-accent-primary" aria-hidden="true" />
+
+                    <div className="card p-5">
+                      <div className="flex flex-col gap-2 mb-3">
+                        <h3 className="text-base md:text-lg font-semibold text-text-primary-light dark:text-text-primary-dark">
+                          {role.title}
+                        </h3>
+                        <p className="text-sm font-medium text-accent-primary">{role.company}</p>
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-text-muted-light dark:text-text-muted-dark">
+                          <span>{role.period}</span>
+                          <span aria-hidden="true">•</span>
+                          <span>{role.location}</span>
+                        </div>
+                      </div>
+
+                      {employmentMeta && (
+                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark mb-1">{employmentMeta}</p>
+                      )}
+                      {skillsMeta && (
+                        <p className="text-xs text-text-muted-light dark:text-text-muted-dark mb-3">{skillsMeta}</p>
+                      )}
+
+                      <p className="text-sm leading-relaxed text-text-secondary-light dark:text-text-secondary-dark mb-4">
+                        {role.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-1.5">
+                        {role.technologies.slice(0, 6).map((tech) => (
+                          <span key={tech} className="tech-badge text-xs">{tech}</span>
+                        ))}
+                        {role.technologies.length > 6 && (
+                          <span className="text-xs text-text-muted-light dark:text-text-muted-dark self-center">
+                            +{role.technologies.length - 6}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </motion.article>
+                );
+              })}
+
+              {ministryRoles.length > 0 && (
+                <motion.article
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: nonMinistryRoles.length * 0.05 }}
+                  className="relative md:pl-10"
+                >
+                  <span className="hidden md:block absolute left-0 top-5 w-2.5 h-2.5 rounded-full bg-accent-primary" aria-hidden="true" />
+
+                  <div className="card p-5">
+                    <div className="mb-5 pb-4 border-b border-border-light/60 dark:border-border-dark/60">
+                      <h3 className="text-base md:text-lg font-semibold text-text-primary-light dark:text-text-primary-dark">
+                        The Ministry of National Defense of Tunisia
+                      </h3>
+                      <p className="text-xs text-text-muted-light dark:text-text-muted-dark mt-1">
+                        Full-time · 5 yrs 6 mos · Tunis, Tunisia · On-site
+                      </p>
+                    </div>
+
+                    <div className="relative pl-7 md:pl-8">
+                      <div className="absolute left-2.5 md:left-3 top-3 bottom-3 w-px bg-border-light dark:bg-border-dark" aria-hidden="true" />
+
+                      <div className="space-y-4">
+                      {ministryProgressionRoles.map((role, roleIndex) => {
+                        const [employmentMeta, skillsMeta] = role.highlights;
+
+                        return (
+                          <div key={role.id} className="relative">
+                            <span
+                              className="absolute -left-[1.42rem] md:-left-[1.62rem] top-6 w-2.5 h-2.5 rounded-full bg-accent-primary border-2 border-surface-light dark:border-surface-dark"
+                              aria-hidden="true"
+                            />
+                            <div className="card-neo p-4 border border-border-light dark:border-border-dark">
+                              <h4 className="text-sm md:text-base font-semibold text-text-primary-light dark:text-text-primary-dark mb-1">
+                                {role.title}
+                              </h4>
+                              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-text-muted-light dark:text-text-muted-dark mb-2">
+                                <span>{role.period}</span>
+                                <span aria-hidden="true">•</span>
+                                <span>{role.location}</span>
+                              </div>
+
+                              {employmentMeta && (
+                                <p className="text-xs text-text-muted-light dark:text-text-muted-dark mb-1">{employmentMeta}</p>
+                              )}
+                              {skillsMeta && (
+                                <p className="text-xs text-text-muted-light dark:text-text-muted-dark mb-3">{skillsMeta}</p>
+                              )}
+
+                              <p className="text-sm leading-relaxed text-text-secondary-light dark:text-text-secondary-dark mb-3">
+                                {role.description}
+                              </p>
+
+                              <div className="flex flex-wrap gap-1.5">
+                                {role.technologies.map((tech) => (
+                                  <span key={tech} className="tech-badge text-xs">{tech}</span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                      </div>
+                    </div>
                   </div>
-                  <p className="font-bold text-xs mb-1">{experiences[0].title}</p>
-                  <div className="flex flex-wrap items-center gap-3 text-xs text-text-muted-light dark:text-text-muted-dark">
-                    <span>Dec 2025 – Present</span>
-                    <span>•</span>
-                    <span>{experiences[0].location}</span>
-                  </div>
-                </div>
-              </div>
-              <p className="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-2 leading-relaxed">
-                {experiences[0].description}
-              </p>
-              <div className="flex flex-wrap gap-1">
-                {experiences[0].technologies.slice(0, 5).map(tech => (
-                  <span key={tech} className="tech-badge text-xs">{tech}</span>
-                ))}
-                {experiences[0].technologies.length > 5 && (
-                  <span className="text-xs text-text-muted-light dark:text-text-muted-dark">
-                    +{experiences[0].technologies.length - 5}
-                  </span>
-                )}
-              </div>
-            </motion.div>
-
-            {/* Ministry of Defense - Combined */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="card-neo p-4 border-l-2 border-accent-primary"
-            >
-              <div className="mb-4">
-                <h3 className="font-bold text-sm text-accent-primary mb-1">
-                  Ministry of Defense – Tunisia
-                </h3>
-                <div className="flex items-center gap-3 text-xs text-text-muted-light dark:text-text-muted-dark">
-                  <span>Jul 2020 – Nov 2025</span>
-                  <span>•</span>
-                  <span>5 years</span>
-                </div>
-              </div>
-
-              {/* DevOps Role */}
-              <div className="mb-4 pb-4 border-b border-border-light/50 dark:border-border-dark/50">
-                <p className="font-bold text-xs mb-2 text-text-primary-light dark:text-text-primary-dark">
-                  DevOps Engineer (Sep 2023 – Nov 2025)
-                </p>
-                <p className="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-2 leading-relaxed">
-                  {experiences[1].description}
-                </p>
-                <div className="flex flex-wrap gap-1">
-                  {experiences[1].technologies.slice(0, 4).map(tech => (
-                    <span key={tech} className="tech-badge text-xs">{tech}</span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Software Role */}
-              <div>
-                <p className="font-bold text-xs mb-2 text-text-primary-light dark:text-text-primary-dark">
-                  Software Engineer (Jul 2020 – Aug 2023)
-                </p>
-                <p className="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-2 leading-relaxed">
-                  {experiences[2].description}
-                </p>
-                <div className="flex flex-wrap gap-1">
-                  {experiences[2].technologies.slice(0, 4).map(tech => (
-                    <span key={tech} className="tech-badge text-xs">{tech}</span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+                </motion.article>
+              )}
+            </div>
           </div>
         </motion.div>
       </div>

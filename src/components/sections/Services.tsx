@@ -49,7 +49,7 @@ export const Services: React.FC = () => {
             <p className="kicker mb-2">Services</p>
             <h2 className="section-title">What I Offer</h2>
             <p className="section-subtitle text-sm">
-              Full-stack development + cloud infrastructure solutions
+              DevSecOps engineering, secure cloud architecture, and automation-oriented platform delivery
             </p>
           </div>
 

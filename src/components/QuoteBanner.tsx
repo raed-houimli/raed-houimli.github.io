@@ -42,15 +42,8 @@ export const QuoteBanner = () => {
     <motion.div
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
-      className="signal-bar overflow-hidden relative cursor-pointer"
+      className="signal-bar overflow-hidden relative"
     >
-      {/* Animated background shimmer */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"
-        animate={{ x: ['-100%', '100%'] }}
-        transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-      />
-      
       <div className="container-custom py-2 relative z-10">
         <AnimatePresence mode="wait">
           <motion.div
@@ -73,16 +66,16 @@ export const QuoteBanner = () => {
         </AnimatePresence>
         
         {/* Progress indicator dots */}
-        <div className="flex justify-center gap-0.5 mt-0.5">
+        <div className="flex justify-center gap-1 mt-1">
           {quotes.map((_, index) => (
             <motion.button
               key={index}
               onClick={() => setCurrentQuote(index)}
-              whileHover={{ scale: 1.2 }}
-              className={`h-0.5 rounded-full transition-all duration-300 ${
+              whileHover={{ scale: 1.1 }}
+              className={`h-1 rounded-full transition-all duration-300 ${
                 index === currentQuote 
-                  ? 'w-6 bg-accent-primary' 
-                  : 'w-0.5 bg-accent-primary/30 hover:bg-accent-primary/50'
+                  ? 'w-4 bg-accent-primary' 
+                  : 'w-1 bg-accent-primary/25 hover:bg-accent-primary/45'
               }`}
               aria-label={`Go to quote ${index + 1}`}
             />
@@ -94,7 +87,7 @@ export const QuoteBanner = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="absolute top-1 right-4 text-xs text-accent-primary flex items-center gap-1"
+            className="absolute top-1 right-4 text-[10px] text-accent-primary flex items-center gap-1"
           >
             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
               <path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" />

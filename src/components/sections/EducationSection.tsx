@@ -8,7 +8,7 @@ export const Education: React.FC = () => {
 
   return (
     <section id="education" className="section-shell relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/5 via-background-light to-accent-secondary/5 dark:from-accent-primary/3 dark:via-background-dark dark:to-accent-secondary/3"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(15,23,42,0.015),transparent_25%,rgba(15,23,42,0.02))] dark:bg-[linear-gradient(to_bottom,rgba(148,163,184,0.03),transparent_30%,rgba(148,163,184,0.04))]"></div>
 
       <div className="container-custom relative z-10">
         <motion.div
@@ -20,7 +20,7 @@ export const Education: React.FC = () => {
           {/* Section Header */}
           <div className="section-header">
             <p className="kicker mb-2">Academic Foundation</p>
-            <h2 className="section-title bg-gradient-to-r from-accent-secondary via-accent-primary to-accent-secondary bg-clip-text text-transparent">
+            <h2 className="section-title text-text-primary-light dark:text-text-primary-dark">
               Education
             </h2>
             <p className="section-subtitle">
@@ -37,7 +37,7 @@ export const Education: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="mb-8"
             >
-              <div className="card-luxe p-5 border-2 border-blue-500/20">
+              <div className="card-luxe p-5 border border-border-light dark:border-border-dark">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
@@ -48,7 +48,7 @@ export const Education: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  <span className="px-3 py-1 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold rounded-full">BSc</span>
+                  <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-text-secondary-light dark:text-text-secondary-dark text-xs font-bold rounded-full">BSc</span>
                 </div>
               </div>
             </motion.div>
@@ -68,11 +68,7 @@ export const Education: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {masters.map((degree, index) => {
                 const icons = ['💻', '📊', '🔐'];
-                const colors = [
-                  'border-purple-500/20',
-                  'border-green-500/20',
-                  'border-red-500/20'
-                ];
+                const colors = ['border-border-light dark:border-border-dark', 'border-border-light dark:border-border-dark', 'border-border-light dark:border-border-dark'];
 
                 return (
                   <motion.div
@@ -83,9 +79,9 @@ export const Education: React.FC = () => {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="group relative"
                   >
-                    <div className={`card-luxe p-4 border-2 ${colors[index]} h-full`}>
+                    <div className={`card-luxe p-4 border ${colors[index]} h-full`}>
                       {/* Step Badge */}
-                      <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-gradient-to-br from-accent-primary to-accent-secondary text-white flex items-center justify-center font-bold text-xs shadow-lg">
+                      <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-accent-primary text-white flex items-center justify-center font-bold text-xs shadow-md">
                         {index + 2}
                       </div>
 

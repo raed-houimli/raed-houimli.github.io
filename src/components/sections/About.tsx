@@ -5,23 +5,32 @@ import { personalInfo } from '../../data/content';
 export const About: React.FC = () => {
   const expertise = [
     {
-      title: 'Senior Software Engineer',
+      title: 'DevSecOps Engineer',
       icon: '💻',
-      description: 'Full-stack development with FastAPI, Node.js, and React.js. Building scalable, production-ready applications.',
-      skills: ['FastAPI', 'Node.js', 'React.js', 'TypeScript', 'PostgreSQL', 'Redis']
+      description: 'Designing and operating secure delivery pipelines and cloud-native platforms with reliability, auditability, and automation as core principles.',
+      skills: ['CI/CD Security', 'Kubernetes', 'Terraform', 'GitOps', 'SAST/DAST', 'Observability']
     },
     {
-      title: 'DevSecOps Specialist',
+      title: 'Cloud & Security Engineer',
       icon: '🔒',
-      description: 'Security-first DevOps practices. Implementing SAST, DAST, container security, and compliance automation.',
-      skills: ['Security Scanning', 'IAM', 'Secrets Management', 'Compliance', 'Audit Logging']
+      description: 'Building resilient cloud infrastructure with strong security controls across identity, networking, secrets management, and compliance workflows.',
+      skills: ['AWS', 'IAM', 'Secrets Management', 'Network Security', 'Compliance', 'Audit Logging']
     },
     {
-      title: 'Cloud Infrastructure Architect',
+      title: 'MLOps & Research-Oriented Engineer',
       icon: '☁️',
-      description: 'Designing and deploying highly available, multi-region AWS infrastructure with Infrastructure as Code.',
-      skills: ['AWS', 'Terraform', 'Kubernetes', 'Docker', 'CI/CD']
+      description: 'Exploring AI/ML-driven security and cloud operations through practical engineering, with strong motivation to contribute to academic research and PhD work.',
+      skills: ['MLOps', 'AI for Security', 'Distributed Systems', 'Secure AI Pipelines', 'Cloud Automation']
     }
+  ];
+
+  const researchInterests = [
+    'AI for Cybersecurity',
+    'Secure Cloud Infrastructure',
+    'DevSecOps Automation',
+    'MLOps for Secure AI Systems',
+    'Autonomous and Intelligent Systems Security',
+    'AI/ML applied to distributed cloud environments',
   ];
 
   const achievements = [
@@ -45,7 +54,7 @@ export const About: React.FC = () => {
             <p className="kicker mb-2">Who I Am</p>
             <h2 className="section-title">About Me</h2>
             <p className="section-subtitle text-sm">
-              Senior Software Engineer and DevSecOps Specialist with 5+ years building enterprise systems
+              DevSecOps engineer with strong software and cloud security foundations, actively pursuing research opportunities and PhD positions in cybersecurity and AI/ML systems
             </p>
           </div>
 
@@ -81,10 +90,10 @@ export const About: React.FC = () => {
                 <div className="flex-1">
                   <h3 className="text-xl font-bold mb-2">{personalInfo.name}</h3>
                   <p className="text-sm text-text-secondary dark:text-text-dark-secondary leading-relaxed mb-3">
-                    I'm a <strong>Senior Software Engineer</strong> and <strong>DevSecOps specialist</strong> with over 5 years of experience building production-grade web applications and cloud infrastructure. I specialize in full-stack development (FastAPI, Node.js, React.js) and infrastructure automation (AWS, Kubernetes, Terraform).
+                    I am a <strong>DevSecOps Engineer</strong> with a strong background in software engineering, cloud technologies, and cybersecurity. Over the past 5+ years, I have worked across secure application delivery, infrastructure automation, and production operations in high-responsibility environments.
                   </p>
                   <p className="text-sm text-text-secondary dark:text-text-dark-secondary leading-relaxed">
-                    My career began as a software engineer building backend APIs and full-stack applications, then evolved into DevOps engineering where I architected cloud infrastructure, implemented CI/CD pipelines, and established security best practices for mission-critical government systems.
+                    My current direction is research-oriented: I am actively seeking opportunities and PhD pathways in <strong>Cybersecurity</strong>, <strong>Artificial Intelligence</strong>, and <strong>Machine Learning</strong>, especially where AI/ML intersects with secure cloud infrastructure and distributed systems.
                   </p>
                 </div>
               </div>
@@ -116,6 +125,23 @@ export const About: React.FC = () => {
                 </motion.div>
               ))}
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="card p-5 mb-6"
+            >
+              <h3 className="text-base font-bold mb-3">Research Interests</h3>
+              <p className="text-xs text-text-secondary dark:text-text-dark-secondary mb-3 leading-relaxed">
+                My research interests focus on secure and intelligent computing systems, with emphasis on practical impact for cloud-native engineering and resilient AI infrastructure.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {researchInterests.map((topic) => (
+                  <span key={topic} className="tech-badge text-xs">{topic}</span>
+                ))}
+              </div>
+            </motion.div>
 
             {/* Achievements */}
             <motion.div

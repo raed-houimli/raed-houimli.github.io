@@ -51,7 +51,7 @@ export const Articles = () => {
 
   return (
     <section id="articles" className="section-shell relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.08),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(139,92,246,0.06),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(15,23,42,0.015),transparent_30%,rgba(15,23,42,0.02))] dark:bg-[linear-gradient(to_bottom,rgba(148,163,184,0.03),transparent_30%,rgba(148,163,184,0.04))]"></div>
 
       <div className="container-custom relative z-10">
         <motion.div
@@ -63,11 +63,11 @@ export const Articles = () => {
           {/* Header */}
           <div className="section-header">
             <p className="kicker mb-2">Latest Insights</p>
-            <h2 className="section-title bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-primary bg-clip-text text-transparent">
+            <h2 className="section-title text-text-primary-light dark:text-text-primary-dark">
               Articles
             </h2>
             <p className="section-subtitle">
-              DevOps, Infrastructure, and Cloud Architecture insights
+              DevSecOps, cybersecurity, MLOps, and applied AI engineering insights
             </p>
 
             {/* Refresh Button */}
@@ -76,7 +76,7 @@ export const Articles = () => {
               disabled={isRefreshing}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-accent-primary/10 to-accent-secondary/10 border border-accent-primary/30 text-accent-primary rounded-lg font-medium text-xs hover:bg-accent-primary/20 disabled:opacity-50"
+              className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-accent-primary rounded-lg font-medium text-xs hover:border-accent-primary/50 disabled:opacity-50"
             >
               <motion.svg
                 animate={isRefreshing ? { rotate: 360 } : {}}
@@ -124,14 +124,14 @@ export const Articles = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.4, delay: idx * 0.08 }}
-                      whileHover={{ y: -4 }}
+                      whileHover={{ y: -2 }}
                       className="group relative"
                     >
-                      <div className="absolute -inset-0.5 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-lg blur opacity-0 group-hover:opacity-75 transition-opacity" ></div>
+                      <div className="absolute -inset-0.5 bg-slate-200/40 dark:bg-slate-700/30 rounded-lg blur opacity-0 group-hover:opacity-80 transition-opacity" ></div>
                       
-                      <div className="relative card-luxe p-4 h-full flex flex-col border-2 border-border-light/50 dark:border-border-dark/50 group-hover:border-accent-primary/30">
+                      <div className="relative card-luxe p-4 h-full flex flex-col border border-border-light dark:border-border-dark group-hover:border-accent-primary/30">
                         {/* Thumbnail */}
-                        <div className="relative w-full h-32 -mx-4 -mt-4 mb-3 overflow-hidden rounded-t-lg bg-gradient-to-br from-accent-primary/10 to-accent-secondary/10">
+                        <div className="relative w-full h-32 -mx-4 -mt-4 mb-3 overflow-hidden rounded-t-lg bg-slate-100 dark:bg-slate-800/60">
                           {article.thumbnail ? (
                             <img 
                               src={article.thumbnail} 
@@ -162,7 +162,7 @@ export const Articles = () => {
                         {article.categories.length > 0 && (
                           <div className="flex flex-wrap gap-1.5 mb-3">
                             {article.categories.slice(0, 2).map((cat, i) => (
-                              <span key={i} className="px-2 py-0.5 bg-accent-primary/10 text-accent-primary rounded text-xs font-medium">
+                              <span key={i} className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-accent-primary rounded text-xs font-medium">
                                 #{cat}
                               </span>
                             ))}

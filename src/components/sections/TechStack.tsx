@@ -26,7 +26,7 @@ export const TechStack: React.FC = () => {
             <p className="kicker mb-3">Technology Arsenal</p>
             <h2 className="section-title">Tech Stack</h2>
             <p className="section-subtitle">
-              Full-stack development + cloud infrastructure expertise
+              Tooling for DevSecOps, cloud security, and MLOps-oriented engineering workflows
             </p>
           </div>
 

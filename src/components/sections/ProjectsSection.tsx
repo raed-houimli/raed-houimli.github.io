@@ -7,26 +7,31 @@ type CategoryType = 'All' | 'DevOps/Cloud' | 'FullStack' | 'ML/AI' | 'Cloud Nati
 
 export const ProjectsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>('All');
-  const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 9;
+  const priorityProjectIds = [
+    'alphastack-project',
+    'phishguard-ai-project',
+    'cloudpipelinex-project',
+    'networkspark-project',
+    'infraui-project',
+    'robonav-ai-project',
+    'secure-mlops-platform',
+    'distributed-ai-observability',
+    'zero-trust-delivery-workflow',
+  ];
+  const priorityRank = new Map(priorityProjectIds.map((projectId, index) => [projectId, index]));
   
   const filteredProjects = selectedCategory === 'All' 
     ? projects 
     : projects.filter(p => p.category === selectedCategory);
-
-  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
-  const indexOfLastProject = currentPage * projectsPerPage;
-  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+  const sortedProjects = [...filteredProjects].sort((firstProject, secondProject) => {
+    const firstRank = priorityRank.get(firstProject.id) ?? Number.MAX_SAFE_INTEGER;
+    const secondRank = priorityRank.get(secondProject.id) ?? Number.MAX_SAFE_INTEGER;
+    return firstRank - secondRank;
+  });
+  const currentProjects = sortedProjects.slice(0, 8);
 
   const handleFilterChange = (category: CategoryType) => {
     setSelectedCategory(category);
-    setCurrentPage(1);
-  };
-
-  const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -43,7 +48,7 @@ export const ProjectsSection = () => {
             <p className="kicker mb-2">Portfolio</p>
             <h2 className="section-title">Case Studies</h2>
             <p className="section-subtitle text-sm">
-              Real-world infrastructure and deployment solutions
+              Selected implementations in DevSecOps, secure cloud systems, and automation-driven platform engineering
             </p>
           </div>
 
@@ -111,49 +116,6 @@ export const ProjectsSection = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* Pagination - Compact */}
-          {totalPages > 1 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="flex items-center justify-center gap-1.5 mt-6"
-            >
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="px-2 py-1 rounded text-xs font-bold disabled:opacity-40 bg-border-light dark:bg-border-dark"
-              >
-                ← Prev
-              </button>
-
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-                <button
-                  key={pageNum}
-                  onClick={() => handlePageChange(pageNum)}
-                  className={`w-7 h-7 rounded text-xs font-bold transition-all ${
-                    currentPage === pageNum
-                      ? 'bg-accent-primary text-white'
-                      : 'bg-border-light dark:bg-border-dark hover:text-accent-primary'
-                  }`}
-                >
-                  {pageNum}
-                </button>
-              ))}
-
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="px-2 py-1 rounded text-xs font-bold disabled:opacity-40 bg-border-light dark:bg-border-dark"
-              >
-                Next →
-              </button>
-            </motion.div>
-          )}
-
-          <p className="text-center text-xs text-text-muted-light dark:text-text-muted-dark mt-3">
-            {indexOfFirstProject + 1}–{Math.min(indexOfLastProject, filteredProjects.length)} of {filteredProjects.length}
-          </p>
         </motion.div>
       </div>
     </section>
