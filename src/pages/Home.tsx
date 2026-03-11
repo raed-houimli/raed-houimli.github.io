@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Hero } from '../components/sections/Hero';
-import { Services } from '../components/sections/Services';
 import { Experience } from '../components/sections/Experience';
 import { ProjectsSection } from '../components/sections/ProjectsSection';
 import { TechStack } from '../components/sections/TechStack';
@@ -68,7 +67,6 @@ export const Home = () => {
       className="page-shell"
     >
       <Hero />
-      <Services />
       <Experience />
       <ProjectsSection />
       <TechStack />

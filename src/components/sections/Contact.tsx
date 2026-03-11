@@ -14,10 +14,10 @@ export const Contact: React.FC = () => {
         >
           {/* Header */}
           <div className="section-header mb-8">
-            <p className="kicker mb-2">Let's Connect</p>
-            <h2 className="section-title">Get In Touch</h2>
+            <p className="kicker mb-2">Contact</p>
+            <h2 className="section-title">Professional Contact Details</h2>
             <p className="section-subtitle text-sm">
-              Open to consulting, research collaborations, and PhD-related opportunities in cybersecurity and AI/ML systems
+              Open to consulting assignments, research collaboration, and PhD-related opportunities in cybersecurity and AI/ML systems.
             </p>
           </div>
 
@@ -132,6 +132,12 @@ export const Contact: React.FC = () => {
                   </svg>
                 </motion.a>
               </div>
+
+            
+             
+                 
+
+
             </motion.div>
 
             {/* CTA */}

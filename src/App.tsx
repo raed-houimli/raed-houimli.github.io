@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Layout } from './components/Layout';
 import { Hero } from './components/sections/Hero';
 import { About } from './components/sections/About';
-import { Services } from './components/sections/Services';
 import { Experience } from './components/sections/Experience';
 import { ProjectsSection } from './components/sections/ProjectsSection';
 import { TechStack } from './components/sections/TechStack';
@@ -205,7 +204,6 @@ function App() {
         >
           <Hero />
           <About />
-          <Services />
           <Experience />
           <ProjectsSection />
           <TechStack />

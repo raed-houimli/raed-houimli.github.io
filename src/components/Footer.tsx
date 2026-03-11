@@ -3,21 +3,19 @@ import { personalInfo } from '../data/content';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="mt-auto border-t border-border-light dark:border-border-dark bg-surface-light/90 dark:bg-surface-dark/90 backdrop-blur">
-      <div className="container-custom py-3">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-          {/* Left side */}
-          <p className="text-xs text-text-secondary-light dark:text-text-secondary-dark">
-            © 2026 Raed Houimli • Senior Software Engineer -- DevSecOps 
+    <footer className="mt-auto border-t border-border bg-surface/90">
+      <div className="container-custom py-4">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-2.5">
+          <p className="text-sm text-text-secondary">
+            © 2026 Raed Houimli
           </p>
 
-          {/* Right side - Social links only */}
           <div className="flex items-center space-x-4">
             <a
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-secondary-light dark:text-text-secondary-dark hover:text-accent-primary transition-colors"
+              className="text-text-secondary hover:text-accent transition-colors"
               aria-label="GitHub Profile"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -28,7 +26,7 @@ export const Footer: React.FC = () => {
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-secondary-light dark:text-text-secondary-dark hover:text-accent-primary transition-colors"
+              className="text-text-secondary hover:text-accent transition-colors"
               aria-label="LinkedIn Profile"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -39,7 +37,7 @@ export const Footer: React.FC = () => {
               href={personalInfo.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-text-secondary-light dark:text-text-secondary-dark hover:text-accent-primary transition-colors"
+              className="text-text-secondary hover:text-accent transition-colors"
               aria-label="Medium Blog"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

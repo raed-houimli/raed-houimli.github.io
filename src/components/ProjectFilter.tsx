@@ -17,15 +17,15 @@ export const ProjectFilter = ({ onFilterChange }: ProjectFilterProps) => {
   };
 
   return (
-    <div className="flex flex-wrap gap-3 mb-12">
+    <div className="flex flex-wrap gap-2 mb-6">
       {categories.map((category) => (
         <button
           key={category}
           onClick={() => handleClick(category)}
           className={`filter-chip transition-all ${
             active === category
-              ? 'bg-accent-primary text-white'
-              : 'bg-border-light dark:bg-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:border-accent-primary/50'
+              ? 'bg-accent text-white border-accent'
+              : 'bg-surface text-text-secondary hover:border-accent/40'
           }`}
         >
           {category}

@@ -3,41 +3,19 @@ import { motion } from 'framer-motion';
 import { personalInfo } from '../../data/content';
 
 export const About: React.FC = () => {
-  const expertise = [
-    {
-      title: 'DevSecOps Engineer',
-      icon: '💻',
-      description: 'Designing and operating secure delivery pipelines and cloud-native platforms with reliability, auditability, and automation as core principles.',
-      skills: ['CI/CD Security', 'Kubernetes', 'Terraform', 'GitOps', 'SAST/DAST', 'Observability']
-    },
-    {
-      title: 'Cloud & Security Engineer',
-      icon: '🔒',
-      description: 'Building resilient cloud infrastructure with strong security controls across identity, networking, secrets management, and compliance workflows.',
-      skills: ['AWS', 'IAM', 'Secrets Management', 'Network Security', 'Compliance', 'Audit Logging']
-    },
-    {
-      title: 'MLOps & Research-Oriented Engineer',
-      icon: '☁️',
-      description: 'Exploring AI/ML-driven security and cloud operations through practical engineering, with strong motivation to contribute to academic research and PhD work.',
-      skills: ['MLOps', 'AI for Security', 'Distributed Systems', 'Secure AI Pipelines', 'Cloud Automation']
-    }
+  const currentActivities = [
+    'Designing secure CI/CD and GitOps delivery workflows.',
+    'Building cloud-native infrastructure with Kubernetes and Terraform.',
+    'Contributing to applied engineering projects in cybersecurity and AI systems.',
   ];
 
   const researchInterests = [
     'AI for Cybersecurity',
     'Secure Cloud Infrastructure',
-    'DevSecOps Automation',
+    'DevSecOps Automation and Verification',
     'MLOps for Secure AI Systems',
-    'Autonomous and Intelligent Systems Security',
+    'Distributed Systems and Edge/Cloud Security',
     'AI/ML applied to distributed cloud environments',
-  ];
-
-  const achievements = [
-    { number: '5+', label: 'Years Experience' },
-    { number: '18+', label: 'Production Projects' },
-    { number: '4', label: 'University Degrees' },
-    { number: '50+', label: 'AWS Resources Managed' }
   ];
 
   return (
@@ -49,120 +27,58 @@ export const About: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {/* Header */}
-          <div className="section-header mb-8">
-            <p className="kicker mb-2">Who I Am</p>
-            <h2 className="section-title">About Me</h2>
-            <p className="section-subtitle text-sm">
-              DevSecOps engineer with strong software and cloud security foundations, actively pursuing research opportunities and PhD positions in cybersecurity and AI/ML systems
+          <div className="section-header mb-7">
+            <p className="kicker mb-2">Profile</p>
+            <h2 className="section-title">Professional Summary</h2>
+            <p className="section-subtitle">
+              DevSecOps and cloud security engineer with 5+ years of experience in software delivery, infrastructure automation, and platform reliability.
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            {/* Introduction */}
+          <div className="max-w-5xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="card p-6 mb-6"
+              className="card p-5 mb-5"
             >
-              <div className="flex items-start gap-4">
-                <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-accent flex-shrink-0">
-                  {/* Golden glow for About section pic too */}
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.3, 0.6, 0.3]
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="absolute -inset-3 rounded-full bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 blur-lg"
-                  />
-                  <img
-                    src="https://avatars.githubusercontent.com/raed-houimli"
-                    alt={personalInfo.name}
-                    className="w-full h-full object-cover relative z-10"
-                  />
+              <div className="flex flex-col gap-4 md:flex-row md:items-start">
+                <div className="w-[86px] h-[86px] rounded-full overflow-hidden border border-border flex-shrink-0">
+                  <img src="https://avatars.githubusercontent.com/raed-houimli" alt={personalInfo.name} className="w-full h-full object-cover" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2">{personalInfo.name}</h3>
-                  <p className="text-sm text-text-secondary dark:text-text-dark-secondary leading-relaxed mb-3">
-                    I am a <strong>DevSecOps Engineer</strong> with a strong background in software engineering, cloud technologies, and cybersecurity. Over the past 5+ years, I have worked across secure application delivery, infrastructure automation, and production operations in high-responsibility environments.
+                <div>
+                  <h3 className="text-lg mb-2">{personalInfo.name}</h3>
+                  <p className="text-[0.98rem] text-text-secondary leading-relaxed mb-3">
+                    {personalInfo.bio}
                   </p>
-                  <p className="text-sm text-text-secondary dark:text-text-dark-secondary leading-relaxed">
-                    My current direction is research-oriented: I am actively seeking opportunities and PhD pathways in <strong>Cybersecurity</strong>, <strong>Artificial Intelligence</strong>, and <strong>Machine Learning</strong>, especially where AI/ML intersects with secure cloud infrastructure and distributed systems.
+                  <p className="text-[0.98rem] text-text-secondary leading-relaxed">
+                    Current objective: contribute to advanced research and industrial collaboration in cybersecurity, trustworthy AI systems, and resilient cloud operations.
                   </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Expertise Areas */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              {expertise.map((area, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="card p-4"
-                >
-                  <div className="text-3xl mb-3">{area.icon}</div>
-                  <h4 className="font-bold text-sm mb-2">{area.title}</h4>
-                  <p className="text-xs text-text-secondary dark:text-text-dark-secondary mb-3 leading-relaxed">
-                    {area.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1">
-                    {area.skills.slice(0, 3).map((skill) => (
-                      <span key={skill} className="tech-badge text-xs">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="card p-5">
+                <h3 className="mb-3 text-base">Current Activities</h3>
+                <ul className="space-y-2 text-sm text-text-secondary">
+                  {currentActivities.map((item) => (
+                    <li key={item} className="leading-relaxed">- {item}</li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="card p-5">
+                <h3 className="mb-3 text-base">Research Interests</h3>
+                <ul className="space-y-2 text-sm text-text-secondary">
+                  {researchInterests.map((item) => (
+                    <li key={item} className="leading-relaxed">- {item}</li>
+                  ))}
+                </ul>
+              </motion.div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="card p-5 mb-6"
-            >
-              <h3 className="text-base font-bold mb-3">Research Interests</h3>
-              <p className="text-xs text-text-secondary dark:text-text-dark-secondary mb-3 leading-relaxed">
-                My research interests focus on secure and intelligent computing systems, with emphasis on practical impact for cloud-native engineering and resilient AI infrastructure.
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {researchInterests.map((topic) => (
-                  <span key={topic} className="tech-badge text-xs">{topic}</span>
-                ))}
-              </div>
-            </motion.div>
 
-            {/* Achievements */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="card p-4"
-            >
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {achievements.map((stat, i) => (
-                  <div key={i} className="text-center">
-                    <div className="text-2xl font-black text-accent mb-1">
-                      {stat.number}
-                    </div>
-                    <div className="text-xs font-bold text-text-muted dark:text-text-dark-muted">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
           </div>
         </motion.div>
       </div>

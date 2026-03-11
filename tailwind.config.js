@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         background: {
-          light: '#fafbfc',
+          light: '#f7f8fa',
           dark: '#08090f',
         },
         surface: {
@@ -16,20 +16,20 @@ export default {
           dark: '#0f1623',
         },
         border: {
-          light: '#e2e8f0',
+          light: '#d7ddea',
           dark: '#1e293b',
         },
         text: {
-          'primary-light': '#0f172a',
+          'primary-light': '#1f2937',
           'primary-dark': '#f1f5f9',
-          'secondary-light': '#475569',
+          'secondary-light': '#36465f',
           'secondary-dark': '#cbd5e1',
-          'muted-light': '#64748b',
+          'muted-light': '#5a6780',
           'muted-dark': '#94a3b8',
         },
         accent: {
-          primary: '#0ea5e9',
-          secondary: '#8b5cf6',
+          primary: '#244a86',
+          secondary: '#2e5b9f',
         },
       },
     },

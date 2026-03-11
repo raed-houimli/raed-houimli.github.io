@@ -14,13 +14,13 @@ export const Articles = () => {
   const loadArticles = async () => {
     setIsRefreshing(true);
     setError(null);
-    
+
     try {
       const username = personalInfo.medium.split('@').pop()?.split('/')[0].split('?')[0] || '';
       const data = await fetchMediumArticles(username);
       setArticles(data);
       if (data.length === 0) setError('No articles found');
-    } catch (err) {
+    } catch {
       setError('Unable to load articles');
     } finally {
       setLoading(false);
@@ -50,37 +50,29 @@ export const Articles = () => {
   };
 
   return (
-    <section id="articles" className="section-shell relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(15,23,42,0.015),transparent_30%,rgba(15,23,42,0.02))] dark:bg-[linear-gradient(to_bottom,rgba(148,163,184,0.03),transparent_30%,rgba(148,163,184,0.04))]"></div>
-
-      <div className="container-custom relative z-10">
+    <section id="articles" className="section-shell">
+      <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {/* Header */}
           <div className="section-header">
-            <p className="kicker mb-2">Latest Insights</p>
-            <h2 className="section-title text-text-primary-light dark:text-text-primary-dark">
-              Articles
-            </h2>
-            <p className="section-subtitle">
-              DevSecOps, cybersecurity, MLOps, and applied AI engineering insights
-            </p>
+            <p className="kicker mb-2">Publications</p>
+            <h2 className="section-title">Recent Articles</h2>
+            <p className="section-subtitle">Recent writing on DevSecOps, cybersecurity, MLOps, and applied AI engineering.</p>
 
-            {/* Refresh Button */}
             <motion.button
               onClick={loadArticles}
               disabled={isRefreshing}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-accent-primary rounded-lg font-medium text-xs hover:border-accent-primary/50 disabled:opacity-50"
+              className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 border border-border text-accent rounded-md font-medium text-xs hover:border-accent/50 disabled:opacity-50"
             >
               <motion.svg
                 animate={isRefreshing ? { rotate: 360 } : {}}
-                transition={{ duration: 1, repeat: isRefreshing ? Infinity : 0, ease: "linear" }}
+                transition={{ duration: 1, repeat: isRefreshing ? Infinity : 0, ease: 'linear' }}
                 className="w-3 h-3"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -92,30 +84,23 @@ export const Articles = () => {
             </motion.button>
           </div>
 
-          {/* Loading State */}
           {loading && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-10">
               {[...Array(3)].map((_, i) => (
-                <div key={i} className="enterprise-card h-48 animate-pulse rounded-xl"></div>
+                <div key={i} className="card h-40 animate-pulse"></div>
               ))}
             </div>
           )}
 
-          {/* Error State */}
           {!loading && error && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="mb-10 p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg max-w-md mx-auto text-center text-xs"
-            >
-              <p className="text-orange-600 dark:text-orange-400 font-medium">{error}</p>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-10 p-4 border border-orange-500/30 rounded-md max-w-md text-center text-xs">
+              <p className="text-orange-600 font-medium">{error}</p>
             </motion.div>
           )}
 
-          {/* Articles Grid */}
           {!loading && articles.length > 0 && (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
                 <AnimatePresence mode="wait">
                   {currentArticles.map((article, idx) => (
                     <motion.article
@@ -123,82 +108,40 @@ export const Articles = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.4, delay: idx * 0.08 }}
-                      whileHover={{ y: -2 }}
-                      className="group relative"
+                      transition={{ duration: 0.3, delay: idx * 0.05 }}
+                      className="card p-4"
                     >
-                      <div className="absolute -inset-0.5 bg-slate-200/40 dark:bg-slate-700/30 rounded-lg blur opacity-0 group-hover:opacity-80 transition-opacity" ></div>
-                      
-                      <div className="relative card-luxe p-4 h-full flex flex-col border border-border-light dark:border-border-dark group-hover:border-accent-primary/30">
-                        {/* Thumbnail */}
-                        <div className="relative w-full h-32 -mx-4 -mt-4 mb-3 overflow-hidden rounded-t-lg bg-slate-100 dark:bg-slate-800/60">
-                          {article.thumbnail ? (
-                            <img 
-                              src={article.thumbnail} 
-                              alt={article.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                              onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                            />
-                          ) : null}
-                        </div>
-
-                        {/* Meta */}
-                        <div className="flex items-center justify-between gap-2 mb-2 text-xs text-text-muted-light dark:text-text-muted-dark">
-                          <span>{formatDate(article.pubDate)}</span>
-                          {article.readTime && <span>{article.readTime}</span>}
-                        </div>
-
-                        {/* Title */}
-                        <h3 className="font-bold text-sm mb-2 line-clamp-2 leading-tight">
-                          {article.title}
-                        </h3>
-
-                        {/* Description */}
-                        <p className="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-3 line-clamp-2 flex-grow">
-                          {article.description}
-                        </p>
-
-                        {/* Categories */}
-                        {article.categories.length > 0 && (
-                          <div className="flex flex-wrap gap-1.5 mb-3">
-                            {article.categories.slice(0, 2).map((cat, i) => (
-                              <span key={i} className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-accent-primary rounded text-xs font-medium">
-                                #{cat}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-
-                        {/* Link */}
-                        <motion.a
-                          href={article.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          whileHover={{ x: 2 }}
-                          className="inline-flex items-center gap-1 text-xs font-bold text-accent-primary hover:text-accent-secondary"
-                        >
-                          Read More
-                          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
-                        </motion.a>
+                      <div className="flex items-center justify-between gap-2 mb-2 text-xs text-text-muted">
+                        <span>{formatDate(article.pubDate)}</span>
+                        {article.readTime && <span>{article.readTime}</span>}
                       </div>
+
+                      <h3 className="text-base mb-2 line-clamp-2 leading-tight">{article.title}</h3>
+
+                      <p className="text-sm text-text-secondary mb-3 line-clamp-2">{article.description}</p>
+
+                      {article.categories.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5 mb-3">
+                          {article.categories.slice(0, 2).map((cat, i) => (
+                            <span key={i} className="tech-badge text-xs">{cat}</span>
+                          ))}
+                        </div>
+                      )}
+
+                      <a href={article.link} target="_blank" rel="noopener noreferrer" className="text-sm text-accent hover:underline">
+                        Read article
+                      </a>
                     </motion.article>
                   ))}
                 </AnimatePresence>
               </div>
 
-              {/* Pagination */}
               {totalPages > 1 && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex items-center justify-center gap-2"
-                >
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center justify-center gap-2">
                   <button
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className="px-3 py-1.5 rounded-lg text-xs font-medium bg-border-light dark:bg-border-dark disabled:opacity-40"
+                    className="px-3 py-1.5 rounded-md text-xs font-medium border border-border disabled:opacity-40"
                   >
                     ← Prev
                   </button>
@@ -210,8 +153,8 @@ export const Articles = () => {
                         onClick={() => handlePageChange(num)}
                         className={`w-8 h-8 rounded-lg text-xs font-bold transition-all ${
                           currentPage === num
-                            ? 'bg-accent-primary text-white'
-                            : 'bg-border-light dark:bg-border-dark hover:text-accent-primary'
+                            ? 'bg-accent text-white'
+                            : 'border border-border text-text-secondary hover:text-accent'
                         }`}
                       >
                         {num}
@@ -222,29 +165,28 @@ export const Articles = () => {
                   <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
-                    className="px-3 py-1.5 rounded-lg text-xs font-medium bg-border-light dark:bg-border-dark disabled:opacity-40"
+                    className="px-3 py-1.5 rounded-md text-xs font-medium border border-border disabled:opacity-40"
                   >
                     Next →
                   </button>
                 </motion.div>
               )}
 
-              <p className="text-center text-xs text-text-muted-light dark:text-text-muted-dark mt-4">
+              <p className="text-center text-xs text-text-muted mt-4">
                 {articles.length} article{articles.length !== 1 ? 's' : ''}
               </p>
             </>
           )}
 
-          {/* Empty State */}
           {!loading && !error && articles.length === 0 && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12">
-              <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark mb-3">No articles yet</p>
+              <p className="text-sm text-text-secondary mb-3">No articles yet</p>
               <motion.a
                 href={personalInfo.medium}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
-                className="inline-flex items-center gap-2 text-xs font-bold text-accent-primary hover:text-accent-secondary"
+                className="inline-flex items-center gap-2 text-xs font-bold text-accent"
               >
                 Visit Medium Profile →
               </motion.a>

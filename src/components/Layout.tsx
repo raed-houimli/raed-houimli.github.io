@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Header } from './Header';
 import { Footer } from './Footer';
-import { QuoteBanner } from './QuoteBanner';
 import { ScrollProgress } from './ScrollProgress';
 import { BackToTop } from './BackToTop';
 
@@ -15,14 +14,13 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="min-h-screen flex flex-col site-shell text-text-primary-light dark:text-text-primary-dark">
       <ScrollProgress />
       <Header />
-      <QuoteBanner />
       
       <motion.main
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         transition={{ 
-          duration: 0.5, 
+          duration: 0.4, 
           ease: "easeInOut"
         }}
         className="flex-grow w-full"

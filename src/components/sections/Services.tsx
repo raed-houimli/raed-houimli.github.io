@@ -4,34 +4,28 @@ import { motion } from 'framer-motion';
 export const Services: React.FC = () => {
   const services = [
     {
-      title: 'Full-Stack Web Development',
-      desc: 'FastAPI, Node.js backends + React.js frontends',
-      icon: '💻'
+      title: 'DevSecOps and Platform Engineering',
+      desc: 'Design and implementation of secure software delivery workflows for cloud-native systems.'
     },
     {
-      title: 'Cloud Infrastructure (AWS)',
-      desc: 'EC2, VPC, RDS, S3, Lambda, EKS setup',
-      icon: '☁️'
+      title: 'Cloud Architecture and Security',
+      desc: 'Secure-by-default AWS infrastructure patterns, IAM hardening, and network security design.'
     },
     {
       title: 'Infrastructure as Code',
-      desc: 'Terraform automation & state management',
-      icon: '📝'
+      desc: 'Terraform modules, state strategy, environment promotion, and reproducible deployments.'
     },
     {
-      title: 'Kubernetes Orchestration',
-      desc: 'Container deployment & auto-scaling',
-      icon: '⎈'
+      title: 'Kubernetes Operations',
+      desc: 'Cluster operations, workload deployment, observability, and production readiness practices.'
     },
     {
-      title: 'CI/CD Pipelines',
-      desc: 'GitHub Actions & GitLab automation',
-      icon: '⚙️'
+      title: 'Research and Technical Collaboration',
+      desc: 'Applied collaboration around cybersecurity, AI/ML systems, and resilient cloud platforms.'
     },
     {
-      title: 'Monitoring & Observability',
-      desc: 'Prometheus, Grafana, CloudWatch',
-      icon: '📊'
+      title: 'Mentoring and Knowledge Transfer',
+      desc: 'Hands-on guidance for teams adopting DevSecOps, cloud operations, and secure development culture.'
     }
   ];
 
@@ -44,60 +38,48 @@ export const Services: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {/* Header */}
           <div className="section-header mb-8">
-            <p className="kicker mb-2">Services</p>
-            <h2 className="section-title">What I Offer</h2>
-            <p className="section-subtitle text-sm">
-              DevSecOps engineering, secure cloud architecture, and automation-oriented platform delivery
+            <p className="kicker mb-2">Teaching and Services</p>
+            <h2 className="section-title">Professional Activities</h2>
+            <p className="section-subtitle">
+              Consulting and collaboration activities focused on secure software delivery and cloud systems.
             </p>
           </div>
 
-          {/* Services Grid - Compact */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {services.map((service, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="card-neo p-4 group hover:shadow-lg hover:border-accent-primary/20 transition-all"
+                transition={{ duration: 0.35, delay: i * 0.05 }}
+                className="card p-4"
               >
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl flex-shrink-0">{service.icon}</span>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-bold text-sm mb-1 group-hover:text-accent-primary transition-colors">
-                      {service.title}
-                    </h4>
-                    <p className="text-xs text-text-secondary-light dark:text-text-secondary-dark leading-relaxed">
-                      {service.desc}
-                    </p>
-                  </div>
-                </div>
+                <h3 className="text-base mb-2">{service.title}</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">{service.desc}</p>
+                <div className="mt-3 text-xs text-text-muted">Available for remote collaboration.</div>
               </motion.div>
             ))}
           </div>
 
-          {/* CTA */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-6 text-center"
+            transition={{ duration: 0.35, delay: 0.2 }}
+            className="mt-6"
           >
-            <motion.a
+            <a
               href="#contact"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              className="btn-primary inline-flex items-center gap-2"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="btn-primary"
             >
-              Schedule Consultation
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </motion.a>
+              Contact for Collaboration
+            </a>
           </motion.div>
         </motion.div>
       </div>
