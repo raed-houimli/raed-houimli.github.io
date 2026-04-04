@@ -121,13 +121,22 @@ hr {
   max-width: 100%;
 }
 
+#content .avatar {
+  float: left;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 16px 8px 0;
+}
+
 #content .avatar > img {
-  border-radius: 50% !important;
-  float: left !important;
-  margin: 0 16px 8px 0 !important;
-  height: 110px !important;
-  width: 110px !important;
-  object-fit: cover;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 0 !important;
+  float: none !important;
+  margin: 0 !important;
   display: block !important;
 }
 
