@@ -1,236 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>Raed Houimli</title>
   <meta name="description" content="Raed Houimli — DevSecOps Engineer, Cloud &amp; Security Engineer, MLOps researcher." />
+  <meta name="author" content="Raed Houimli" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
+<div class="container">
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">Raed Houimli</a>
+    <div class="navbar-nav">
+
+      <a class="nav-item nav-link" href="#about">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/></svg>
+        About
+      </a>
+      <span class="nav-item navbar-text">/</span>
+
+      <a class="nav-item nav-link" href="#education">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z"/><path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"/></svg>
+        Education
+      </a>
+      <span class="nav-item navbar-text">/</span>
+
+      <a class="nav-item nav-link" href="#experience">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/></svg>
+        Experience
+      </a>
+      <span class="nav-item navbar-text">/</span>
+
+      <a class="nav-item nav-link" href="#research">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/></svg>
+        Research
+      </a>
+      <span class="nav-item navbar-text">/</span>
+
+      <a class="nav-item nav-link" href="#contact">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/></svg>
+        Contact
+      </a>
+
+    </div>
+  </nav>
+</div>
+
+<hr>
+
+<div id="content">
   <div class="container">
 
-    <!-- Navbar -->
-    <header>
-      <div class="navbar">
-        <a href="#" class="navbar-brand">Raed Houimli</a>
-        <nav>
-          <a href="#about">
-            <i class="fa-solid fa-user"></i> About
-          </a>
-          <span class="sep">/</span>
-          <a href="#education">
-            <i class="fa-solid fa-graduation-cap"></i> Education
-          </a>
-          <span class="sep">/</span>
-          <a href="#experience">
-            <i class="fa-solid fa-briefcase"></i> Experience
-          </a>
-          <span class="sep">/</span>
-          <a href="#research">
-            <i class="fa-solid fa-lightbulb"></i> Research
-          </a>
-          <span class="sep">/</span>
-          <a href="#contact">
-            <i class="fa-solid fa-envelope"></i> Contact
-          </a>
-        </nav>
-      </div>
-    </header>
+    <h2 id="about">About Me</h2>
+    <p style="text-align:center;font-style:italic;">"The secret of getting ahead is getting started." &mdash; Mark Twain</p>
 
-    <hr />
+    <figure class="avatar">
+      <img src="profile.jpg" alt="Raed Houimli" />
+    </figure>
 
-    <main>
+    <p>
+      I am a DevSecOps and Cloud Engineer with 5+ years of experience in software engineering,
+      infrastructure automation, and security-focused delivery. I work at the intersection of
+      cloud platforms, secure CI/CD pipelines, and intelligent systems.
+    </p>
+    <p>
+      Currently, I am deepening my research direction toward cybersecurity, AI/ML systems, and
+      intelligent cloud infrastructure, with the goal of pursuing PhD opportunities in these areas.
+    </p>
+    <p>
+      Based in Tunisia, open to remote research collaborations and consulting engagements worldwide.
+    </p>
 
-      <!-- About -->
-      <section id="about">
-        <h2>About Me</h2>
-        <p class="about-quote">"The computer was born to solve problems that did not exist before." — Bill Gates</p>
-        <div class="clearfix">
-          <img src="profile.jpg" alt="Raed Houimli" class="avatar" />
-          <p>
-            DevSecOps and cloud engineer with 5+ years of experience in software engineering,
-            infrastructure automation, and security-focused delivery. I work at the intersection
-            of cloud platforms, secure CI/CD pipelines, and intelligent systems.
-          </p>
-          <p>
-            I am currently deepening my research direction toward cybersecurity, AI/ML systems,
-            and intelligent cloud infrastructure, with the goal of pursuing PhD opportunities
-            in these areas.
-          </p>
-          <p>
-            Based in Tunisia, open to remote collaboration and research engagements worldwide.
-          </p>
-        </div>
-      </section>
+    <h2 id="education">Education</h2>
 
-      <hr />
+    <p><strong>M.Sc. Network &amp; Systems Security</strong><br />
+    Private Higher School of Technologies and Engineering &mdash; Tunisia</p>
 
-      <!-- Education -->
-      <section id="education">
-        <h2>Education</h2>
+    <p><strong>M.Sc. Applied Mathematics &amp; Data Science</strong><br />
+    National School of Engineering of Tunis &mdash; Tunisia</p>
 
-        <div class="edu-entry">
-          <p class="edu-degree">M.Sc. Network &amp; Systems Security</p>
-          <p class="edu-inst">Private Higher School of Technologies and Engineering &mdash; Tunisia</p>
-        </div>
+    <p><strong>M.Sc. Software Engineering</strong><br />
+    Higher Institute of Computer Science &mdash; Tunisia</p>
 
-        <div class="edu-entry">
-          <p class="edu-degree">M.Sc. Applied Mathematics &amp; Data Science</p>
-          <p class="edu-inst">National School of Engineering of Tunis &mdash; Tunisia</p>
-        </div>
+    <p><strong>B.Sc. Systems Development</strong><br />
+    Aeronautical Specialty School &mdash; Tunisia</p>
 
-        <div class="edu-entry">
-          <p class="edu-degree">M.Sc. Software Engineering</p>
-          <p class="edu-inst">Higher Institute of Computer Science &mdash; Tunisia</p>
-        </div>
+    <h2 id="experience">Experience</h2>
 
-        <div class="edu-entry">
-          <p class="edu-degree">B.Sc. Systems Development</p>
-          <p class="edu-inst">Aeronautical Specialty School &mdash; Tunisia</p>
-        </div>
-      </section>
+    <p><strong>DevSecOps Engineer</strong> &mdash; Freelance / Self-Employed<br />
+    <em>Mar 2026 &ndash; Present</em><br />
+    Building a cloud-native DevSecOps platform for quantitative strategy deployment.
+    Designing secure CI/CD pipelines with GitHub Actions and GitOps workflows via Argo CD,
+    with Kubernetes and Terraform on AWS, and monitoring through Prometheus and Grafana.</p>
 
-      <hr />
+    <p><strong>DevOps Engineer</strong> &mdash; Ministry of National Defense of Tunisia<br />
+    <em>Sep 2023 &ndash; Dec 2025</em><br />
+    Designed and maintained CI/CD pipelines and provisioned AWS infrastructure with Terraform.
+    Containerized applications with Docker using multi-stage builds, increasing deployment
+    frequency by 40% and reducing manual operational overhead through infrastructure automation.</p>
 
-      <!-- Experience -->
-      <section id="experience">
-        <h2>Experience</h2>
+    <p><strong>Software Engineer</strong> &mdash; Ministry of National Defense of Tunisia<br />
+    <em>Mar 2021 &ndash; Sep 2023</em><br />
+    Developed full-stack applications with FastAPI and React.js, and supported legacy Java systems
+    in a high-security environment. Optimized Oracle database queries and indexing strategies,
+    improving application response times by up to 30%.</p>
 
-        <div class="exp-entry">
-          <p class="exp-role">DevSecOps Engineer</p>
-          <p class="exp-org">Freelance / Self-Employed</p>
-          <p class="exp-period">Mar 2026 &ndash; Present</p>
-          <p>
-            Building a cloud-native DevSecOps platform for quantitative strategy deployment.
-            Designing secure CI/CD pipelines with GitHub Actions and GitOps workflows via Argo CD,
-            with Kubernetes and Terraform on AWS, and monitoring through Prometheus and Grafana.
-          </p>
-        </div>
+    <p><strong>Technical Support Engineer</strong> &mdash; Ministry of National Defense of Tunisia<br />
+    <em>Jul 2020 &ndash; Mar 2021</em><br />
+    Administered Windows Server and Linux environments for mission-critical systems. Maintained
+    over 99.9% system availability through proactive monitoring and timely incident remediation.</p>
 
-        <div class="exp-entry">
-          <p class="exp-role">DevOps Engineer</p>
-          <p class="exp-org">Ministry of National Defense of Tunisia</p>
-          <p class="exp-period">Sep 2023 &ndash; Dec 2025</p>
-          <p>
-            Designed and maintained CI/CD pipelines and provisioned AWS infrastructure with Terraform.
-            Containerized applications with Docker using multi-stage builds, increasing deployment
-            frequency by 40% and reducing manual operational overhead through infrastructure automation.
-          </p>
-        </div>
+    <h2 id="research">Research Interests</h2>
 
-        <div class="exp-entry">
-          <p class="exp-role">Software Engineer</p>
-          <p class="exp-org">Ministry of National Defense of Tunisia</p>
-          <p class="exp-period">Mar 2021 &ndash; Sep 2023</p>
-          <p>
-            Developed and maintained full-stack applications with FastAPI and React.js, and supported
-            legacy Java systems in a high-security environment. Optimized Oracle database queries and
-            indexing strategies, improving application response times by up to 30%.
-          </p>
-        </div>
+    <p><strong>Cybersecurity &amp; Secure Systems Engineering</strong><br />
+    Security of distributed systems, zero-trust architectures, secure software delivery pipelines,
+    and policy-as-code enforcement in cloud environments.</p>
 
-        <div class="exp-entry">
-          <p class="exp-role">Technical Support Engineer</p>
-          <p class="exp-org">Ministry of National Defense of Tunisia</p>
-          <p class="exp-period">Jul 2020 &ndash; Mar 2021</p>
-          <p>
-            Administered Windows Server and Linux environments for mission-critical systems.
-            Maintained over 99.9% system availability through proactive monitoring, root cause
-            analysis, and timely incident remediation.
-          </p>
-        </div>
-      </section>
+    <p><strong>AI Security &amp; Adversarial Machine Learning</strong><br />
+    Robustness of machine learning models against adversarial inputs, security of LLM-based systems,
+    and detection of malicious behavior in AI-integrated applications.</p>
 
-      <hr />
+    <p><strong>MLOps &amp; Intelligent Infrastructure</strong><br />
+    Secure and reproducible ML lifecycle management, model governance, automated validation gates,
+    and deployment of AI systems on cloud-native infrastructure.</p>
 
-      <!-- Research Interests -->
-      <section id="research">
-        <h2>Research Interests</h2>
+    <p><strong>Distributed Systems &amp; Cloud-Native Architecture</strong><br />
+    Reliability, observability, and scalability of distributed systems; container orchestration;
+    and cross-layer monitoring combining infrastructure telemetry with application-level signals.</p>
 
-        <div class="research-entry">
-          <p class="research-topic">Cybersecurity &amp; Secure Systems Engineering</p>
-          <p>
-            Security of distributed systems, zero-trust architectures, secure software delivery pipelines,
-            and policy-as-code enforcement in cloud environments.
-          </p>
-        </div>
+    <p><strong>Autonomous Systems &amp; Edge Intelligence</strong><br />
+    Multi-sensor perception and navigation for autonomous mobile robots, simulation-to-deployment
+    workflows, and deployment of AI inference on edge hardware.</p>
 
-        <div class="research-entry">
-          <p class="research-topic">AI Security &amp; Adversarial Machine Learning</p>
-          <p>
-            Robustness of machine learning models against adversarial inputs, security of LLM-based systems,
-            and detection of malicious behavior in AI-integrated applications.
-          </p>
-        </div>
+    <h2 id="contact">Contact</h2>
 
-        <div class="research-entry">
-          <p class="research-topic">MLOps &amp; Intelligent Infrastructure</p>
-          <p>
-            Secure and reproducible ML lifecycle management, model governance, automated validation gates,
-            and deployment of AI systems on cloud-native infrastructure.
-          </p>
-        </div>
+    <p style="text-align:center;">
+      <i class="fas fa-envelope"></i>
+      &nbsp;<a href="mailto:houimliraed@outlook.fr">houimliraed@outlook.fr</a>
+    </p>
+    <p style="text-align:center;">
+      <i class="fas fa-map-marker-alt"></i>
+      &nbsp;Tunisia &mdash; open to remote worldwide
+    </p>
 
-        <div class="research-entry">
-          <p class="research-topic">Distributed Systems &amp; Cloud-Native Architecture</p>
-          <p>
-            Reliability, observability, and scalability of distributed systems; container orchestration;
-            and cross-layer monitoring combining infrastructure telemetry with application-level signals.
-          </p>
-        </div>
+  </div>
+</div>
 
-        <div class="research-entry">
-          <p class="research-topic">Autonomous Systems &amp; Edge Intelligence</p>
-          <p>
-            Multi-sensor perception and navigation for autonomous mobile robots, simulation-to-deployment
-            workflows, and deployment of AI inference on edge hardware.
-          </p>
-        </div>
-      </section>
-
-      <hr />
-
-      <!-- Contact -->
-      <section id="contact">
-        <h2>Contact</h2>
-        <div class="contact-info">
-          <p>
-            <i class="fa-solid fa-envelope"></i>
-            &nbsp;<a href="mailto:houimliraed@outlook.fr">houimliraed@outlook.fr</a>
-          </p>
-          <p>
-            <i class="fa-solid fa-location-dot"></i>
-            &nbsp;Tunisia &mdash; open to remote worldwide
-          </p>
-        </div>
-      </section>
-
-    </main>
-
-    <hr />
-
-    <!-- Footer -->
-    <footer>
-      <div class="social-icons">
-        <a href="https://github.com/raed-houimli" target="_blank" rel="noopener" title="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://linkedin.com/in/raed-houimli" target="_blank" rel="noopener" title="LinkedIn">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-        <a href="https://medium.com/@raed-houimli" target="_blank" rel="noopener" title="Medium">
-          <i class="fa-brands fa-medium"></i>
-        </a>
-      </div>
-      <p class="footer-copy">
-        &copy; 2026 Raed Houimli
-      </p>
-    </footer>
-
-  </div><!-- /.container -->
+<div id="footer" class="mb-5">
+  <hr>
+  <div class="container text-center">
+    <a href="https://github.com/raed-houimli" class="fab fa-github fa-1x" title="GitHub" target="_blank" rel="noopener"></a>
+    <a href="https://linkedin.com/in/raed-houimli" class="fab fa-linkedin fa-1x" title="LinkedIn" target="_blank" rel="noopener"></a>
+    <a href="https://medium.com/@raed-houimli" class="fab fa-medium fa-1x" title="Medium" target="_blank" rel="noopener"></a>
+  </div>
+  <div class="container text-center">
+    <small>Raed Houimli</small>
+  </div>
+</div>
 
 </body>
 </html>
