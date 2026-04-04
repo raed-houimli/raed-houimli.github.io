@@ -1,0 +1,278 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --text: #111;
+  --muted: #555;
+  --border: #ddd;
+  --accent: #2a52a0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  background: #fff;
+}
+
+/* Layout */
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header / Nav */
+
+header {
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+header .site-name {
+  font-size: 15px;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+nav a:hover {
+  color: var(--text);
+}
+
+/* Sections */
+
+section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: normal;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+h2 {
+  font-size: 13px;
+  font-weight: normal;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+h3 {
+  font-size: 17px;
+  font-weight: normal;
+  margin-bottom: 4px;
+}
+
+p {
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* About */
+
+.about-inner {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.about-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  filter: grayscale(20%);
+}
+
+.about-text p {
+  margin-bottom: 12px;
+}
+
+.about-title {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+/* Education */
+
+.edu-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.edu-item .degree {
+  font-size: 16px;
+  margin-bottom: 2px;
+  color: var(--text);
+}
+
+.edu-item .institution {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Experience */
+
+.exp-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.exp-item .role {
+  font-size: 17px;
+  margin-bottom: 2px;
+}
+
+.exp-item .org {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.exp-item .period {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.exp-item .desc {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* Research Interests */
+
+.research-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.research-item .topic {
+  font-size: 16px;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.research-item .topic-desc {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* Contact */
+
+.contact-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-links li {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+}
+
+.contact-links .label {
+  color: #888;
+  display: inline-block;
+  width: 80px;
+}
+
+.contact-links a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-links a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+
+footer {
+  padding: 32px 0;
+  text-align: center;
+}
+
+footer p {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* Responsive */
+
+@media (max-width: 560px) {
+  h1 { font-size: 22px; }
+
+  .about-inner {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav { gap: 16px; }
+
+  section { padding: 48px 0; }
+}
