@@ -121,7 +121,7 @@ hr {
   max-width: 100%;
 }
 
-#content .avatar {
+#content div.avatar {
   float: left;
   width: 100px;
   height: 100px;
@@ -130,7 +130,7 @@ hr {
   margin: 0 16px 8px 0;
 }
 
-#content .avatar > img {
+#content div.avatar > img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
