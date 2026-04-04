@@ -1,17 +1,16 @@
-name: Deploy to Hostinger
+name: Deploy
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  deploy:
+  deploy-hostinger:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
 
-    - name: Upload via FTP
+    - name: Upload via FTP to Hostinger
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.HOSTINGER_SERVER_IP }}
@@ -25,3 +24,15 @@ jobs:
           **/.git*
           **/.git*/**
           .github/**
+
+  deploy-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Push to raed-houimli.github.io
+      run: |
+        git config user.name "Raed Houimli"
+        git config user.email "houimliraed@outlook.fr"
+        git remote add pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/raed-houimli/raed-houimli.github.io.git
+        git push pages main --force
