@@ -34,5 +34,5 @@ jobs:
       run: |
         git config user.name "Raed Houimli"
         git config user.email "houimliraed@outlook.fr"
-        git remote add pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/raed-houimli/raed-houimli.github.io.git
+        git remote add pages https://x-access-token:${{ secrets.GH_PAGES_TOKEN }}@github.com/raed-houimli/raed-houimli.github.io.git
         git push pages main --force
